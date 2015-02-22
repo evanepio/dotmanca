@@ -19,6 +19,8 @@ if [ ! -d /etc/puppet/modules/$folder ]; then
   puppet module install $1
 fi
 }
+
+install_module puppetlabs-postgresql
 PROVISION_SCRIPT
 
 VAGRANTFILE_API_VERSION = "2"
