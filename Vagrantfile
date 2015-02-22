@@ -5,7 +5,7 @@ $provisionScript = <<PROVISION_SCRIPT
 echo Start Provisioning
 
 wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
-sudo dpkg -i puppetlabs-release-trusty.deb
+sudo dpkg -i puppetlabs-release-precise.deb
 sudo apt-get update
 
 sudo apt-get install puppet
