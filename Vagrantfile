@@ -21,6 +21,7 @@ fi
 }
 
 install_module puppetlabs-postgresql
+install_module puppetlabs-apt
 PROVISION_SCRIPT
 
 VAGRANTFILE_API_VERSION = "2"
