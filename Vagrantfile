@@ -33,14 +33,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 8000, host: 8000
   config.vm.synced_folder(".", "/vagrant")
 
+  config.vm.hostname = "vagrant.example.com"
+
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
   end
 
   config.vm.provision "shell", inline: $provisionScript
 
-  # config.vm.provision "puppet" do |puppet|
-    # puppet.manifests_path = "puppet_manifests"
-    # puppet.manifest_file = "default.pp"
-  # end
+  config.vm.provision "puppet" do |puppet|
+    puppet.manifests_path = "puppet_manifests"
+    puppet.manifest_file = "init.pp"
+  end
 end
