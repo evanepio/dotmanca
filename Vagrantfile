@@ -3,15 +3,13 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "hashicorp/precise32"
-  config.vm.box_url = "https://vagrantcloud.com/hashicorp/boxes/precise32/versions/1.0.0/providers/virtualbox.box"
+  config.vm.box = "hashicorp/trusty32"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/20150506/trusty-server-cloudimg-i386-vagrant-disk1.box"
 
   config.vm.network :forwarded_port, guest: 8000, host: 8000
   config.vm.synced_folder(".", "/vagrant")
 
   config.vm.synced_folder 'salt/roots', '/srv'
-
-  config.vm.hostname = "vagrant.example.com"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
