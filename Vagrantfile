@@ -21,6 +21,12 @@ rm -R setuptools-3.4.4*
 rm -R pip-1.5.6*
 WORKAROUND_FOR_PYVENV_NOT_WORKING_IN_TRUSTY
 
+# Install requirements into the VENV
+$venvReqs = <<VENV_REQS
+source ./djangoVENV/bin/activate
+pip install -r /vagrant/requirements.txt
+VENV_REQS
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "hashicorp/trusty32"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/20150506/trusty-server-cloudimg-i386-vagrant-disk1.box"
@@ -41,4 +47,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "shell", inline: $workaround, privileged: false
+
+  config.vm.provision "shell", inline: $venvReqs, privileged: false
 end
