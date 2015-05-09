@@ -40,5 +40,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     salt.verbose = true
   end
 
-  config.vm.provision "shell", inline: $workaround
+  config.vm.provision "shell", inline: $workaround, privileged: false
 end
