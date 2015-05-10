@@ -1,4 +1,5 @@
 base:
   '*':
     - python
+    - postgresql
     - miscDevLibs
