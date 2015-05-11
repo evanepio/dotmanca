@@ -19,11 +19,9 @@ postgresql:
 
 postgresql-9.3-dbg:
   pkg:
-    - name: postgresql-9.3-dbg
     - installed
 
 postgresql-server-dev-9.3:
   pkg:
-    - name: postgresql-server-dev-9.3
     - installed
 
