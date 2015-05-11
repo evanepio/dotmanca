@@ -17,7 +17,7 @@ postgresql:
     - watch: 
       - file: /etc/postgresql/9.3/main/pg_hba.conf
 
-postgresql-9.1-dbg:
+postgresql-9.3-dbg:
   pkg:
     - name: postgresql-9.3-dbg
     - installed
