@@ -7,8 +7,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/20150506/trusty-server-cloudimg-i386-vagrant-disk1.box"
 
   config.vm.network :forwarded_port, guest: 80, host: 8000
-  config.vm.synced_folder(".", "/vagrant")
 
+  config.vm.synced_folder(".", "/vagrant")
   config.vm.synced_folder 'salt/roots', '/srv'
 
   config.vm.provider :virtualbox do |vb|
