@@ -6,6 +6,7 @@ nginx:
     - watch:
       - file: /etc/nginx/nginx.conf
       - file: /etc/nginx/sites-available/dotmanca
+      - file: /etc/nginx/sites-available/default
 
 /etc/nginx/nginx.conf:
   file:
