@@ -18,5 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "salt" do |salt|
     salt.minion_config = "salt/minion.conf"
     salt.run_highstate = true
+    salt.verbose = true
+    salt.log_level = "info"
   end
 end
