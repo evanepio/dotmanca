@@ -6,7 +6,6 @@ nginx:
     - watch:
       - file: /etc/nginx/nginx.conf
       - file: /etc/nginx/sites-available/dotmanca
-      - file: /etc/nginx/sites-available/default
 
 /etc/nginx/nginx.conf:
   file:
@@ -31,10 +30,8 @@ nginx:
     - group: root
     - mode: 644
 
-/etc/nginx/sites-available/default:
-  file:
-    - absent
-
-/etc/nginx/sites-enable/default:
-  file:
-    - absent
+/etc/nginx/sites-enabled/default:
+  file.absent:
+    - name: /etc/nginx/sites-enabled/default
+  require:
+    - pkg: nginx
