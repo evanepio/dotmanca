@@ -6,7 +6,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "hashicorp/trusty32"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/20150506/trusty-server-cloudimg-i386-vagrant-disk1.box"
 
-  config.vm.network :forwarded_port, guest: 80, host: 8000
+  config.vm.network :forwarded_port, guest: 8000, host: 8000
 
   config.vm.synced_folder(".", "/vagrant")
   config.vm.synced_folder 'salt/roots', '/srv'
@@ -18,6 +18,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "salt" do |salt|
     salt.minion_config = "salt/minion.conf"
     salt.run_highstate = true
-    salt.verbose = true
   end
 end
