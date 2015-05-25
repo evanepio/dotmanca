@@ -11,6 +11,7 @@ nginx run:
       - file: /etc/nginx/sites-available/dotmanca
   require:
     - file: /etc/nginx/sites-enabled/dotmanca
+    - file: /etc/nginx/nginx.conf
   
 /etc/nginx/nginx.conf:
   file:
@@ -27,6 +28,8 @@ nginx run:
     - user: root
     - group: root
     - mode: 644
+  require:
+    - pkg: nginx
 
 /etc/nginx/sites-enabled/dotmanca:
   file.symlink:
@@ -34,6 +37,8 @@ nginx run:
     - user: root
     - group: root
     - mode: 644
+  require:
+    - file: /etc/nginx/sites-available/dotmanca
 
 /etc/nginx/sites-enabled/default:
   file.absent:
