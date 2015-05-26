@@ -1,3 +1,5 @@
 .vagrant
 static/
 media/
+__pycache__/
+*.sqlite3
