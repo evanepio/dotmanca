@@ -1,3 +1,6 @@
+include:
+  - postgresql
+
 python3:
   pkg:
     - installed
@@ -21,8 +24,7 @@ Run VENV Workaround:
     - user: vagrant
     - require:
       - pkg: python3-dev
-      - pkg: postgresql-9.3-dbg
-      - pkg: postgresql-server-dev-9.3
+      - sls: postgresql
 
 Install PIP packages:
   cmd.run:
