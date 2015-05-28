@@ -12,6 +12,7 @@ nginx run:
   require:
     - file: /etc/nginx/sites-enabled/dotmanca
     - file: /etc/nginx/nginx.conf
+    - pkg: nginx
   
 /etc/nginx/nginx.conf:
   file:
