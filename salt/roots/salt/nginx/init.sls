@@ -2,17 +2,17 @@ nginx:
   pkg:
     - installed
 
-nginx run:
+nginx_run:
   service.running:
     - name: nginx
     - enable: True
     - watch:
       - file: /etc/nginx/nginx.conf
       - file: /etc/nginx/sites-available/dotmanca
-  require:
-    - file: /etc/nginx/sites-enabled/dotmanca
-    - file: /etc/nginx/nginx.conf
-    - pkg: nginx
+    - require:
+      - file: /etc/nginx/sites-enabled/dotmanca
+      - file: /etc/nginx/nginx.conf
+      - pkg: nginx
   
 /etc/nginx/nginx.conf:
   file:
