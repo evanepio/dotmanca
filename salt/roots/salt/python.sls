@@ -1,5 +1,6 @@
 include:
   - postgresql
+  - miscDevLibs
 
 python3:
   pkg:
@@ -33,3 +34,4 @@ Install PIP packages:
     - user: vagrant
     - watch:
       - cmd: Run VENV Workaround
+      - sls: miscDevLibs
