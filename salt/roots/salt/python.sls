@@ -18,7 +18,7 @@ python3-psycopg2:
     - require: 
       - pkg: python3-dev
 
-Run VENV Workaround:
+python-create-venv-using-workaround:
   cmd.run:
     - name: /vagrant/scripts/pyVenvForTrusty.sh
     - cwd: /home/vagrant/
@@ -27,11 +27,11 @@ Run VENV Workaround:
       - pkg: python3-dev
       - sls: postgresql
 
-Install PIP packages:
+python-pip-install-requirements:
   cmd.run:
     - name: /vagrant/scripts/pipInstallReqs.sh
     - cwd: /home/vagrant/
     - user: vagrant
     - watch:
-      - cmd: Run VENV Workaround
+      - cmd: python-create-venv-using-workaround
       - sls: miscDevLibs
