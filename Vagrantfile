@@ -3,8 +3,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "hashicorp/trusty32"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/20150506/trusty-server-cloudimg-i386-vagrant-disk1.box"
+  config.vm.box = "ubuntu/trusty32"
 
   config.vm.network :forwarded_port, guest: 8000, host: 8000
 
