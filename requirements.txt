@@ -1,5 +1,0 @@
-Django==1.9
-Pillow==2.8.1
-psycopg2==2.6
-gunicorn==19.3.0
-django-environ==0.3.0
