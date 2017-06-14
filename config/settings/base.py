@@ -56,6 +56,7 @@ LOCAL_APPS = [
     # custom users app
     'dotmanca.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'news.apps.NewsConfig',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
