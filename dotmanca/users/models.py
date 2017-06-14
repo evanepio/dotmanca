@@ -15,15 +15,3 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
-
-
-class NewsArticle(models.Model):
-    headline = models.CharField(max_length=70)
-    slug = models.SlugField()
-    published_datetime = models.DateTimeField()
-    published = models.BooleanField()
-    content = models.TextField(blank=True)
-
-    def __str__(self):
-        return self.headline
-
