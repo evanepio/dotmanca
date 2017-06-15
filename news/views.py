@@ -9,5 +9,4 @@ class IndexView(generic.ListView):
     context_object_name = 'news_articles'
 
     def get_queryset(self):
-        """Return the last five published questions."""
-        return NewsArticle.objects.order_by('-pub_date')[:5]
+        return NewsArticle.objects.order_by('-published_datetime')

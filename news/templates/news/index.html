@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
-      {% block content %}
-        <p>I like the News. When it's not a flaming dumpster fire.</p>
-      {% endblock content %}
+{% block content %}
+    <p>I like the News. When it's not a flaming dumpster fire.</p>
+
+    {% if news_articles %}
+        <ul>
+        {% for article in news_articles %}
+            <li>{{ article.headline }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock content %}
