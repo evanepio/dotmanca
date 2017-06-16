@@ -10,3 +10,8 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return NewsArticle.objects.order_by('-published_datetime')
+
+
+class ArticleView(generic.DetailView):
+    model = NewsArticle
+    template_name = 'news/article.html'
