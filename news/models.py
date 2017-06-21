@@ -1,13 +1,10 @@
 from django.db import models
 
-# Create your models here.
-
 
 class NewsArticle(models.Model):
     headline = models.CharField(max_length=70)
-    slug = models.SlugField()
+    slug = models.SlugField(unique_for_date="published_datetime")
     published_datetime = models.DateTimeField()
-    published = models.BooleanField()
     content = models.TextField(blank=True)
 
     def __str__(self):
