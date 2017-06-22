@@ -12,13 +12,8 @@ django==1.11.2 # pyup: >=1.10,<1.11
 django-environ==0.4.3
 whitenoise==3.3.0
 
-
 # Forms
-django-braces==1.11.0
 django-crispy-forms==1.6.1
-
-# Models
-django-model-utils==3.0.0
 
 # Images
 Pillow==4.1.1
@@ -34,18 +29,9 @@ django-allauth==0.32.0
 # Python-PostgreSQL Database Adapter
 psycopg2==2.7.1
 
-# Unicode slugification
-awesome-slugify==1.6.5
-
 # Time zones support
 pytz==2017.2
 
-# Redis support
-django-redis==4.8.0
-redis>=2.10.5
-
-
-
-
 
 # Your custom requirements go here
+django-markdownx==2.0.21
