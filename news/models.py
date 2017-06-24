@@ -1,5 +1,13 @@
+from datetime import date
+
 from django.db import models
 from django.urls import reverse
+
+
+class PublishedArticlesManager(models.Manager):
+    def get_queryset(self):
+        today = date.today()
+        return super(PublishedArticlesManager, self).get_queryset().filter(published_datetime__lte=today)
 
 
 class NewsArticle(models.Model):
@@ -7,6 +15,9 @@ class NewsArticle(models.Model):
     slug = models.SlugField(unique_for_date="published_datetime")
     published_datetime = models.DateTimeField()
     content = models.TextField(blank=True)
+
+    objects = models.Manager()
+    published_articles = PublishedArticlesManager()
 
     def get_absolute_url(self):
         kwargs = {'year': str(self.published_datetime.year),

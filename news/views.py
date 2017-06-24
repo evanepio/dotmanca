@@ -10,7 +10,7 @@ class IndexView(generic.ListView):
     context_object_name = 'news_articles'
 
     def get_queryset(self):
-        return NewsArticle.objects.order_by('-published_datetime')
+        return NewsArticle.published_articles.order_by('-published_datetime')
 
 
 class ArticleView(generic.DetailView):
