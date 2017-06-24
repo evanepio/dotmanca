@@ -2,6 +2,8 @@ import datetime
 
 from django.views import generic
 
+from news.models import NewsArticle
+
 
 def get_age(birth_year, birth_month, birth_day):
     today = datetime.date.today()
@@ -20,6 +22,11 @@ def get_age(birth_year, birth_month, birth_day):
 
 class HomePageView(generic.TemplateView):
     template_name = "main/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        context['news_articles'] = NewsArticle.objects.order_by('-published_datetime')[:3]
+        return context
 
 
 class AboutView(generic.TemplateView):
