@@ -34,4 +34,5 @@ pytz==2017.2
 
 
 # Your custom requirements go here
-django-markdownx==2.0.21
+django-markup==1.2
+markdown==2.6.8

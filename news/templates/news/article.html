@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load markup_tags %}
 
 {% block content %}
     <h1>{{ newsarticle.headline }}</h1>
     <div>{{ newsarticle.published_datetime|date:"j F, Y" }}</div>
     <div><a href="{% url 'news:index' %}">Back to News</a></div>
-    <div>{{ newsarticle.content }}</div>
+    <div>{{ newsarticle.content|apply_markup:"markdown" }}</div>
 
 {% endblock content %}
