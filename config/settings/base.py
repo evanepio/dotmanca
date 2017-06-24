@@ -57,6 +57,7 @@ LOCAL_APPS = [
     # custom users app
     'dotmanca.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'main.apps.MainConfig',
     'news.apps.NewsConfig',
 ]
 

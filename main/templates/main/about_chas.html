@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Chas Goguen</h1>
+
+<img title="Chas Goguen" width="171" height="189" class="centered" src="{{ MEDIA_URL }}images/content/chas.jpg" alt="Image of Chas" />
+
+<div class="centered"><a href="{% url 'main:about' %}">Back to About</a></div>
+
+	<p>Chas is a {{ age }}-year-old cartoonist, born and raised in Saint John, New Brunswick. He was born on April 23rd, 1980 (making for relative ease when it comes to having to remember how old he is at any given time). He attended elementary school/junior high at New Albert School, then when it blew up he attended high school at Saint John High.</p>
+	<p>In June of 2004, he was selected to take part on <em>MuchTakeOver</em>, a live broadcast on Canada's music station, MuchMusic, where he and a fellow competitor/co-host got their chance at hosting the entire station for two hours. Although he didn't win the majority of the audience's votes (though he came dang close, being a guy from the li'l ol' Maritimes going up against a guy with the entire western side of Canada backing him), the trip to Toronto and the chance to meet all the MuchMusic VJs in person was enough of a prize for him.</p>
+	<p>At the end of April, 2006, Chas attented the Paradise Comics Toronto Comicon, his first-ever comic convention appearance. There he got to meet a number of fellow comic book producers, met a few more local celebrities, and learned a lot of good tips and advice on independent comic book publishing. He was quite thrilled and impressed with the event, and is certainly intent on making more convention appearances in the future.</p>
+	<p>These days, Chas spends most of his free time (and even a lot of his NOT-free time) working at producing the <em>Dotman</em> comic book series.</p>
+
+	<h2>Contacting Chas</h2>
+	<div>
+		Email: <a href="mailto:chas@dotman.ca">chas@dotman.ca</a><br />
+		<!--Nothin' Message Board: <a href="http://dotman.ca/nothin/msgboard/">Click Here.</a><br />
+		ICQ: 18715624-->
+	</div>
+
+{% endblock content %}

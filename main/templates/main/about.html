@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>About</h1>
+
+    <ul>
+    <li><a href="{% url 'main:chas' %}">About Chas Goguen</a></li>
+    <li><a href="{% url 'main:evan' %}">About Evan Porter</a></li>
+    </ul>
+
+{% endblock content %}
