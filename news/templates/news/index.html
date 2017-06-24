@@ -6,7 +6,7 @@
     {% if news_articles %}
         <ul>
         {% for article in news_articles %}
-            <li>{{ article.published_datetime|date:"j F, Y" }} - <a href="{{ article.get_absolute_url }}">{{ article.headline }}</a></li>
+            <li>{{ article.published_datetime|date:"F j, Y" }} - <a href="{{ article.get_absolute_url }}">{{ article.headline }}</a></li>
         {% endfor %}
         </ul>
     {% endif %}
