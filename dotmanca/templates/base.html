@@ -18,7 +18,26 @@
 
 <body>
 
-<div class="header"><h1>The Official Dotman Website</h1></div>
+<div class="header">
+    <div class="title"><h1>The Official Dotman Website</h1></div>
+    <div class="user-panel">
+        {% if request.user.is_authenticated %}
+            <div>
+                <a href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a>
+            </div>
+            <div>
+                <a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+            </div>
+        {% else %}
+            <div>
+                <a id="sign-up-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+            </div>
+            <div>
+                <a id="log-in-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
 
 <div class="page">
     <div class="navigation">
@@ -27,25 +46,6 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'main:about' %}">About</a></li>
                 <li><a href="{% url 'news:index' %}">News</a></li>
-                {% if request.user.is_authenticated %}
-                    <li>
-                        {# URL provided by django-allauth/account/urls.py #}
-                        <a href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a>
-                    </li>
-                    <li>
-                        {# URL provided by django-allauth/account/urls.py #}
-                        <a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-                    </li>
-                {% else %}
-                    <li>
-                        {# URL provided by django-allauth/account/urls.py #}
-                        <a id="sign-up-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-                    </li>
-                    <li>
-                        {# URL provided by django-allauth/account/urls.py #}
-                        <a id="log-in-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-                    </li>
-                {% endif %}
             </ul>
         </nav>
         <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
