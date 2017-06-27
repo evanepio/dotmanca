@@ -36,35 +36,9 @@ html, body {
   color: #ffffff;
   background-color: #a078c8;
 }
-
-.header > div {
+.header > h1 {
   margin: 0;
   padding: 0;
-}
-
-.header a {
-  background-color: #a078c8;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.header a:hover {
-  background-color: #ffffff;
-  color: #7040b8;
-}
-
-.title {
-  flex-basis: 85%;
-}
-
-.title > h1 {
-  margin: 0;
-  padding: 0;
-}
-
-.user-panel {
-  flex-basis: 15%;
 }
 
 .page {
