@@ -7,5 +7,12 @@
     <h1>{{ gallery.name }}</h1>
     <div><a href="{% url 'gallery:index' %}">Back to Galleries</a></div>
     <div>{{ gallery.description|apply_markup:"markdown" }}</div>
+    {% if gallery.galleryimage_set.all %}
+    <ul>
+        {% for image in gallery.galleryimage_set.all %}
+        <li>{{ image.name }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
 {% endblock content %}
