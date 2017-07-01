@@ -20,6 +20,7 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     url(r'^news/', include('news.urls')),
     url(r'^about/', include('main.urls')),
+    url(r'^galleries/', include('gallery.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

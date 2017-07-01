@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Galleries{% endblock title %}
+
+{% block content %}
+    <h1>Galleries</h1>
+
+    {% if galleries %}
+        <ul>
+        {% for gallery in galleries %}
+            <li><a href="{{ gallery.get_absolute_url }}">{{ gallery }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock content %}
