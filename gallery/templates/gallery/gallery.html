@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load markup_tags %}
+
+{% block title %}{{ gallery.name }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ gallery.name }}</h1>
+    <div><a href="{% url 'gallery:index' %}">Back to Galleries</a></div>
+    <div>{{ gallery.description|apply_markup:"markdown" }}</div>
+
+{% endblock content %}
