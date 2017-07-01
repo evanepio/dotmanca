@@ -4,8 +4,7 @@
 {% block title %}{{ newsarticle.headline }}{% endblock title %}
 
 {% block content %}
-    <h1>{{ newsarticle.headline }}</h1>
-    <div>{{ newsarticle.published_datetime|date:"j F, Y" }}</div>
+    <h1>{{ newsarticle }}</h1>
     <div><a href="{% url 'news:index' %}">Back to News</a></div>
     <div>{{ newsarticle.content|apply_markup:"markdown" }}</div>
 

@@ -28,4 +28,4 @@ class NewsArticle(models.Model):
         return reverse('news:article', kwargs=kwargs)
 
     def __str__(self):
-        return self.headline
+        return F"{self.published_datetime:%B %d, %Y} - {self.headline}"
