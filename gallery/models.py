@@ -27,6 +27,10 @@ class GalleryImage(models.Model):
     added_timestamp = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
 
+    def get_absolute_url(self):
+        kwargs = {'gallery_slug': self.gallery.slug, 'slug': self.slug}
+        return reverse('gallery:gallery_image', kwargs=kwargs)
+
     def __str__(self):
         return self.name
 

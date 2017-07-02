@@ -10,7 +10,7 @@
     {% if gallery.galleryimage_set.all %}
     <ul>
         {% for image in gallery.galleryimage_set.all %}
-        <li>{{ image.name }}</li>
+            <li><a href="{{ image.get_absolute_url }}">{{ image.name }}</a></li>
         {% endfor %}
     </ul>
     {% endif %}

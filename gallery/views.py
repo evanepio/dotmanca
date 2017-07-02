@@ -12,3 +12,12 @@ class IndexView(generic.ListView):
 class GalleryView(generic.DetailView):
     model = Gallery
     template_name = 'gallery/gallery.html'
+
+
+class GalleryImageView(generic.DetailView):
+    model = GalleryImage
+    template_name = 'gallery/gallery_image.html'
+
+    def get_queryset(self):
+        query_set = super(GalleryImageView, self).get_queryset().filter(gallery__slug=self.kwargs.get('gallery_slug'))
+        return query_set
