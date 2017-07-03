@@ -3,8 +3,9 @@ from django.contrib import admin
 from .models import Gallery, GalleryImage
 
 
-class GalleryImageInline(admin.StackedInline):
+class GalleryImageInline(admin.TabularInline):
     model = GalleryImage
+    extra = 1
 
 
 class GalleryAdmin(admin.ModelAdmin):
