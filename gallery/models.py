@@ -17,13 +17,18 @@ class Gallery(models.Model):
         return self.name
 
 
+def gallery_image_upload_to(instance, file_name):
+    file_extension = file_name.split(".")[-1]
+    return F'galleries/{instance.gallery.slug}/{instance.slug}.{file_extension}'
+
+
 class GalleryImage(models.Model):
     gallery = models.ForeignKey(Gallery)
     name = models.CharField(max_length=50)
     slug = models.SlugField()
     sort_order = models.IntegerField()
 
-    the_image = models.ImageField(null=False, blank=False)
+    the_image = models.ImageField(null=False, blank=False, upload_to=gallery_image_upload_to)
     added_timestamp = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
 
