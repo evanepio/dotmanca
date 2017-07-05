@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.signals import post_init, post_save
+from django.db.models.signals import post_init, post_save, post_delete
 from django.dispatch import receiver
 from django.urls import reverse
 
@@ -55,3 +55,8 @@ def delete_old_image(sender, instance, **kwargs):
     if hasattr(instance, '_current_image_file'):
         if instance._current_image_file != instance.the_image.path:
             instance._current_image_file.delete(save=False)
+
+
+@receiver(post_delete, sender=GalleryImage)
+def delete_image_after_record_removal(sender, instance, **kwargs):
+    instance._current_image_file.delete(save=False)
