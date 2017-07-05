@@ -59,4 +59,4 @@ def delete_old_image(sender, instance, **kwargs):
 
 @receiver(post_delete, sender=GalleryImage)
 def delete_image_after_record_removal(sender, instance, **kwargs):
-    instance._current_image_file.delete(save=False)
+    instance.the_image.delete(save=False)
