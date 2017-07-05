@@ -1,7 +1,9 @@
 from django.db import models
-from django.db.models.signals import post_init, post_save, post_delete
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from django.urls import reverse
+
+from .storage import OverwriteStorage
 
 
 class Gallery(models.Model):
@@ -30,7 +32,8 @@ class GalleryImage(models.Model):
     slug = models.SlugField()
     sort_order = models.IntegerField()
 
-    the_image = models.ImageField(null=False, blank=False, upload_to=gallery_image_upload_to)
+    the_image = models.ImageField(null=False, blank=False, upload_to=gallery_image_upload_to,
+                                  storage=OverwriteStorage())
     added_timestamp = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
 
@@ -43,18 +46,6 @@ class GalleryImage(models.Model):
 
     class Meta:
         unique_together = ('gallery', 'slug')
-
-
-@receiver(post_init, sender=GalleryImage)
-def backup_image_path(sender, instance, **kwargs):
-    instance._current_image_file = instance.the_image
-
-
-@receiver(post_save, sender=GalleryImage)
-def delete_old_image(sender, instance, **kwargs):
-    if hasattr(instance, '_current_image_file'):
-        if instance._current_image_file != instance.the_image.path:
-            instance._current_image_file.delete(save=False)
 
 
 @receiver(post_delete, sender=GalleryImage)
