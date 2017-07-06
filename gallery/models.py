@@ -1,6 +1,4 @@
 from django.db import models
-from django.db.models.signals import post_delete
-from django.dispatch import receiver
 from django.urls import reverse
 
 from .storage import OverwriteStorage
@@ -46,8 +44,3 @@ class GalleryImage(models.Model):
 
     class Meta:
         unique_together = ('gallery', 'slug')
-
-
-@receiver(post_delete, sender=GalleryImage)
-def delete_image_after_record_removal(sender, instance, **kwargs):
-    instance.the_image.delete(save=False)
