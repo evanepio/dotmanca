@@ -18,6 +18,9 @@ class Gallery(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'galleries'
+
 
 def gallery_image_upload_to(instance, file_name):
     file_extension = file_name.split(".")[-1]
