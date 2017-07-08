@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Characters{% endblock title %}
+
+{% block content %}
+    <h1>Characters</h1>
+
+    {% if teams %}
+        <ul>
+        {% for team in teams %}
+            <li>{{ team.name }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock content %}

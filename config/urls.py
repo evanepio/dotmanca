@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^news/', include('news.urls')),
     url(r'^about/', include('main.urls')),
     url(r'^galleries/', include('gallery.urls')),
+    url(r'^characters/', include('characters.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

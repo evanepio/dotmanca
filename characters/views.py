@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+from .models import Team
+
+
+class IndexView(generic.ListView):
+    model = Team
+    template_name = 'characters/index.html'
+    context_object_name = 'teams'
+
