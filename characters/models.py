@@ -27,8 +27,9 @@ class Character(models.Model):
     vital_stats = models.TextField(blank=True)
     backstory = models.TextField(blank=True)
 
-    # def get_absolute_url(self):
-    #     return ('character_view', (), {'slug': self.slug, })
+    def get_absolute_url(self):
+        kwargs = {'team_slug': self.team.slug, 'slug': self.slug}
+        return reverse('characters:character', kwargs=kwargs)
 
     def __str__(self):
         return self.name

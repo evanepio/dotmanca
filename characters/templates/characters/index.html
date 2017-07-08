@@ -12,7 +12,7 @@
                 {% if team.character_set.all %}
                     <ul>
                         {% for character in team.character_set.all %}
-                            <li>{{ character.name }}</li>
+                            <li><a href="{{ character.get_absolute_url }}">{{ character.name }}</a></li>
                         {% endfor %}
                     </ul>
                 {% endif %}

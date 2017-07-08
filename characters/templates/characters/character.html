@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ character.name }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ character.name }}</h1>
+<div><a href="{% url 'characters:index' %}">Back to Characters</a></div>
+
+{% endblock content %}
