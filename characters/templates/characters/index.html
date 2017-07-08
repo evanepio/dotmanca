@@ -6,11 +6,18 @@
     <h1>Characters</h1>
 
     {% if teams %}
-        <ul>
         {% for team in teams %}
-            <li>{{ team.name }}</li>
+            <div>
+                <h2>{{ team.name }}</h2>
+                {% if team.character_set.all %}
+                    <ul>
+                        {% for character in team.character_set.all %}
+                            <li>{{ character.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
         {% endfor %}
-        </ul>
     {% endif %}
 
 {% endblock content %}
