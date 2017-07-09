@@ -1,9 +1,13 @@
 {% extends "base.html" %}
+{% load markup_tags %}
 
 {% block title %}{{ character.name }}{% endblock title %}
 
 {% block content %}
     <h1>{{ character.name }}</h1>
-<div><a href="{% url 'characters:index' %}">Back to Characters</a></div>
+    <div><a href="{% url 'characters:index' %}">Back to Characters</a></div>
+    <div>{{ character.vital_stats|apply_markup:"markdown" }}</div>
+    <div>Image goes here!</div>
+    <div>{{ character.backstory|apply_markup:"markdown" }}</div>
 
 {% endblock content %}
