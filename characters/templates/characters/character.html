@@ -7,7 +7,7 @@
     <h1>{{ character.name }}</h1>
     <div><a href="{% url 'characters:index' %}">Back to Characters</a></div>
     <div>{{ character.vital_stats|apply_markup:"markdown" }}</div>
-    <div>Image goes here!</div>
+    <div><img src="{{ MEDIA_URL }}{{ character.the_image.the_image }}" /></div>
     <div>{{ character.backstory|apply_markup:"markdown" }}</div>
 
 {% endblock content %}
