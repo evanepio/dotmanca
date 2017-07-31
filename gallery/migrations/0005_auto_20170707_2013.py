@@ -3,8 +3,9 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+
+import dotmanca.storage
 import gallery.models
-import gallery.storage
 
 
 class Migration(migrations.Migration):
@@ -17,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='galleryimage',
             name='the_image',
-            field=models.ImageField(storage=gallery.storage.OverwriteStorage(), upload_to=gallery.models.gallery_image_upload_to),
+            field=models.ImageField(storage=dotmanca.storage.OverwriteStorage(), upload_to=gallery.models.gallery_image_upload_to),
         ),
     ]

@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from .storage import OverwriteStorage
+from dotmanca.storage import OverwriteStorage
 
 
 class Gallery(models.Model):
