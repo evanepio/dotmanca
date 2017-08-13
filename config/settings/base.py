@@ -61,6 +61,7 @@ LOCAL_APPS = [
     'news.apps.NewsConfig',
     'gallery.apps.GalleryConfig',
     'characters.apps.CharactersConfig',
+    'places.apps.PlacesConfig',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
