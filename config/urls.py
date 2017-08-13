@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^about/', include('main.urls')),
     url(r'^galleries/', include('gallery.urls')),
     url(r'^characters/', include('characters.urls')),
-
+    url(r'^places/', include('places.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

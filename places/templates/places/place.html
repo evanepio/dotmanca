@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load markup_tags %}
+
+{% block title %}{{ place }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ place }}</h1>
+    <div><a href="{% url 'places:index' %}">Back to Places</a></div>
+    {% if place.the_image %}
+    <div><img src="{{ MEDIA_URL }}{{ place.the_image }}" /></div>
+    {% endif %}
+    <div>{{ place.description|apply_markup:"markdown" }}</div>
+
+{% endblock content %}
