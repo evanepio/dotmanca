@@ -133,26 +133,26 @@ html, body {
   padding: 1em;
 }
 
-.content {
+main {
   padding: 1em;
 }
 
-.content h1 {
+main h1 {
   font-size: 170%;
 }
 
-.content h2 {
+main h2 {
   padding: 5px;
   font-size: 130%;
   background-color: #a078c8;
   color: #ffffff;
 }
 
-.content h3 {
+main h3 {
   font-size: 110%;
   color: #a078c8;
 }
 
-.content strong {
+main strong {
   color: #a078c8;
 }
