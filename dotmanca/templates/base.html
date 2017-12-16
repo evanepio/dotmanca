@@ -1,18 +1,18 @@
 {% load staticfiles i18n %}<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}The Official Dotman Website{% endblock title %} - The Official Dotman Website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}The Official Dotman Website{% endblock title %} - The Official Dotman Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    {% block css %}
-        <!-- This file stores project-specific CSS -->
-        <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  {% block css %}
+    <!-- This file stores project-specific CSS -->
+    <link href="{% static 'css/project.css' %}" rel="stylesheet">
 
-    {% endblock %}
+  {% endblock %}
 
 </head>
 
@@ -21,45 +21,45 @@
 <div class="header"><h1>The Official Dotman Website</h1></div>
 
 <div class="page">
-    <div class="navigation">
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'main:about' %}">About</a></li>
-                <li><a href="{% url 'news:index' %}">News</a></li>
-                <li><a href="{% url 'characters:index' %}">Characters</a></li>
-                <li><a href="{% url 'places:index' %}">Places</a></li>
-                <li><a href="{% url 'gallery:index' %}">Gallery</a></li>
-                {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a></li>
-                    <li><a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></li>
-                {% else %}
-                    <li><a id="sign-up-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
-                    <li><a id="log-in-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-        <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
-    </div>
-    <main class="content">
-
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-            {% endfor %}
+  <div class="navigation">
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'main:about' %}">About</a></li>
+        <li><a href="{% url 'news:index' %}">News</a></li>
+        <li><a href="{% url 'characters:index' %}">Characters</a></li>
+        <li><a href="{% url 'places:index' %}">Places</a></li>
+        <li><a href="{% url 'gallery:index' %}">Gallery</a></li>
+        {% if request.user.is_authenticated %}
+          <li><a href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a></li>
+          <li><a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></li>
+        {% else %}
+          <li><a id="sign-up-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
+          <li><a id="log-in-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a></li>
         {% endif %}
+      </ul>
+    </nav>
+    <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
+  </div>
+  <main class="content">
 
-        {% block content %}
-            <p>Use this document as a way to quick start any new project.</p>
-        {% endblock content %}
-    </main>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+    {% block content %}
+      <p>Use this document as a way to quick start any new project.</p>
+    {% endblock content %}
+  </main>
 
 </div>
 
 {% block modal %}{% endblock modal %}
 
 {% block javascript %}
-    <script src="{% static 'js/project.js' %}"></script>
+  <script src="{% static 'js/project.js' %}"></script>
 {% endblock javascript %}
 </body>
 </html>
