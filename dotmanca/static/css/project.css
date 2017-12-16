@@ -84,35 +84,30 @@ html, body {
   height: 100%;
 }
 
-.navigation {
+nav {
   color: #ffffff;
   background-color: #a078c8;
   margin: 0;
   padding: 0;
 }
 
-.navigation > nav {
-  margin: 0;
-  padding: 0;
-}
-
-.navigation > nav > ul {
+nav > ul {
   list-style: none;
   margin: 0;
   padding-left: 0;
 }
 
-.navigation > nav > ul:first-child {
+nav > ul:first-child {
   border-top: 1px solid #7040b8;
 }
 
-.navigation > nav > ul > li {
+nav > ul > li {
   border-bottom: 1px solid #7040b8;
   margin: 0;
   padding: 0;
 }
 
-.navigation > nav > ul > li > a {
+nav > ul > li > a {
   display: block;
   padding: 5px 5px 5px 0.5em;
   margin: 0;
@@ -124,13 +119,9 @@ html, body {
   font-weight: bold;
 }
 
-.navigation > nav > ul > li > a:hover {
+nav > ul > li > a:hover {
   background-color: #7040b8;
   color: #ffffff;
-}
-
-.navigation > div {
-  padding: 1em;
 }
 
 main {
