@@ -39,14 +39,12 @@
     </ul>
     <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
   </nav>
-  <main class="content">
-
+  <main>
     {% if messages %}
       {% for message in messages %}
         <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
       {% endfor %}
     {% endif %}
-
     {% block content %}
       <p>Use this document as a way to quick start any new project.</p>
     {% endblock content %}

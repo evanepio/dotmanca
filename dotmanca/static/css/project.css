@@ -58,7 +58,7 @@ header > h1 {
     flex-basis: 25%;
   }
 
-  .content {
+  main {
     flex-basis: 75%;
   }
 }
