@@ -11,9 +11,7 @@
   {% block css %}
     <!-- This file stores project-specific CSS -->
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
-
   {% endblock %}
-
 </head>
 
 <body>
@@ -39,6 +37,7 @@
     </ul>
     <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
   </nav>
+
   <main>
     {% if messages %}
       {% for message in messages %}
