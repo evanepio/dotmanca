@@ -10,10 +10,10 @@
     {% if news_articles %}
     <h2>Recent News</h2>
         {% for article in news_articles %}
-            <div>
+            <section>
                 <h3>{{ article }}</h3>
                 <div>{{ article.content|apply_markup:"markdown" }}</div>
-            </div>
+            </section>
         {% endfor %}
     {% endif %}
 

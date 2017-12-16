@@ -6,6 +6,6 @@
 {% block content %}
     <h1>{{ newsarticle }}</h1>
     <div><a href="{% url 'news:index' %}">Back to News</a></div>
-    <div>{{ newsarticle.content|apply_markup:"markdown" }}</div>
+    <article>{{ newsarticle.content|apply_markup:"markdown" }}</article>
 
 {% endblock content %}

@@ -6,7 +6,7 @@
 {% block content %}
     <h1>{{ galleryimage.name }}</h1>
     <div><a href="{% url 'gallery:gallery' slug=galleryimage.gallery.slug %}">Back to Gallery</a></div>
-    <div><img src="{{ MEDIA_URL }}{{ galleryimage.the_image }}" /></div>
-    <div>{{ galleryimage.description|apply_markup:"markdown" }}</div>
+    <figure><img src="{{ MEDIA_URL }}{{ galleryimage.the_image }}" /></figure>
+    <section>{{ galleryimage.description|apply_markup:"markdown" }}</section>
 
 {% endblock content %}

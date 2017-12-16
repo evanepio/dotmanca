@@ -7,8 +7,8 @@
     <h1>{{ place }}</h1>
     <div><a href="{% url 'places:index' %}">Back to Places</a></div>
     {% if place.the_image %}
-    <div><img src="{{ MEDIA_URL }}{{ place.the_image }}" /></div>
+    <figure><img src="{{ MEDIA_URL }}{{ place.the_image }}" /></figure>
     {% endif %}
-    <div>{{ place.description|apply_markup:"markdown" }}</div>
+    <article>{{ place.description|apply_markup:"markdown" }}</article>
 
 {% endblock content %}
