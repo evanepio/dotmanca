@@ -68,14 +68,6 @@ header > h1 {
     -webkit-flex-direction: column;
     flex-direction: column;
   }
-
-  .navigation {
-    flex-basis: 25%;
-  }
-
-  .content {
-    flex-basis: 75%;
-  }
 }
 
 /* Flexbox-based Responsive Layout */
