@@ -26,7 +26,7 @@ html, body {
   padding: 0;
 }
 
-.header {
+header {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
@@ -37,7 +37,7 @@ html, body {
   background-color: #a078c8;
 }
 
-.header > h1 {
+header > h1 {
   margin: 0;
   padding: 0;
 }
