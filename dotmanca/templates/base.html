@@ -1,4 +1,4 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
+{% load staticfiles %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -30,11 +30,11 @@
       <li><a href="{% url 'places:index' %}">Places</a></li>
       <li><a href="{% url 'gallery:index' %}">Gallery</a></li>
       {% if request.user.is_authenticated %}
-        <li><a href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a></li>
-        <li><a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></li>
+        <li><a href="{% url 'users:detail' request.user.username %}">My Profile</a></li>
+        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
       {% else %}
-        <li><a id="sign-up-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
-        <li><a id="log-in-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a></li>
+        <li><a id="sign-up-link" href="{% url 'account_signup' %}">Sign Up</a></li>
+        <li><a id="log-in-link" href="{% url 'account_login' %}">Sign In</a></li>
       {% endif %}
     </ul>
     <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
