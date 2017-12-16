@@ -26,7 +26,7 @@
       <li><a href="{% url 'news:index' %}">News</a></li>
       <li><a href="{% url 'characters:index' %}">Characters</a></li>
       <li><a href="{% url 'places:index' %}">Places</a></li>
-      <li><a href="{% url 'gallery:index' %}">Gallery</a></li>
+      <li><a href="{% url 'gallery:index' %}">Galleries</a></li>
       {% if request.user.is_authenticated %}
         <li><a href="{% url 'users:detail' request.user.username %}">My Profile</a></li>
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
