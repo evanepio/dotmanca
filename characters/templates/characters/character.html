@@ -6,10 +6,10 @@
 {% block content %}
     <h1>{{ character.name }}</h1>
     <div><a href="{% url 'characters:index' %}">Back to Characters</a></div>
-    <div>{{ character.vital_stats|apply_markup:"markdown" }}</div>
+    <section>{{ character.vital_stats|apply_markup:"markdown" }}</section>
     {% if character.the_image %}
-    <div><img src="{{ MEDIA_URL }}{{ character.the_image }}" /></div>
+    <figure><img src="{{ MEDIA_URL }}{{ character.the_image }}" /></figure>
     {% endif %}
-    <div>{{ character.backstory|apply_markup:"markdown" }}</div>
+    <section>{{ character.backstory|apply_markup:"markdown" }}</section>
 
 {% endblock content %}
