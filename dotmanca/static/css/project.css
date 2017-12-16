@@ -54,7 +54,7 @@ header > h1 {
     flex-direction: row;
   }
 
-  .navigation {
+  nav {
     flex-basis: 25%;
   }
 
