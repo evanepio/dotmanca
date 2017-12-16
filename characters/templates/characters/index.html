@@ -7,7 +7,7 @@
 
     {% if teams %}
         {% for team in teams %}
-            <div>
+            <section>
                 <h2>{{ team.name }}</h2>
                 {% if team.character_set.all %}
                     <ul>
@@ -16,7 +16,7 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
-            </div>
+            </section>
         {% endfor %}
     {% endif %}
 
