@@ -124,6 +124,10 @@ nav > ul > li > a:hover {
   color: #ffffff;
 }
 
+nav > div {
+  padding: 1em;
+}
+
 main {
   padding: 1em;
 }
