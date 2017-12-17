@@ -4,9 +4,7 @@
 # Verified bug on Python 3.5.1
 wheel==0.29.0
 
-
-# Bleeding edge Django
-django==1.11.2 # pyup: >=1.10,<1.11
+django==2.0
 
 # Configuration
 django-environ==0.4.3
@@ -25,13 +23,11 @@ argon2-cffi==16.3.0
 # Well-built with regular release cycles!
 django-allauth==0.32.0
 
-
 # Python-PostgreSQL Database Adapter
 psycopg2==2.7.1
 
 # Time zones support
 pytz==2017.2
-
 
 # Your custom requirements go here
 django-markup==1.2

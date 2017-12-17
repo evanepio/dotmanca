@@ -27,13 +27,6 @@
       <li><a href="{% url 'characters:index' %}">Characters</a></li>
       <li><a href="{% url 'places:index' %}">Places</a></li>
       <li><a href="{% url 'gallery:index' %}">Galleries</a></li>
-      {% if request.user.is_authenticated %}
-        <li><a href="{% url 'users:detail' request.user.username %}">My Profile</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-      {% else %}
-        <li><a id="sign-up-link" href="{% url 'account_signup' %}">Sign Up</a></li>
-        <li><a id="log-in-link" href="{% url 'account_login' %}">Sign In</a></li>
-      {% endif %}
     </ul>
     <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
   </nav>

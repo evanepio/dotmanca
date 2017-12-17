@@ -9,7 +9,7 @@ class Team(models.Model):
     name = models.CharField(max_length=50)
     sort_order = models.IntegerField()
     slug = models.SlugField(unique=True)
-    the_image = models.ForeignKey(GalleryImage, blank=True, null=True)
+    the_image = models.ForeignKey(GalleryImage, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(blank=True)
 
     def __str__(self):
@@ -25,7 +25,7 @@ def character_image_upload_to(instance, file_name):
 
 
 class Character(models.Model):
-    team = models.ForeignKey(Team)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     sort_order = models.IntegerField()
     slug = models.SlugField()
