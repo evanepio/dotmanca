@@ -10,9 +10,6 @@ django==2.0
 django-environ==0.4.3
 whitenoise==3.3.0
 
-# Forms
-django-crispy-forms==1.6.1
-
 # Images
 Pillow==4.1.1
 
