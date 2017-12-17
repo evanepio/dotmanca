@@ -1,10 +1,10 @@
-from django.conf.urls import url
+from django.urls import include, path
 
 from . import views
 
 app_name = 'gallery'
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^(?P<slug>[-\w]+)/$', views.GalleryView.as_view(), name='gallery'),
-    url(r'^(?P<gallery_slug>[-\w]+)/(?P<slug>[-\w]+)/$', views.GalleryImageView.as_view(), name='gallery_image'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('<slug:slug>/', views.GalleryView.as_view(), name='gallery'),
+    path('<slug:gallery_slug>/<slug:slug>/', views.GalleryImageView.as_view(), name='gallery_image'),
 ]
