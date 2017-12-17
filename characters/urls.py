@@ -1,9 +1,9 @@
-from django.conf.urls import url
+from django.urls import include, path
 
 from . import views
 
 app_name = 'characters'
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^(?P<team_slug>[-\w]+)/(?P<slug>[-\w]+)/$', views.CharacterView.as_view(), name='character'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('<slug:team_slug>/<slug:slug>/', views.CharacterView.as_view(), name='character'),
 ]
