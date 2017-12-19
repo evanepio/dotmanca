@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>{{ character.name }}</h1>
-    <div><a href="{% url 'characters:index' %}">Back to Characters</a></div>
+    <nav aria-label="Secondary"><a href="{% url 'characters:index' %}">Back to Characters</a></nav>
     <section>{{ character.vital_stats|apply_markup:"markdown" }}</section>
     {% if character.the_image %}
     <figure><img src="{{ MEDIA_URL }}{{ character.the_image }}" /></figure>

@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>{{ place }}</h1>
-    <div><a href="{% url 'places:index' %}">Back to Places</a></div>
+    <nav aria-label="Secondary"><a href="{% url 'places:index' %}">Back to Places</a></nav>
     {% if place.the_image %}
     <figure><img src="{{ MEDIA_URL }}{{ place.the_image }}" /></figure>
     {% endif %}

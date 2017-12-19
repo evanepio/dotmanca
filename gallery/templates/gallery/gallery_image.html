@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>{{ galleryimage.name }}</h1>
-    <div><a href="{% url 'gallery:gallery' slug=galleryimage.gallery.slug %}">Back to Gallery</a></div>
+    <nav aria-label="Secondary"><a href="{% url 'gallery:gallery' slug=galleryimage.gallery.slug %}">Back to Gallery</a></nav>
     <figure><img src="{{ MEDIA_URL }}{{ galleryimage.the_image }}" /></figure>
     <section>{{ galleryimage.description|apply_markup:"markdown" }}</section>
 

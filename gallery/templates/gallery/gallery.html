@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>{{ gallery.name }}</h1>
-    <div><a href="{% url 'gallery:index' %}">Back to Galleries</a></div>
+    <nav aria-label="Secondary"><a href="{% url 'gallery:index' %}">Back to Galleries</a></nav>
     <section>{{ gallery.description|apply_markup:"markdown" }}</section>
     {% if gallery.galleryimage_set.all %}
     <ul>

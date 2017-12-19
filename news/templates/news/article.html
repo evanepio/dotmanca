@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>{{ newsarticle }}</h1>
-    <div><a href="{% url 'news:index' %}">Back to News</a></div>
+    <nav aria-label="Secondary"><a href="{% url 'news:index' %}">Back to News</a></nav>
     <article>{{ newsarticle.content|apply_markup:"markdown" }}</article>
 
 {% endblock content %}
