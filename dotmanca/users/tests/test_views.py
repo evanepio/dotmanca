@@ -1,17 +1,21 @@
 from django.test import RequestFactory
 
-from test_plus.test import TestCase
+from django.test import TestCase
 
 from ..views import (
     UserRedirectView,
     UserUpdateView
 )
 
+from ..models import User
+
 
 class BaseUserTestCase(TestCase):
 
     def setUp(self):
-        self.user = self.make_user()
+        self.user = User.objects.create_user(username='testuser',
+                                             email=None,
+                                             password='notalamodespassword')
         self.factory = RequestFactory()
 
 

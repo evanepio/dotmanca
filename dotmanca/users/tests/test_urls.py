@@ -1,13 +1,17 @@
-from django.core.urlresolvers import reverse, resolve
+from django.urls import reverse, resolve
 
-from test_plus.test import TestCase
+from django.test import TestCase
+
+from ..models import User
 
 
 class TestUserURLs(TestCase):
     """Test URL patterns for users app."""
 
     def setUp(self):
-        self.user = self.make_user()
+        self.user = User.objects.create_user(username='testuser',
+                                             email=None,
+                                             password='notalamodespassword')
 
     def test_list_reverse(self):
         """users:list should reverse to /users/."""
