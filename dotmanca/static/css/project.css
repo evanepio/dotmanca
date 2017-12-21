@@ -54,7 +54,7 @@ header > h1 {
     flex-direction: row;
   }
 
-  nav {
+  nav[aria-label="Primary"] {
     flex-basis: 25%;
   }
 
@@ -76,30 +76,30 @@ header > h1 {
   height: 100%;
 }
 
-nav {
+nav[aria-label="Primary"] {
   color: #ffffff;
   background-color: #a078c8;
   margin: 0;
   padding: 0;
 }
 
-nav > ul {
+nav[aria-label="Primary"] > ul {
   list-style: none;
   margin: 0;
   padding-left: 0;
 }
 
-nav > ul:first-child {
+nav[aria-label="Primary"] > ul:first-child {
   border-top: 1px solid #7040b8;
 }
 
-nav > ul > li {
+nav[aria-label="Primary"] > ul > li {
   border-bottom: 1px solid #7040b8;
   margin: 0;
   padding: 0;
 }
 
-nav > ul > li > a {
+nav[aria-label="Primary"] > ul > li > a {
   display: block;
   padding: 5px 5px 5px 0.5em;
   margin: 0;
@@ -111,12 +111,12 @@ nav > ul > li > a {
   font-weight: bold;
 }
 
-nav > ul > li > a:hover {
+nav[aria-label="Primary"] > ul > li > a:hover {
   background-color: #7040b8;
   color: #ffffff;
 }
 
-nav > div {
+nav[aria-label="Primary"] > div {
   padding: 1em;
 }
 
@@ -142,4 +142,12 @@ main h3 {
 
 main strong {
   color: #a078c8;
+}
+
+nav[aria-label="Secondary"] {
+  text-align: center;
+}
+
+figure {
+  text-align: center;
 }
