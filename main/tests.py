@@ -46,7 +46,7 @@ class TestAboutEvanViewGetContextData(TestCase):
         view = AboutEvanView()
 
         # Inject the method used to get current date
-        view.date_function = lambda: datetime.date(1990, 12, 6)
+        view.get_today = lambda: datetime.date(1990, 12, 6)
 
         context = view.get_context_data()
 
@@ -56,7 +56,7 @@ class TestAboutEvanViewGetContextData(TestCase):
         view = AboutEvanView()
 
         # Inject the method used to get current date
-        view.date_function = lambda: datetime.date(1990, 12, 5)
+        view.get_today = lambda: datetime.date(1990, 12, 5)
 
         context = view.get_context_data()
 

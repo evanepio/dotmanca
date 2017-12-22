@@ -46,11 +46,11 @@ class AboutChasView(generic.TemplateView):
 
 class AboutEvanView(generic.TemplateView):
     template_name = "main/about_evan.html"
-    date_function = datetime.date.today
+    get_today = datetime.date.today
 
     def get_context_data(self, **kwargs):
         context = super(AboutEvanView, self).get_context_data(**kwargs)
         birthdate = datetime.date(1980, 12, 6)
-        today = self.date_function()
+        today = self.get_today()
         context['age'] = get_age(birthdate, today)
         return context
