@@ -50,7 +50,7 @@ class AboutEvanView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AboutEvanView, self).get_context_data(**kwargs)
-        birthdate = datetime.date(1980, 12, 6)
+        date_of_birth = datetime.date(1980, 12, 6)
         today = self.get_today()
-        context['age'] = get_age(birthdate, today)
+        context['age'] = get_age(date_of_birth, today)
         return context
