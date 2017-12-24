@@ -9,8 +9,7 @@ def get_age(date_of_birth, today):
     try:
         birthday = datetime.date(today.year, date_of_birth.month, date_of_birth.day)
     except ValueError:
-        # Raised when person was born on 29 February and the current
-        # year is not a leap year.
+        # Raised when person was born on 29 February and the current year is not a leap year.
         birthday = datetime.date(today.year, date_of_birth.month, date_of_birth.day - 1)
 
     if birthday > today:
