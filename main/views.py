@@ -31,25 +31,22 @@ class AboutView(generic.TemplateView):
     template_name = "main/about.html"
 
 
-class AboutChasView(generic.TemplateView):
-    template_name = "main/about_chas.html"
+class AboutAgedView(generic.TemplateView):
     date_function = datetime.date.today
+    date_of_birth = datetime.date(1980, 4, 21)
 
     def get_context_data(self, **kwargs):
-        context = super(AboutChasView, self).get_context_data(**kwargs)
-        date_of_birth = datetime.date(1980, 4, 21)
+        context = super(AboutAgedView, self).get_context_data(**kwargs)
         today = self.date_function()
-        context['age'] = get_age(date_of_birth, today)
+        context['age'] = get_age(self.date_of_birth, today)
         return context
 
 
-class AboutEvanView(generic.TemplateView):
+class AboutChasView(AboutAgedView):
+    template_name = "main/about_chas.html"
+    date_of_birth = datetime.date(1980, 4, 21)
+
+
+class AboutEvanView(AboutAgedView):
     template_name = "main/about_evan.html"
-    get_today = datetime.date.today
-
-    def get_context_data(self, **kwargs):
-        context = super(AboutEvanView, self).get_context_data(**kwargs)
-        date_of_birth = datetime.date(1980, 12, 6)
-        today = self.get_today()
-        context['age'] = get_age(date_of_birth, today)
-        return context
+    date_of_birth = datetime.date(1980, 12, 6)
