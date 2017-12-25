@@ -37,9 +37,9 @@ class AboutChasView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AboutChasView, self).get_context_data(**kwargs)
-        birthdate = datetime.date(1980, 4, 21)
+        date_of_birth = datetime.date(1980, 4, 21)
         today = self.date_function()
-        context['age'] = get_age(birthdate, today)
+        context['age'] = get_age(date_of_birth, today)
         return context
 
 
