@@ -10,7 +10,7 @@ class IndexView(generic.ListView):
     context_object_name = 'news_articles'
 
     def get_queryset(self):
-        return NewsArticle.published_articles.order_by('-published_datetime')
+        return NewsArticle.published_articles.order_by('-published_date')
 
 
 class ArticleView(generic.DetailView):
@@ -20,5 +20,5 @@ class ArticleView(generic.DetailView):
     def get_queryset(self):
         pub_date = date(self.kwargs.get('year'), self.kwargs.get('month'), self.kwargs.get('day'))
         query_set = super(ArticleView, self).get_queryset()\
-            .filter(slug=self.kwargs.get('slug')).filter(published_datetime__date=pub_date)
+            .filter(slug=self.kwargs.get('slug')).filter(published_date__date=pub_date)
         return query_set

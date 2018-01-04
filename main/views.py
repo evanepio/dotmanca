@@ -23,7 +23,7 @@ class HomePageView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        context['news_articles'] = NewsArticle.published_articles.order_by('-published_datetime')[:3]
+        context['news_articles'] = NewsArticle.published_articles.order_by('-published_date')[:3]
         return context
 
 
