@@ -13,7 +13,7 @@ class PublishedArticlesManager(models.Manager):
 class NewsArticle(models.Model):
     headline = models.CharField(max_length=70)
     slug = models.SlugField(unique_for_date="published_date")
-    published_date = models.DateTimeField()
+    published_date = models.DateField()
     content = models.TextField(blank=True)
 
     objects = models.Manager()
