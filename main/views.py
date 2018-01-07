@@ -21,9 +21,13 @@ def get_age(date_of_birth, today):
 class HomePageView(generic.TemplateView):
     template_name = "main/home.html"
 
+    @staticmethod
+    def get_published_news_articles():
+        return NewsArticle.published_articles.order_by('-published_date')
+
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        context['news_articles'] = NewsArticle.published_articles.order_by('-published_date')[:3]
+        context['news_articles'] = self.get_published_news_articles()[:3]
         return context
 
 

@@ -2,7 +2,7 @@ import datetime
 
 from django.test import TestCase
 
-from .views import AboutChasView, AboutEvanView
+from .views import AboutChasView, AboutEvanView, HomePageView
 
 
 class TestAboutChasViewGetContextData(TestCase):
@@ -61,3 +61,25 @@ class TestAboutEvanViewGetContextData(TestCase):
         context = view.get_context_data()
 
         self.assertEquals(9, context['age'])
+
+
+class TestHomePageViewGetContextData(TestCase):
+    def test_context_contains_news_articles(self):
+        view = HomePageView()
+
+        # Inject so we don't try to hit database
+        view.get_published_news_articles = lambda: []
+
+        context = view.get_context_data()
+
+        self.assertTrue('news_articles' in context.keys())
+
+    def test_context_contains_only_three_news_articles_when_4_come_back(self):
+        view = HomePageView()
+
+        # Inject so we return 4 test double news articles
+        view.get_published_news_articles = lambda: [{}, {}, {}, {}]
+
+        context = view.get_context_data()
+
+        self.assertTrue('news_articles' in context.keys())
