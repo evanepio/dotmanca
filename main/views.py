@@ -32,12 +32,12 @@ class AboutView(generic.TemplateView):
 
 
 class AboutAgedView(generic.TemplateView):
-    date_function = datetime.date.today
+    get_todays_date = datetime.date.today
     date_of_birth = datetime.date(1980, 4, 21)
 
     def get_context_data(self, **kwargs):
         context = super(AboutAgedView, self).get_context_data(**kwargs)
-        today = self.date_function()
+        today = self.get_todays_date()
         context['age'] = get_age(self.date_of_birth, today)
         return context
 
