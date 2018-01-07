@@ -19,5 +19,6 @@ class GalleryImageView(generic.DetailView):
     template_name = 'gallery/gallery_image.html'
 
     def get_queryset(self):
-        query_set = super(GalleryImageView, self).get_queryset().filter(gallery__slug=self.kwargs.get('gallery_slug'))
+        query_set = super(GalleryImageView, self).get_queryset()\
+            .filter(gallery__slug=self.kwargs.get('gallery_slug'))
         return query_set
