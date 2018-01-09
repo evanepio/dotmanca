@@ -2,6 +2,7 @@ from django.test import TestCase
 
 from .models import Character, Team
 
+
 class TeamGetAbsoluteUrl(TestCase):
     def test_slug_appears_in_url(self):
         slug_value = "slug-value"
