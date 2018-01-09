@@ -1,3 +1,17 @@
 from django.test import TestCase
 
-# Create your tests here.
+from .models import Character, Team
+
+class TeamGetAbsoluteUrl(TestCase):
+    def test_team_slug_appears_in_url(self):
+        team_slug = "team-slug"
+        team = Team()
+        team.slug = team_slug
+        sut = Character()
+
+        sut.slug = "dont-care"
+        sut.team = team
+
+        result = sut.get_absolute_url()
+
+        self.assertTrue(team_slug in result)
