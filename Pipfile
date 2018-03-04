@@ -10,13 +10,13 @@ name = "pypi"
 django = "*"
 wheel = "*"
 pillow = "*"
-"psycopg2" = "*"
 django-environ = "*"
 django-markup = "*"
 markdown = "*"
 django-allauth = "*"
 django-extensions = "*"
 "argon2-cffi" = "*"
+"psycopg2-binary" = "*"
 
 
 [dev-packages]
