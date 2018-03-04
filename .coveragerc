@@ -1,5 +1,5 @@
 [run]
-include = dotmanca/*
+include = dotmanca/*, characters/*, gallery/*, main/*, news/*, places/*
 omit = *migrations*, *tests*
 plugins =
     django_coverage_plugin

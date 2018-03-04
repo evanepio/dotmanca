@@ -22,3 +22,5 @@ django-extensions = "*"
 [dev-packages]
 
 django-debug-toolbar = "*"
+coverage = "*"
+django-coverage-plugin = "*"
