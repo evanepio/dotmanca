@@ -3,16 +3,14 @@ The Official Dotman Website
 
 The Official Website for Dotman Comics
 
-[![Built with Cookiecutter Django]]
+[![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg)](https://github.com/pydanny/cookiecutter-django/)
 
-License
-
-:   MIT
+| License | MIT |
 
 Settings
 --------
 
-Moved to [settings].
+Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html)
 
 Basic Commands
 --------------
@@ -44,7 +42,3 @@ coverage report:
 #### Running tests with py.test
 
     $ py.test
-
-  [Built with Cookiecutter Django]: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-  [![Built with Cookiecutter Django]]: https://github.com/pydanny/cookiecutter-django/
-  [settings]: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
