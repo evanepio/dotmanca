@@ -21,7 +21,7 @@ class TestAboutChasViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertEquals(10, context['age'])
+        self.assertEqual(10, context['age'])
 
     def test_age_ten_years_minus_one_day_after_birthday_is_nine(self):
         view = AboutChasView()
@@ -31,7 +31,7 @@ class TestAboutChasViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertEquals(9, context['age'])
+        self.assertEqual(9, context['age'])
 
 
 class TestAboutEvanViewGetContextData(TestCase):
@@ -50,7 +50,7 @@ class TestAboutEvanViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertEquals(10, context['age'])
+        self.assertEqual(10, context['age'])
 
     def test_age_ten_years_minus_one_day_after_birthday_is_nine(self):
         view = AboutEvanView()
@@ -60,7 +60,7 @@ class TestAboutEvanViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertEquals(9, context['age'])
+        self.assertEqual(9, context['age'])
 
 
 class TestHomePageViewGetContextData(TestCase):
