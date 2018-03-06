@@ -24,4 +24,3 @@ class TestNewsArticleGetAbsoluteUrl(TestCase):
         result = sut.get_absolute_url()
 
         self.assertTrue(slug_value in result)
-
