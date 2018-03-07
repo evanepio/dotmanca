@@ -24,6 +24,6 @@ class ArticleView(generic.DetailView):
 
         query_set = super(ArticleView, self).get_queryset()\
             .filter(slug=self.kwargs.get('slug'))\
-            .filter(published_date__date=pub_date)
+            .filter(published_date=pub_date)
 
         return query_set
