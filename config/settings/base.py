@@ -61,6 +61,7 @@ LOCAL_APPS = [
     'gallery.apps.GalleryConfig',
     'characters.apps.CharactersConfig',
     'places.apps.PlacesConfig',
+    'comics.apps.ComicsConfig',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
