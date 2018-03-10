@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Chapters{% endblock title %}
+
+{% block content %}
+    <h1>Chapters</h1>
+
+    {% if arcs %}
+        {% for arc in arcs %}
+            <section>
+                <h2>{{ arc.name }}</h2>
+                {% if arc.issue_set.all %}
+                    <ul>
+                        {% for issue in arc.issue_set.all %}
+                            <li>{{ issue.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </section>
+        {% endfor %}
+    {% endif %}
+
+{% endblock content %}

@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+from .models import Arc, Issue
+
+
+class IndexView(generic.ListView):
+    model = Arc
+    template_name = 'comics/index.html'
+    context_object_name = 'arcs'
+
+

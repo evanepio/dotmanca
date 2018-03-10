@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^news/', include('news.urls')),
     url(r'^about/', include('main.urls')),
     url(r'^galleries/', include('gallery.urls')),
+    url(r'^comics/', include('comics.urls')),
     url(r'^characters/', include('characters.urls')),
     url(r'^places/', include('places.urls')),
 
