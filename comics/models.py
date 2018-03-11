@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from dotmanca.storage import OverwriteStorage
 
@@ -30,3 +31,7 @@ class Issue(models.Model):
     sort_order = models.IntegerField()
     the_image = models.ImageField(null=False, blank=False, upload_to=arc_image_upload_to,
                                   storage=OverwriteStorage())
+
+    def get_absolute_url(self):
+        kwargs = {'slug': self.slug}
+        return reverse('comics:issue', kwargs=kwargs)

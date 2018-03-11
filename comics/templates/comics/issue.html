@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load markup_tags %}
+
+{% block title %}{{ issue.name }}{% endblock title %}
+
+{% block content %}
+    <h1>{{ issue.name }}</h1>
+    <nav aria-label="Secondary"><a href="{% url 'comics:index' %}">Back to Comics</a></nav>
+    {% if issue.the_image %}
+    <figure><img src="{{ MEDIA_URL }}{{ issue.the_image }}" /></figure>
+    {% endif %}
+    <section>{{ issue.description|apply_markup:"markdown" }}</section>
+
+{% endblock content %}
