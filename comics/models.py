@@ -17,6 +17,9 @@ class Arc(models.Model):
     the_image = models.ImageField(null=False, blank=False, upload_to=arc_image_upload_to,
                                   storage=OverwriteStorage())
 
+    class Meta:
+        ordering = ('sort_order',)
+
 
 def issue_image_upload_to(instance, file_name):
     file_extension = file_name.split(".")[-1]
@@ -26,12 +29,16 @@ def issue_image_upload_to(instance, file_name):
 class Issue(models.Model):
     arc = models.ForeignKey(Arc, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField()
     description = models.TextField(blank=True)
     sort_order = models.IntegerField()
     the_image = models.ImageField(null=False, blank=False, upload_to=arc_image_upload_to,
                                   storage=OverwriteStorage())
 
     def get_absolute_url(self):
-        kwargs = {'slug': self.slug}
+        kwargs = {'slug': self.slug, 'arc_slug': self.arc.slug}
         return reverse('comics:issue', kwargs=kwargs)
+
+    class Meta:
+        ordering = ('sort_order',)
+        unique_together = ('arc', 'slug')

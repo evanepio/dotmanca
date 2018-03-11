@@ -5,5 +5,5 @@ from . import views
 app_name = 'comics'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('<slug:slug>/', views.IssueView.as_view(), name='issue'),
+    path('<slug:arc_slug>/<slug:slug>/', views.IssueView.as_view(), name='issue'),
 ]
