@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load markup_tags %}
 
 {% block title %}Chapters{% endblock title %}
 
@@ -11,6 +12,9 @@
                 <h2>{{ arc.name }}</h2>
                 {% if arc.the_image %}
                 <figure><img src="{{ MEDIA_URL }}{{ arc.the_image }}" /></figure>
+                {% endif %}
+                {% if arc.description %}
+                <section>{{ arc.description|apply_markup:"markdown" }}</section>
                 {% endif %}
                 {% if arc.issue_set.all %}
                     <ul>
