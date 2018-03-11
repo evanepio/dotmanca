@@ -9,6 +9,9 @@
         {% for arc in arcs %}
             <section>
                 <h2>{{ arc.name }}</h2>
+                {% if arc.the_image %}
+                <figure><img src="{{ MEDIA_URL }}{{ arc.the_image }}" /></figure>
+                {% endif %}
                 {% if arc.issue_set.all %}
                     <ul>
                         {% for issue in arc.issue_set.all %}
