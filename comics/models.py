@@ -17,6 +17,9 @@ class Arc(models.Model):
     the_image = models.ImageField(null=False, blank=False, upload_to=arc_image_upload_to,
                                   storage=OverwriteStorage())
 
+    def __str__(self):
+        return F'{self.name} (Arc)'
+
     class Meta:
         ordering = ('sort_order',)
 
@@ -40,6 +43,9 @@ class Issue(models.Model):
     def get_absolute_url(self):
         kwargs = {'slug': self.slug, 'arc_slug': self.arc.slug}
         return reverse('comics:issue', kwargs=kwargs)
+
+    def __str__(self):
+        return F'{self.name} ({self.arc.name})'
 
     class Meta:
         ordering = ('sort_order',)
