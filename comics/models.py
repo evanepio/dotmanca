@@ -38,7 +38,7 @@ class Issue(models.Model):
     the_image = models.ImageField(null=False, blank=False, upload_to=arc_image_upload_to,
                                   storage=OverwriteStorage())
 
-    gallery = models.ForeignKey('gallery.Gallery', on_delete=models.CASCADE, null=True)
+    gallery = models.ForeignKey('gallery.Gallery', on_delete=models.CASCADE, null=True, blank=True)
 
     def get_absolute_url(self):
         kwargs = {'slug': self.slug, 'arc_slug': self.arc.slug}
