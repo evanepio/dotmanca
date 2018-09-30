@@ -1,12 +1,9 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 django = "*"
 wheel = "*"
 pillow = "*"
@@ -18,9 +15,7 @@ django-extensions = "*"
 "argon2-cffi" = "*"
 "psycopg2-binary" = "*"
 
-
 [dev-packages]
-
 django-debug-toolbar = "*"
 coverage = "*"
 django-coverage-plugin = "*"
