@@ -7,7 +7,11 @@ from django.urls import reverse
 class PublishedArticlesManager(models.Manager):
     def get_queryset(self):
         today = date.today()
-        return super(PublishedArticlesManager, self).get_queryset().filter(published_date__lte=today)
+        return (
+            super(PublishedArticlesManager, self)
+            .get_queryset()
+            .filter(published_date__lte=today)
+        )
 
 
 class NewsArticle(models.Model):
@@ -20,12 +24,14 @@ class NewsArticle(models.Model):
     published_articles = PublishedArticlesManager()
 
     def get_absolute_url(self):
-        kwargs = {'year': str(self.published_date.year),
-                  'month': str(self.published_date.month).zfill(2),
-                  'day': str(self.published_date.day).zfill(2),
-                  'slug': self.slug}
+        kwargs = {
+            "year": str(self.published_date.year),
+            "month": str(self.published_date.month).zfill(2),
+            "day": str(self.published_date.day).zfill(2),
+            "slug": self.slug,
+        }
 
-        return reverse('news:article', kwargs=kwargs)
+        return reverse("news:article", kwargs=kwargs)
 
     def __str__(self):
-        return F"{self.published_date:%B %d, %Y} - {self.headline}"
+        return f"{self.published_date:%B %d, %Y} - {self.headline}"

@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class GalleryConfig(AppConfig):
-    name = 'gallery'
+    name = "gallery"
 
     def ready(self):
         # Only need to import them because the decorators will register on load

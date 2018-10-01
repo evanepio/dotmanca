@@ -11,7 +11,7 @@ class TestAboutChasViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertTrue('age' in context.keys())
+        self.assertTrue("age" in context.keys())
 
     def test_age_ten_years_after_birthday_is_ten(self):
         view = AboutChasView()
@@ -21,7 +21,7 @@ class TestAboutChasViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertEqual(10, context['age'])
+        self.assertEqual(10, context["age"])
 
     def test_age_ten_years_minus_one_day_after_birthday_is_nine(self):
         view = AboutChasView()
@@ -31,7 +31,7 @@ class TestAboutChasViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertEqual(9, context['age'])
+        self.assertEqual(9, context["age"])
 
 
 class TestAboutEvanViewGetContextData(TestCase):
@@ -40,7 +40,7 @@ class TestAboutEvanViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertTrue('age' in context.keys())
+        self.assertTrue("age" in context.keys())
 
     def test_age_ten_years_after_birthday_is_ten(self):
         view = AboutEvanView()
@@ -50,7 +50,7 @@ class TestAboutEvanViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertEqual(10, context['age'])
+        self.assertEqual(10, context["age"])
 
     def test_age_ten_years_minus_one_day_after_birthday_is_nine(self):
         view = AboutEvanView()
@@ -60,7 +60,7 @@ class TestAboutEvanViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertEqual(9, context['age'])
+        self.assertEqual(9, context["age"])
 
 
 class TestHomePageViewGetContextData(TestCase):
@@ -72,7 +72,7 @@ class TestHomePageViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertTrue('news_articles' in context.keys())
+        self.assertTrue("news_articles" in context.keys())
 
     def test_context_contains_only_three_news_articles_when_4_come_back(self):
         view = HomePageView()
@@ -82,4 +82,4 @@ class TestHomePageViewGetContextData(TestCase):
 
         context = view.get_context_data()
 
-        self.assertTrue('news_articles' in context.keys())
+        self.assertTrue("news_articles" in context.keys())

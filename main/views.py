@@ -12,7 +12,11 @@ def get_age(date_of_birth, today):
         # Raised when person was born on 29 February and the current year is not a leap year.
         birthday = datetime.date(today.year, date_of_birth.month, date_of_birth.day - 1)
 
-    return today.year - date_of_birth.year - 1 if birthday > today else today.year - date_of_birth.year
+    return (
+        today.year - date_of_birth.year - 1
+        if birthday > today
+        else today.year - date_of_birth.year
+    )
 
 
 class HomePageView(generic.TemplateView):
@@ -20,11 +24,11 @@ class HomePageView(generic.TemplateView):
 
     @staticmethod
     def get_published_news_articles():
-        return NewsArticle.published_articles.order_by('-published_date')
+        return NewsArticle.published_articles.order_by("-published_date")
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        context['news_articles'] = self.get_published_news_articles()[:3]
+        context["news_articles"] = self.get_published_news_articles()[:3]
         return context
 
 
@@ -39,7 +43,7 @@ class AboutAgedView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(AboutAgedView, self).get_context_data(**kwargs)
         today = self.get_todays_date()
-        context['age'] = get_age(self.date_of_birth, today)
+        context["age"] = get_age(self.date_of_birth, today)
         return context
 
 

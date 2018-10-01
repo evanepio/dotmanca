@@ -2,8 +2,12 @@ from django.urls import path
 
 from . import views
 
-app_name = 'news'
+app_name = "news"
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('<int:year>/<int:month>/<int:day>/<slug:slug>/', views.ArticleView.as_view(), name='article'),
+    path("", views.IndexView.as_view(), name="index"),
+    path(
+        "<int:year>/<int:month>/<int:day>/<slug:slug>/",
+        views.ArticleView.as_view(),
+        name="article",
+    ),
 ]
