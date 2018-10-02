@@ -1,6 +1,7 @@
 import datetime
 
 from django.test import TestCase
+from freezegun import freeze_time
 
 from .views import AboutChasView, AboutEvanView, HomePageView
 
@@ -16,22 +17,18 @@ class TestAboutChasViewGetContextData(TestCase):
     def test_age_ten_years_after_birthday_is_ten(self):
         view = AboutChasView()
 
-        # Inject the method used to get current date
-        view.get_todays_date = lambda: datetime.date(1990, 4, 21)
+        with freeze_time("1990-04-21"):
+            context = view.get_context_data()
 
-        context = view.get_context_data()
-
-        self.assertEqual(10, context["age"])
+            self.assertEqual(10, context["age"])
 
     def test_age_ten_years_minus_one_day_after_birthday_is_nine(self):
         view = AboutChasView()
 
-        # Inject the method used to get current date
-        view.get_todays_date = lambda: datetime.date(1990, 4, 20)
+        with freeze_time("1990-04-20"):
+            context = view.get_context_data()
 
-        context = view.get_context_data()
-
-        self.assertEqual(9, context["age"])
+            self.assertEqual(9, context["age"])
 
 
 class TestAboutEvanViewGetContextData(TestCase):
@@ -45,22 +42,18 @@ class TestAboutEvanViewGetContextData(TestCase):
     def test_age_ten_years_after_birthday_is_ten(self):
         view = AboutEvanView()
 
-        # Inject the method used to get current date
-        view.get_todays_date = lambda: datetime.date(1990, 12, 6)
+        with freeze_time("1990-12-06"):
+            context = view.get_context_data()
 
-        context = view.get_context_data()
-
-        self.assertEqual(10, context["age"])
+            self.assertEqual(10, context["age"])
 
     def test_age_ten_years_minus_one_day_after_birthday_is_nine(self):
         view = AboutEvanView()
 
-        # Inject the method used to get current date
-        view.get_todays_date = lambda: datetime.date(1990, 12, 5)
+        with freeze_time("1990-12-05"):
+            context = view.get_context_data()
 
-        context = view.get_context_data()
-
-        self.assertEqual(9, context["age"])
+            self.assertEqual(9, context["age"])
 
 
 class TestHomePageViewGetContextData(TestCase):

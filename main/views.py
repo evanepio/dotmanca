@@ -5,17 +5,12 @@ from django.views import generic
 from news.models import NewsArticle
 
 
-def get_age(date_of_birth, today):
-    try:
-        birthday = datetime.date(today.year, date_of_birth.month, date_of_birth.day)
-    except ValueError:
-        # Raised when person was born on 29 February and the current year is not a leap year.
-        birthday = datetime.date(today.year, date_of_birth.month, date_of_birth.day - 1)
-
+def get_age(date_of_birth):
+    today = datetime.date.today()
     return (
-        today.year - date_of_birth.year - 1
-        if birthday > today
-        else today.year - date_of_birth.year
+        today.year
+        - date_of_birth.year
+        - ((today.month, today.day) < (date_of_birth.month, date_of_birth.day))
     )
 
 
@@ -37,13 +32,9 @@ class AboutView(generic.TemplateView):
 
 
 class AboutAgedView(generic.TemplateView):
-    get_todays_date = datetime.date.today
-    date_of_birth = datetime.date(1980, 4, 21)
-
     def get_context_data(self, **kwargs):
         context = super(AboutAgedView, self).get_context_data(**kwargs)
-        today = self.get_todays_date()
-        context["age"] = get_age(self.date_of_birth, today)
+        context["age"] = get_age(self.date_of_birth)
         return context
 
 
