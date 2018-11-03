@@ -25,9 +25,16 @@ class ComicPageView(generic.DetailView):
 
     def get_queryset(self):
         # Find Issue, then get gallery
-        issue = Issue.objects.filter(arc__slug=self.kwargs.get("arc_slug")).get(
+        self.issue = Issue.objects.filter(arc__slug=self.kwargs.get("arc_slug")).get(
             slug=self.kwargs.get("issue_slug")
         )
 
-        query_set = super().get_queryset().filter(gallery__id=issue.gallery.id)
+        query_set = super().get_queryset().filter(gallery__id=self.issue.gallery.id)
         return query_set
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["issue"] = self.issue  # Set in get_queryset()
+
+        return context

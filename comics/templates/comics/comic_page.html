@@ -10,7 +10,7 @@
     <a href="">&laquo;
         {{previous.name}}</a> &vzigzag;
     {% endif%}
-    <a href="../">Back to Somewhere</a>
+    <a href="{{ issue.get_absolute_url }}">Back to {{ issue.name }}</a>
     {% if next %}
     &vzigzag; <a href="">{{next.name}}
         &raquo;</a>
