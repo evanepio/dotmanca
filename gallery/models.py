@@ -28,7 +28,9 @@ def gallery_image_upload_to(instance, file_name):
 
 
 class GalleryImage(models.Model):
-    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)
+    gallery = models.ForeignKey(
+        Gallery, on_delete=models.CASCADE, related_name="images"
+    )
     name = models.CharField(max_length=50)
     slug = models.SlugField()
     sort_order = models.IntegerField()

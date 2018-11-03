@@ -4,15 +4,15 @@
 {% block title %}{{ gallery.name }}{% endblock title %}
 
 {% block content %}
-    <h1>{{ gallery.name }}</h1>
-    <nav aria-label="Secondary"><a href="{% url 'gallery:index' %}">Back to Galleries</a></nav>
-    <section>{{ gallery.description|apply_markup:"markdown" }}</section>
-    {% if gallery.galleryimage_set.all %}
-    <ul>
-        {% for image in gallery.galleryimage_set.all %}
-            <li><a href="{{ image.get_absolute_url }}">{{ image.name }}</a></li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+<h1>{{ gallery.name }}</h1>
+<nav aria-label="Secondary"><a href="{% url 'gallery:index' %}">Back to Galleries</a></nav>
+<section>{{ gallery.description|apply_markup:"markdown" }}</section>
+{% if gallery.images.all %}
+<ul>
+    {% for image in gallery.images.all %}
+    <li><a href="{{ image.get_absolute_url }}">{{ image.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
 
 {% endblock content %}
