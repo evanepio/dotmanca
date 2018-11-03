@@ -8,12 +8,11 @@
 <nav aria-label="Secondary">
     {% if previous %}
     <a href="">&laquo;
-        {{previous.name}}</a>
+        {{previous.name}}</a> &vzigzag;
     {% endif%}
-    &vzigzag; <a href="{% url 'comics:issue' slug=comicpage.gallery.slug %}">Back to
-        {{galleryimage.gallery.name}}</a> &vzigzag;
+    <a href="../">Back to Somewhere</a>
     {% if next %}
-    <a href="">{{next.name}}
+    &vzigzag; <a href="">{{next.name}}
         &raquo;</a>
     {% endif%}
 </nav>
