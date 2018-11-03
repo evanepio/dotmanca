@@ -23,6 +23,10 @@ class ComicPageView(generic.DetailView):
     model = GalleryImage
     template_name = "comics/comic_page.html"
 
+    def __init__(self):
+        super().__init__()
+        self.issue = None
+
     def get_queryset(self):
         # Find Issue, then get gallery
         self.issue = Issue.objects.filter(arc__slug=self.kwargs.get("arc_slug")).get(
