@@ -43,7 +43,7 @@ def get_previous_image(gallery_id, sort_order):
         previous = (
             GalleryImage.objects.filter(gallery_id=gallery_id)
             .filter(sort_order__lt=sort_order)
-            .order_by("sort_order")[0]
+            .order_by("-sort_order")[0]
         )
     except IndexError:
         pass  # Don't worry about it
@@ -52,10 +52,10 @@ def get_previous_image(gallery_id, sort_order):
 
 
 def get_next_image(gallery_id, sort_order):
-    previous = None
+    next_image = None
 
     try:
-        previous = (
+        next_image = (
             GalleryImage.objects.filter(gallery_id=gallery_id)
             .filter(sort_order__gt=sort_order)
             .order_by("sort_order")[0]
@@ -63,4 +63,4 @@ def get_next_image(gallery_id, sort_order):
     except IndexError:
         pass  # Don't worry about it
 
-    return previous
+    return next_image
