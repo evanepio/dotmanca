@@ -8,13 +8,13 @@
 <nav aria-label="Secondary">
     {% if previous %}
     <a href="{% url 'gallery:gallery_image' gallery_slug=galleryimage.gallery.slug slug=previous.slug %}">&laquo;
-        {{previous.name}}</a>
+        {{previous.name}}</a> &vzigzag;
     {% endif%}
-    &vzigzag; <a href="{% url 'gallery:gallery' slug=galleryimage.gallery.slug %}">Back to
+    <a href="{% url 'gallery:gallery' slug=galleryimage.gallery.slug %}">Back to
         {{galleryimage.gallery.name}}
-        Gallery</a> &vzigzag;
+        Gallery</a>
     {% if next %}
-    <a href="{% url 'gallery:gallery_image' gallery_slug=galleryimage.gallery.slug slug=next.slug %}">{{next.name}}
+    &vzigzag; <a href="{% url 'gallery:gallery_image' gallery_slug=galleryimage.gallery.slug slug=next.slug %}">{{next.name}}
         &raquo;</a>
     {% endif%}
 </nav>
