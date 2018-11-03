@@ -7,14 +7,15 @@
 <h1>{{ galleryimage.name }}</h1>
 <nav aria-label="Secondary">
     {% if previous %}
-    <a href="{% url 'gallery:gallery_image' gallery_slug=galleryimage.gallery.slug slug=previous.slug %}">&larr;
+    <a href="{% url 'gallery:gallery_image' gallery_slug=galleryimage.gallery.slug slug=previous.slug %}">&laquo;
         {{previous.name}}</a>
     {% endif%}
-    &laquo; <a href="{% url 'gallery:gallery' slug=galleryimage.gallery.slug %}">Back to {{galleryimage.gallery.name}}
-        Gallery</a> &raquo;
+    &vzigzag; <a href="{% url 'gallery:gallery' slug=galleryimage.gallery.slug %}">Back to
+        {{galleryimage.gallery.name}}
+        Gallery</a> &vzigzag;
     {% if next %}
     <a href="{% url 'gallery:gallery_image' gallery_slug=galleryimage.gallery.slug slug=next.slug %}">{{next.name}}
-        &rarr;</a>
+        &raquo;</a>
     {% endif%}
 </nav>
 <figure><img src="{{ MEDIA_URL }}{{ galleryimage.the_image }}" /></figure>
