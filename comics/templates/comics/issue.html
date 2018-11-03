@@ -4,11 +4,20 @@
 {% block title %}{{ issue.name }}{% endblock title %}
 
 {% block content %}
-    <h1>{{ issue.name }}</h1>
-    <nav aria-label="Secondary"><a href="{% url 'comics:index' %}">Back to Comics</a></nav>
-    {% if issue.the_image %}
-    <figure><img src="{{ MEDIA_URL }}{{ issue.the_image }}" /></figure>
+<h1>{{ issue.name }}</h1>
+<nav aria-label="Secondary"><a href="{% url 'comics:index' %}">Back to Comics</a></nav>
+{% if issue.the_image %}
+<figure><img src="{{ MEDIA_URL }}{{ issue.the_image }}" /></figure>
+{% endif %}
+<section>{{ issue.description|apply_markup:"markdown" }}</section>
+<section>
+    {% if issue.gallery %}
+    <ul>
+        {% for image in issue.gallery.images.all %}
+        <li><a href="{{ image.get_absolute_url }}">{{ image.name }}</a></li>
+        {% endfor %}
+    </ul>
     {% endif %}
-    <section>{{ issue.description|apply_markup:"markdown" }}</section>
+</section>
 
 {% endblock content %}
