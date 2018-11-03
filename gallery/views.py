@@ -20,9 +20,7 @@ class GalleryImageView(generic.DetailView):
 
     def get_queryset(self):
         query_set = (
-            super(GalleryImageView, self)
-            .get_queryset()
-            .filter(gallery__slug=self.kwargs.get("gallery_slug"))
+            super().get_queryset().filter(gallery__slug=self.kwargs.get("gallery_slug"))
         )
         return query_set
 
