@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load markup_tags %}
+
+{% block title %}{{ galleryimage.name }}{% endblock title %}
+
+{% block content %}
+<h1>{{ galleryimage.name }}</h1>
+<nav aria-label="Secondary">
+    {% if previous %}
+    <a href="">&laquo;
+        {{previous.name}}</a>
+    {% endif%}
+    &vzigzag; <a href="{% url 'comics:issue' slug=comicpage.gallery.slug %}">Back to
+        {{galleryimage.gallery.name}}</a> &vzigzag;
+    {% if next %}
+    <a href="">{{next.name}}
+        &raquo;</a>
+    {% endif%}
+</nav>
+<figure><img src="{{ MEDIA_URL }}{{ galleryimage.the_image }}" /></figure>
+<section>{{ galleryimage.description|apply_markup:"markdown" }}</section>
+
+{% endblock content %}

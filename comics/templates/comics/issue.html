@@ -14,7 +14,8 @@
     {% if issue.gallery %}
     <ul>
         {% for image in issue.gallery.images.all %}
-        <li><a href="{{ image.get_absolute_url }}">{{ image.name }}</a></li>
+        <li><a href="{% url 'comics:comic_page' arc_slug=issue.arc.slug issue_slug=issue.slug slug=image.slug %}">
+                {{ image.name }}</a></li>
         {% endfor %}
     </ul>
     {% endif %}
