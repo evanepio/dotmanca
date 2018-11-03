@@ -64,4 +64,3 @@ def get_next_image(gallery_id, sort_order):
         pass  # Don't worry about it
 
     return previous
-
