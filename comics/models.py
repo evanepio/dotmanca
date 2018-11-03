@@ -46,7 +46,7 @@ class Issue(models.Model):
         storage=OverwriteStorage(),
     )
 
-    gallery = models.ForeignKey(
+    gallery = models.OneToOneField(
         "gallery.Gallery", on_delete=models.CASCADE, null=True, blank=True
     )
 
