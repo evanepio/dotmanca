@@ -14,6 +14,10 @@ class IssueView(generic.DetailView):
     model = Issue
     template_name = "comics/issue.html"
 
+    def get_queryset(self):
+        query_set = super().get_queryset().filter(arc__slug=self.kwargs.get("arc_slug"))
+        return query_set
+
 
 class ComicPageView(generic.DetailView):
     model = GalleryImage
