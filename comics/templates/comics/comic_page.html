@@ -7,12 +7,12 @@
 <h1>{{ galleryimage.name }}</h1>
 <nav aria-label="Secondary">
     {% if previous %}
-    <a href="">&laquo;
+    <a href="{% url 'comics:comic_page' arc_slug=issue.arc.slug issue_slug=issue.slug slug=previous.slug %}">&laquo;
         {{previous.name}}</a> &vzigzag;
     {% endif%}
     <a href="{{ issue.get_absolute_url }}">Back to {{ issue.name }}</a>
     {% if next %}
-    &vzigzag; <a href="">{{next.name}}
+    &vzigzag; <a href="{% url 'comics:comic_page' arc_slug=issue.arc.slug issue_slug=issue.slug slug=next.slug %}">{{next.name}}
         &raquo;</a>
     {% endif%}
 </nav>

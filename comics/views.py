@@ -1,6 +1,7 @@
 from django.views import generic
 
 from gallery.models import GalleryImage
+from gallery import queries
 from .models import Arc, Issue
 
 
@@ -40,5 +41,11 @@ class ComicPageView(generic.DetailView):
         context = super().get_context_data(**kwargs)
 
         context["issue"] = self.issue  # Set in get_queryset()
+        context["next"] = queries.get_next_image(
+            self.issue.gallery, self.object.sort_order
+        )
+        context["previous"] = queries.get_previous_image(
+            self.issue.gallery, self.object.sort_order
+        )
 
         return context
