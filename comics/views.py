@@ -40,7 +40,7 @@ class ComicPageView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context["issue"] = self.issue  # Set in get_queryset()
+        context["issue"] = self.issue  # This is set in get_queryset()
 
         gallery = self.issue.gallery
         sort_order = self.object.sort_order
