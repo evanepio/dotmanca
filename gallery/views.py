@@ -28,10 +28,7 @@ class GalleryImageView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        gallery = self.object.gallery
-        sort_order = self.object.sort_order
-
-        context["previous"] = queries.get_previous_image(gallery, sort_order)
-        context["next"] = queries.get_next_image(gallery, sort_order)
+        context["previous"] = queries.get_previous_image(self.object)
+        context["next"] = queries.get_next_image(self.object)
 
         return context

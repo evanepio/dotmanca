@@ -1,12 +1,16 @@
-def get_previous_image(gallery, sort_order):
+def get_previous_image(gallery_image):
     return get_image_from_filtered_sorted_query_set(
-        gallery, {"sort_order__lt": sort_order}, "-sort_order"
+        gallery_image.gallery,
+        {"sort_order__lt": gallery_image.sort_order},
+        "-sort_order",
     )
 
 
-def get_next_image(gallery, sort_order):
+def get_next_image(gallery_image):
     return get_image_from_filtered_sorted_query_set(
-        gallery, {"sort_order__gt": sort_order}, "sort_order"
+        gallery_image.gallery,
+        {"sort_order__gt": gallery_image.sort_order},
+        "sort_order",
     )
 
 
