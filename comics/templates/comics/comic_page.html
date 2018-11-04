@@ -9,12 +9,17 @@
     {% if previous %}
     <a href="{% url 'comics:comic_page' arc_slug=issue.arc.slug issue_slug=issue.slug slug=previous.slug %}">&laquo;
         {{previous.name}}</a> &vzigzag;
-    {% endif%}
+    {% elif previous_issue %}
+    <a href="{{ previous_issue.get_absolute_url }}">&laquo;
+        {{previous_issue.name}}</a> &vzigzag;
+    {% endif %}
     <a href="{{ issue.get_absolute_url }}">Back to {{ issue.name }}</a>
     {% if next %}
     &vzigzag; <a href="{% url 'comics:comic_page' arc_slug=issue.arc.slug issue_slug=issue.slug slug=next.slug %}">{{next.name}}
         &raquo;</a>
-    {% endif%}
+    {% elif next_issue %}
+    &vzigzag; <a href="{{ next_issue.get_absolute_url }}">{{next_issue.name}} &raquo;</a>
+    {% endif %}
 </nav>
 <figure><img src="{{ MEDIA_URL }}{{ galleryimage.the_image }}" /></figure>
 <section>{{ galleryimage.description|apply_markup:"markdown" }}</section>
