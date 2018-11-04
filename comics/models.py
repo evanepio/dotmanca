@@ -34,7 +34,7 @@ def issue_image_upload_to(instance, file_name):
 
 
 class Issue(models.Model):
-    arc = models.ForeignKey(Arc, on_delete=models.CASCADE)
+    arc = models.ForeignKey(Arc, on_delete=models.CASCADE, related_name="issues")
     name = models.CharField(max_length=50)
     slug = models.SlugField()
     description = models.TextField(blank=True)

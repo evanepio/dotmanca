@@ -4,27 +4,27 @@
 {% block title %}Chapters{% endblock title %}
 
 {% block content %}
-    <h1>Chapters</h1>
+<h1>Chapters</h1>
 
-    {% if arcs %}
-        {% for arc in arcs %}
-            <section>
-                <h2>{{ arc.name }}</h2>
-                {% if arc.the_image %}
-                <figure><img src="{{ MEDIA_URL }}{{ arc.the_image }}" /></figure>
-                {% endif %}
-                {% if arc.description %}
-                <section>{{ arc.description|apply_markup:"markdown" }}</section>
-                {% endif %}
-                {% if arc.issue_set.all %}
-                    <ul>
-                        {% for issue in arc.issue_set.all %}
-                            <li><a href="{{ issue.get_absolute_url }}">{{ issue.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </section>
-        {% endfor %}
+{% if arcs %}
+{% for arc in arcs %}
+<section>
+    <h2>{{ arc.name }}</h2>
+    {% if arc.the_image %}
+    <figure><img src="{{ MEDIA_URL }}{{ arc.the_image }}" /></figure>
     {% endif %}
+    {% if arc.description %}
+    <section>{{ arc.description|apply_markup:"markdown" }}</section>
+    {% endif %}
+    {% if arc.issues.all %}
+    <ul>
+        {% for issue in arc.issues.all %}
+        <li><a href="{{ issue.get_absolute_url }}">{{ issue.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+{% endfor %}
+{% endif %}
 
 {% endblock content %}
