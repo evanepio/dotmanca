@@ -21,6 +21,14 @@ class IssueView(generic.DetailView):
         query_set = super().get_queryset().filter(arc__slug=self.kwargs.get("arc_slug"))
         return query_set
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["next"] = queries.get_next_issue(self.object)
+        context["previous"] = queries.get_previous_issue(self.object)
+
+        return context
+
 
 class ComicPageView(generic.DetailView):
     model = GalleryImage

@@ -5,7 +5,17 @@
 
 {% block content %}
 <h1>{{ issue.name }}</h1>
-<nav aria-label="Secondary"><a href="{% url 'comics:index' %}">Back to Comics</a></nav>
+<nav aria-label="Secondary">
+    {% if previous %}
+    <a href="{{ previous.get_absolute_url }}">&laquo;
+        {{previous.name}}</a> &vzigzag;
+    {% endif %}
+    <a href="{% url 'comics:index' %}">Back to Comics</a>
+    {% if next %}
+    &vzigzag; <a href="{{ next.get_absolute_url }}">{{next.name}}
+        &raquo;</a>
+    {% endif %}
+</nav>
 {% if issue.the_image %}
 <figure><img src="{{ MEDIA_URL }}{{ issue.the_image }}" /></figure>
 {% endif %}
