@@ -128,6 +128,18 @@ This basically sets up a secure site using a cert (from Let's Encrypt) and redir
 
 > Pay attention to the `proxy_pass` setting. It needs to match where you told gunicorn to write the socket file (Gunicorn's `--bind` option).
 
+To restart: 
+
+```
+sudo systemctl restart nginx
+```
+
+To check the status:
+
+```
+sudo systemctl status nginx
+```
+
 Basic Commands
 --------------
 
