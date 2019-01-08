@@ -93,6 +93,18 @@ Environment="DJANGO_SECURE_SSL_REDIRECT=False"
 Environment="DATABASE_URL=sameasEnvFile"
 ```
 
+To restart: 
+
+```
+sudo systemctl restart gunicorn
+```
+
+To check the status:
+
+```
+sudo systemctl status gunicorn
+```
+
 ### NGINX Settings
 
 Generally I want a `dotmanca` file in `/etc/nginx/sites-available` or wherever nginx is set up to read configurations from.
