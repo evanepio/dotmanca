@@ -6,8 +6,10 @@ Local settings
 - Use console backend for emails
 
 - Add Django Debug Toolbar
-- Add django-extensions as app
 """
+
+import os
+import socket
 
 from .base import *  # noqa
 
@@ -49,8 +51,6 @@ INSTALLED_APPS += ['debug_toolbar', ]
 INTERNAL_IPS = ['127.0.0.1', '10.0.2.2', ]
 
 
-import socket
-import os
 # tricks to have debug toolbar when developing with docker
 if os.environ.get('USE_DOCKER') == 'yes':
     ip = socket.gethostbyname(socket.gethostname())
@@ -62,10 +62,6 @@ DEBUG_TOOLBAR_CONFIG = {
     ],
     'SHOW_TEMPLATE_CONTEXT': True,
 }
-
-# django-extensions
-# ------------------------------------------------------------------------------
-INSTALLED_APPS += ['django_extensions', ]
 
 # TESTING
 # ------------------------------------------------------------------------------
