@@ -24,6 +24,8 @@
 
   <div class="page">
     <nav aria-label="Primary">
+      <label id="navToggleLabel" for="navToggle">Show/Hide Menu</label>
+      <input type="checkbox" id="navToggle" />
       <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'main:about' %}">About</a></li>

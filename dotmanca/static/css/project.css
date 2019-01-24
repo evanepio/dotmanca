@@ -62,12 +62,36 @@ header > h1 {
   main {
     flex-basis: 75%;
   }
+
+  #navToggle {
+    display: none;
+  }
+
+  #navToggleLabel {
+    display: none;
+  }
 }
 
 @media (max-width: 699px) {
   .page {
     -webkit-flex-direction: column;
     flex-direction: column;
+  }
+
+  #navToggleLabel {
+    cursor: pointer;
+  }
+  
+  #navToggle {
+    display: none;
+  }
+  
+  #navToggle:checked ~ * {
+    display: block;
+  }
+  
+  #navToggle ~ * {
+    display: none;
   }
 }
 
