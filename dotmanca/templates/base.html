@@ -1,5 +1,7 @@
-{% load staticfiles %}<!DOCTYPE html>
+{% load staticfiles %}
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,47 +11,39 @@
   <meta name="author" content="">
 
   {% block css %}
-    <!-- This file stores project-specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  <!-- This file stores project-specific CSS -->
+  <link href="{% static 'css/project.css' %}" rel="stylesheet">
   {% endblock %}
 </head>
 
 <body>
 
-<header><h1>The Official Dotman Website</h1></header>
+  <header>
+    <h1>The Official Dotman Website</h1>
+  </header>
 
-<div class="page">
-  <nav aria-label="Primary">
-    <ul>
-      <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="{% url 'main:about' %}">About</a></li>
-      <li><a href="{% url 'news:index' %}">News</a></li>
-      <li><a href="{% url 'comics:index' %}">Comics</a></li>
-      <li><a href="{% url 'characters:index' %}">Characters</a></li>
-      <li><a href="{% url 'places:index' %}">Places</a></li>
-      <li><a href="{% url 'gallery:index' %}">Galleries</a></li>
-    </ul>
-    <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
-  </nav>
+  <div class="page">
+    <nav aria-label="Primary">
+      <label id="navToggleLabel" for="navToggle">Show/Hide Menu</label>
+      <input type="checkbox" id="navToggle" />
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'main:about' %}">About</a></li>
+        <li><a href="{% url 'news:index' %}">News</a></li>
+        <li><a href="{% url 'comics:index' %}">Comics</a></li>
+        <li><a href="{% url 'characters:index' %}">Characters</a></li>
+        <li><a href="{% url 'places:index' %}">Places</a></li>
+        <li><a href="{% url 'gallery:index' %}">Galleries</a></li>
+      </ul>
+      <div><strong>Dotman</strong> and related characters &reg; Chas Goguen</div>
+    </nav>
 
-  <main>
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-      {% endfor %}
-    {% endif %}
-    {% block content %}
-      <p>Use this document as a way to quick start any new project.</p>
-    {% endblock content %}
-  </main>
+    <main>
+      {% block content %}
+      {% endblock content %}
+    </main>
+  </div>
 
-</div>
-
-{% block modal %}{% endblock modal %}
-
-{% block javascript %}
-  <script src="{% static 'js/project.js' %}"></script>
-{% endblock javascript %}
 </body>
-</html>
 
+</html>
