@@ -29,7 +29,7 @@ pylint-django = "^2.0"
 pylint-common = "^0.2.5"
 freezegun = "^0.3.11"
 rope = "^0.14.0"
-black = "==18.3a0"
+black = "19.3b0"
 
 [build-system]
 requires = ["poetry>=0.12"]
