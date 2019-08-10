@@ -8,13 +8,12 @@ notifications:
 
 branches:
   only:
-  - master
-  - develop
+    - master
+    - develop
 
 install:
-  - pip install pipenv
-  - pipenv --python 3
-  - pipenv install --dev
+  - pip install poetry
+  - poetry install
 
-script: 
-  - pipenv run pytest
+script:
+  - poetry run pytest
