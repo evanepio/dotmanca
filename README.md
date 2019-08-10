@@ -157,6 +157,15 @@ sudo systemctl status nginx
 Basic Commands
 --------------
 
+### Running locally
+
+```
+poetry shell
+export DJANGO_READ_DOT_ENV_FILE=True
+export DJANGO_SETTINGS_MODULE=config.settings.local
+python manage.py runserver
+```
+
 ### Setting Up Your Users
 
 -   To create an **superuser account**, use this command:
