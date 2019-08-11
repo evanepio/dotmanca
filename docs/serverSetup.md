@@ -164,3 +164,11 @@ This assumes `dotman` is the group your deploy user belongs to. Now you'll be ab
 Now you can allow your CI/CD system to log in with `ssh` using the public/private key thing, and it'll be able to run the command without being prompted for a password.
 
 > Note: Starting the command with `sudo` is still required as is using the command as is in the `sudoers` file. For example, with the above file, `systemctl restart gunicorn` and `/bin/systemctl stop nginx` will not work.
+
+To successfully run the tests on a CI/CD server like Travis CI or Circle CI, you must define the following variables:
+
+```
+DATABASE_URL=sqlite:///db.sqlite
+DJANGO_SECRET_KEY=anything
+DJANGO_SETTINGS_MODULE=config.settings.local
+```
