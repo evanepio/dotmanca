@@ -217,9 +217,14 @@ python manage.py runserver
 To run the tests, check your test coverage, and generate an HTML
 coverage report:
 
-    $ coverage run manage.py test
-    $ coverage html
-    $ open htmlcov/index.html
+```
+poetry shell
+export DJANGO_READ_DOT_ENV_FILE=True
+export DJANGO_SETTINGS_MODULE=config.settings.test
+coverage run manage.py test
+coverage html
+open htmlcov/index.html
+```
 
 #### Running tests with pytest
 
