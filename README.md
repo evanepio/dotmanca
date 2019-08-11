@@ -1,5 +1,4 @@
-The Official Dotman Website
-===========================
+# The Official Dotman Website
 
 The Official Website for Dotman Comics
 
@@ -7,40 +6,62 @@ The Official Website for Dotman Comics
 
 [![Build Status](https://travis-ci.com/evanepio/dotmanca.svg?branch=master)](https://travis-ci.com/evanepio/dotmanca)
 
-Getting Ready
--------------
+## Getting Ready
 
 This describes how I'll need to set up my dev environment in a mac (what I currently use ).
 
 You'll need the following:
 
-* [Homebrew](https://brew.sh/)
-* [Docker](https://www.docker.com/get-docker)
+- [Homebrew](https://brew.sh/)
+- [Docker](https://www.docker.com/get-docker)
 
 Next run the following:
 
-    $ brew install python3
+    $ brew install pyenv
 
-This gives you a non-system, non version 2, python.
+This gives you a way to manage multiple python versions at the same time.
 
-    $ pip3 install pipenv
+> Note: `pyenv` is not the same as `virtualenv` or `venv`. Yay, naming!
 
-The `pip3` will install in your `brew`-installed Python 3's `site-packages`. Just using `pip` will likely install in your system python, and that's not healthy.
+Next, we need to install the correct Python version, and then switch to it.
 
-Now from the root project directory:
+    $ pyenv install 3.7.4
+    $ pyenv global 3.7.4
 
-    $ pipenv install
+If you just want the python version local to a particular directory, you can instead run the following inside the directory you want to run a specific version for:
 
-This will install all dependencies in the Pipfile. Also, it will create the virtual env to install those dependencies into.
+    $ pyenv local 3.7.4
 
-To activate the new environment, use the following:
+Next, we want to install Poetry. We can follow [these instructions](https://poetry.eustace.io/docs/).
 
-    $ pipenv shell
+Once Poetry is installed, we can run the following:
 
-This will ensure the virtual env's python is first in your PATH. Just enter `exit` at the command prompt to go back to your regular shell (or close and reopen the terminal).
+    $ poetry install
 
-Settings
---------
+Create an `.env` file in the root of the project folder. It should contain the following items:
+
+```
+DJANGO_READ_DOT_ENV_FILE=True
+POSTGRES_PASSWORD=django_pass
+POSTGRES_USER=django_user
+DJANGO_ADMIN_URL=
+DJANGO_SETTINGS_MODULE=config.settings.local
+DJANGO_SECRET_KEY=UseAGeneratedValueOrDontAsItsLocal
+DJANGO_ALLOWED_HOSTS=.dotman.ca
+DJANGO_SECURE_SSL_REDIRECT=False
+DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+DATABASE_URL="postgres://django_user:django_pass@localhost:5432/django_user"
+```
+
+You can review those settings, or accept as-is since this is for local. Do not use the above for production or UA environments. The `DATA_BASE_URL` must contain `POSTGRES_PASSWORD` and `POSTGRES_USER`.
+
+Next, we can bring up the junk database to use:
+
+    $ docker-compose up -d
+
+This only brings up a database. In the future, I'd probably want to bring up the `python managa.py runserver` with it as well.
+
+## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html)
 
@@ -95,7 +116,7 @@ Environment="DJANGO_SECURE_SSL_REDIRECT=False"
 Environment="DATABASE_URL=sameasEnvFile"
 ```
 
-To restart: 
+To restart:
 
 ```
 sudo systemctl restart gunicorn
@@ -142,7 +163,7 @@ This basically sets up a secure site using a cert (from Let's Encrypt) and redir
 
 > Pay attention to the `proxy_pass` setting. It needs to match where you told gunicorn to write the socket file (Gunicorn's `--bind` option).
 
-To restart: 
+To restart:
 
 ```
 sudo systemctl restart nginx
@@ -154,8 +175,7 @@ To check the status:
 sudo systemctl status nginx
 ```
 
-Basic Commands
---------------
+## Basic Commands
 
 ### Running locally
 
@@ -168,9 +188,9 @@ python manage.py runserver
 
 ### Setting Up Your Users
 
--   To create an **superuser account**, use this command:
+- To create an **superuser account**, use this command:
 
-        $ python manage.py createsuperuser
+      $ python manage.py createsuperuser
 
 ### Test coverage
 
