@@ -4,7 +4,7 @@ The Official Website for Dotman Comics
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg)](https://github.com/pydanny/cookiecutter-django/)
 
-[![Build Status](https://travis-ci.com/evanepio/dotmanca.svg?branch=master)](https://travis-ci.com/evanepio/dotmanca)
+[![CircleCI](https://circleci.com/gh/evanepio/dotmanca.svg?style=svg)](https://circleci.com/gh/evanepio/dotmanca)
 
 ## Getting Ready
 

@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  build-and-test:
     docker:
       - image: circleci/python:3.7.4
 
@@ -35,6 +35,35 @@ jobs:
           name: run tests
           command: |
             poetry run pytest
-      # - store_artifacts:
-      #     path: test-reports
-      #     destination: test-reports
+
+  deploy:
+    docker:
+      - image: circleci/python:3.7.4
+    steps:
+      - run:
+          name: deploy over ssh
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd dotmanca && git pull && poetry install --no-dev && poetry run python manage.py migrate && poetry run python manage.py collectstatic && sudo /bin/systemctl restart gunicorn"
+
+workflows:
+  version: 2
+
+  # The build-and-test we will run EVERYTIME a piece of code changes
+  build-and-test-workflow:
+    jobs:
+      - build-and-test
+
+  build-test-and-deploy-workflow:
+    jobs:
+      - build-and-test:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only:
+                - master
