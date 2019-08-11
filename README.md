@@ -61,6 +61,26 @@ Next, we can bring up the junk database to use:
 
 This only brings up a database. In the future, I'd probably want to bring up the `python managa.py runserver` with it as well.
 
+## CI / CD
+
+To help with deploying automatically, we need to restart Gunicorn without a password prompt. We can do that by running the following:
+
+    $ sudo visudo -f /etc/sudoers.d/dotman
+
+I choose "dotman" so it sticks out, but any file name that doesn't end in `~` or contain a `.` will work. An editor will appear, and enter the follwoing:
+
+```
+%dotman ALL=NOPASSWD: /bin/systemctl restart gunicorn
+```
+
+This assumes `dotman` is the group your deploy user belongs to. Now you'll be able to run the following without a password prompt on next login:
+
+    $ sudo /bin/systemctl restart gunicorn
+
+Now you can allow your CI/CD system to log in with `ssh` using the public/private key thing, and it'll be able to run the command without being prompted for a password.
+
+> Note: Starting the command with `sudo` is still required as is using the command as is in the `sudoers` file. For example, with the above file, `systemctl restart gunicorn` and `/bin/systemctl stop nginx` will not work.
+
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html)
