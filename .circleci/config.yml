@@ -36,14 +36,14 @@ jobs:
           command: |
             poetry run pytest
 
-  # deploy:
-  #   docker:
-  #     - image: circleci/python:3.7.4
-  #   steps:
-  #     - run:
-  #         name: deploy over ssh
-  #         command: |
-  #           ssh $SSH_USER@$SSH_HOST "cd dotmanca && git pull && poetry install --no-dev && poetry run python manage.py migrate && poetry run python manage.py collectstatic && sudo /bin/systemctl restart gunicorn"
+  deploy:
+    docker:
+      - image: circleci/python:3.7.4
+    steps:
+      - run:
+          name: deploy over ssh
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd dotmanca && git pull && poetry install --no-dev && poetry run python manage.py migrate && poetry run python manage.py collectstatic && sudo /bin/systemctl restart gunicorn"
 
 workflows:
   version: 2
@@ -52,11 +52,12 @@ workflows:
   build-and-test-workflow:
     jobs:
       - build-and-test
-  # build-test-deploy-workflow:
-  #   jobs:
-  #     - build-and-test
-  #     - deploy:
-  #       requires: build-and-test
-  #       filters:
-  #         branches:
-  #           only: master
+
+  build-test-deploy-workflow:
+    jobs:
+      - build-and-test
+      - deploy:
+          requires: build-and-test
+          filters:
+            branches:
+              only: master
