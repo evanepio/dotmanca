@@ -44,8 +44,8 @@ jobs:
           fingerprints:
             - "c0:e5:fe:d8:25:f1:36:62:07:95:fb:76:fc:e1:78:d7"
       - run:
-          name: key scan
-          command: ssh-keyscan -H dotman.ca >> ~/.ssh/known_hosts
+          name: add known hosts
+          command: mkdir ~/.ssh/ && cp known_hosts ~/.ssh/ && chmod a-rwx -R ~/.ssh && chmod u+rw -R ~/.ssh
       - run:
           name: deploy over ssh
           command: |
