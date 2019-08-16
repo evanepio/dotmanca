@@ -45,7 +45,7 @@ jobs:
             - "c0:e5:fe:d8:25:f1:36:62:07:95:fb:76:fc:e1:78:d7"
       - run:
           name: key scan
-          command: ssh-keyscan -H dotman.ca >> ~/.ssh/known_hostsssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST
+          command: ssh-keyscan -H dotman.ca >> ~/.ssh/known_hosts
       - run:
           name: deploy over ssh
           command: |
