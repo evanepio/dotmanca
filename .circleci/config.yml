@@ -44,6 +44,10 @@ jobs:
           fingerprints:
             - "c0:e5:fe:d8:25:f1:36:62:07:95:fb:76:fc:e1:78:d7"
       - run:
+          name: make ssh dir
+          command: |
+            mkdir ~/.ssh
+      - run:
           name: add known hosts
           command: |
             echo '|1|eds2w/IX0Ugn4S8tFhoZeasLtsc=|xsCvadpPza7UesOUkHwZraFMVn0= ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICI86PYTrkRLkvTLXY7DT+TpqrAVkTj1XICmtJiYxvWt' >> ~/.ssh/known_hosts
