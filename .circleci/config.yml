@@ -55,17 +55,9 @@ workflows:
   version: 2
 
   # The build-and-test we will run EVERYTIME a piece of code changes
-  build-and-test-workflow:
+  ci-cd-workflow:
     jobs:
       - build-and-test
-
-  build-test-and-deploy-workflow:
-    jobs:
-      - build-and-test:
-          filters:
-            branches:
-              only:
-                - master
       - deploy:
           requires:
             - build-and-test
