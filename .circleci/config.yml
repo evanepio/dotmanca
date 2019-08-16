@@ -44,9 +44,8 @@ jobs:
           fingerprints:
             - "c0:e5:fe:d8:25:f1:36:62:07:95:fb:76:fc:e1:78:d7"
       - run:
-          name: keys
-          command: |
-            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST echo
+          name: key scan
+          command: ssh-keyscan -H dotman.ca >> ~/.ssh/known_hostsssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST
       - run:
           name: deploy over ssh
           command: |
