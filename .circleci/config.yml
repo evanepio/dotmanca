@@ -40,6 +40,9 @@ jobs:
     docker:
       - image: circleci/python:3.7.4
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "c0:e5:fe:d8:25:f1:36:62:07:95:fb:76:fc:e1:78:d7"
       - run:
           name: deploy over ssh
           command: |
