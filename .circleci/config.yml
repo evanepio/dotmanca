@@ -44,6 +44,10 @@ jobs:
           fingerprints:
             - "c0:e5:fe:d8:25:f1:36:62:07:95:fb:76:fc:e1:78:d7"
       - run:
+          name: keys
+          command: |
+            ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST echo
+      - run:
           name: deploy over ssh
           command: |
             ssh $SSH_USER@$SSH_HOST "export DJANGO_READ_DOT_ENV_FILE=True && git pull && poetry install --no-dev && poetry run python manage.py migrate && poetry run python manage.py collectstatic --no-input && sudo /bin/systemctl restart gunicorn"
