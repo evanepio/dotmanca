@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "dotmanca"
 version = "0.1.0"
-description = ""
+description = "The Official Dotman Website"
 authors = ["Evan Porter <evan.porter@dotman.ca>"]
 
 [tool.poetry.dependencies]
