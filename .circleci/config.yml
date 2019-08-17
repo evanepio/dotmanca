@@ -57,7 +57,6 @@ jobs:
 workflows:
   version: 2
 
-  # The build-and-test we will run EVERYTIME a piece of code changes
   ci-cd-workflow:
     jobs:
       - build-and-test

@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "dotmanca"
 version = "0.1.0"
-description = ""
+description = "The Official Dotman Website"
 authors = ["Evan Porter <evan.porter@dotman.ca>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-django = ">=2.1.11"
+django = ">=2.2.4"
 pillow = "^5.4"
 django-environ = "^0.4.5"
 markdown = "^3.1"
