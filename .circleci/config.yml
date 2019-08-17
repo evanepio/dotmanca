@@ -42,7 +42,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "c0:e5:fe:d8:25:f1:36:62:07:95:fb:76:fc:e1:78:d7"
+            - "07:10:0a:70:81:57:ec:a7:38:04:ce:de:f1:d0:d7:c5"
       - run:
           name: make ssh dir
           command: |
@@ -50,9 +50,9 @@ jobs:
       - run:
           name: add known hosts
           command: |
-            echo '|1|eds2w/IX0Ugn4S8tFhoZeasLtsc=|xsCvadpPza7UesOUkHwZraFMVn0= ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICI86PYTrkRLkvTLXY7DT+TpqrAVkTj1XICmtJiYxvWt' >> ~/.ssh/known_hosts
-            echo '|1|n7oB+b86/0Q8L3umtD+aj4STCl0=|t0YWT533XEqCAHzAnaUZjquHVoE= ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD5iLLrUl6LIStPVKgqQUyjdUCCQ1s8dlfDTJa4rJruf7QO0Urpt9/866sk8qYqaAAzubId1j5CMBG/mC5aZAqGogvDzZtz/jdngT5TzbxKdd2DV5yVqcIkaZ4ZJX/o6dP1Uq+eCyFkeq+lq5QTesHLwSqz0bpRoUr0OjOupc9tpgBflBMLc/eUyqNtW9GFsruXC4kmS5IYblLsnbsKhUds4uOaWsUzSto5ofLOINq3LPvfLvUwE712eCWc2ATSz1HvaBLpbDZTHsTMZkiIhJcxSkIrSx7GTvNixrgRumVyKCAvpFqXjJPr3foS1bpeVt8w+8NxpnSoDc58FXq2jl3N' >> ~/.ssh/known_hosts
-            echo '|1|q7Y539OCyQpI61fQpxnvj9FYLNQ=|NRUCJ+C/K52Z77Wtzq0O0AHb7Mk= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJS6HfwZ+mnF7TpiTjDV30xBdp4icYY5Vs4YNQ/0p93mXeMGeHzlBYg1VYGWZwoz3uxNTJJInxnUBcFDdfvfv8k=' >> ~/.ssh/known_hosts
+            echo '|1|vbC17y06hkZV86Qjshyx1ZARW1A=|o7tdhVvfItSyanEhyRbPDImquig= ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICI86PYTrkRLkvTLXY7DT+TpqrAVkTj1XICmtJiYxvWt' >> ~/.ssh/known_hosts
+            echo '|1|iAT48uHKf3FSd7LOloBnHtXDy2o=|U/XYAqqAQ9b4tEvx4/xdEgN54pk= ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD5iLLrUl6LIStPVKgqQUyjdUCCQ1s8dlfDTJa4rJruf7QO0Urpt9/866sk8qYqaAAzubId1j5CMBG/mC5aZAqGogvDzZtz/jdngT5TzbxKdd2DV5yVqcIkaZ4ZJX/o6dP1Uq+eCyFkeq+lq5QTesHLwSqz0bpRoUr0OjOupc9tpgBflBMLc/eUyqNtW9GFsruXC4kmS5IYblLsnbsKhUds4uOaWsUzSto5ofLOINq3LPvfLvUwE712eCWc2ATSz1HvaBLpbDZTHsTMZkiIhJcxSkIrSx7GTvNixrgRumVyKCAvpFqXjJPr3foS1bpeVt8w+8NxpnSoDc58FXq2jl3N' >> ~/.ssh/known_hosts
+            echo '|1|VX/Iig7Qc8kJvY4ntkpRnjNpAoo=|gsOzX/+Z5Ma56RDyduauLwSOmOU= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJS6HfwZ+mnF7TpiTjDV30xBdp4icYY5Vs4YNQ/0p93mXeMGeHzlBYg1VYGWZwoz3uxNTJJInxnUBcFDdfvfv8k=' >> ~/.ssh/known_hosts
       - run:
           name: deploy over ssh
           command: |
