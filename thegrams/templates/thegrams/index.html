@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}The Grams{% endblock title %}
+
+{% block javascript %}
+<script type="text/javascript">
+    var garbage = fetch("https://api.instagram.com/oembed?url=http://instagr.am/p/B12XGrmleX3/?omitscript=true")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (myJson) {
+            document.getElementById("instagram-stuff").innerHTML = myJson.html;
+            instgrm.Embeds.process();
+        });
+</script>
+{% endblock javascript %}
+
+{% block content %}
+
+<h1>The Grams</h1>
+
+<p id="instagram-stuff">Stuff goes here!</p>
+
+<script async src="//www.instagram.com/embed.js"></script>
+
+{% endblock content %}
