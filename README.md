@@ -95,3 +95,5 @@ open htmlcov/index.html
 #### Running tests with pytest
 
     $ pytest
+
+> Note: you need `DJANGO_READ_DOT_ENV_FILE` set to `True` and `DJANGO_SETTINGS_MODULE` set to `config.settings.test` for it to work.

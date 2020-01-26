@@ -23,7 +23,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            pip install poetry
+            pip install --upgrade --user poetry
             poetry install
 
       - save_cache:
