@@ -1,10 +1,22 @@
-version: '2'
+version: "3.7"
 
 volumes:
   postgres_data: {}
   postgres_backup: {}
 
 services:
+  webapp:
+    build:
+      context: .
+    command:
+      [
+        "/venv/bin/gunicorn",
+        "--bind",
+        "0.0.0.0:5000",
+        "--forwarded-allow-ips='*'",
+        "dotmanca.wsgi:application",
+      ]
+    env_file: .env
   postgres:
     image: postgres:9.6
     volumes:
