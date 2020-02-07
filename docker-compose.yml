@@ -8,6 +8,8 @@ services:
   webapp:
     build:
       context: .
+    ports:
+      - "8000:5000"
     command:
       [
         "/venv/bin/gunicorn",
