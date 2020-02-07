@@ -23,6 +23,13 @@ RUN poetry export -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
 COPY . .
 RUN poetry build && /venv/bin/pip install dist/*.whl
+RUN mv config /venv/lib/python3.8/site-packages/
+RUN mv comics /venv/lib/python3.8/site-packages/
+RUN mv gallery /venv/lib/python3.8/site-packages/
+RUN mv characters /venv/lib/python3.8/site-packages/
+RUN mv places /venv/lib/python3.8/site-packages/
+RUN mv news /venv/lib/python3.8/site-packages/
+RUN mv main /venv/lib/python3.8/site-packages/
 
 FROM base as final
 
@@ -30,5 +37,4 @@ RUN apt-get update && apt-get install -y libpq-dev
 COPY --from=builder /venv /venv
 COPY docker-entrypoint.sh config/wsgi.py ./
 RUN chmod u+x docker-entrypoint.sh
-RUN ls -al /venv/lib/python3.8/site-packages/dotmanca
 CMD ["./docker-entrypoint.sh"]

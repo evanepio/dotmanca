@@ -14,14 +14,14 @@ services:
         "--bind",
         "0.0.0.0:5000",
         "--forwarded-allow-ips='*'",
-        "dotmanca.wsgi:application",
+        "config.wsgi:application",
       ]
-    env_file: .env
+    env_file: docker.env
   postgres:
     image: postgres:9.6
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backups
-    env_file: .env
+    env_file: docker.env
     ports:
       - "5432:5432"
