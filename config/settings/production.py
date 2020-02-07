@@ -75,19 +75,6 @@ TEMPLATES[0]["OPTIONS"]["loaders"] = [
     )
 ]
 
-# DATABASE CONFIGURATION
-# ------------------------------------------------------------------------------
-DATABASES = {}
-DATABASES["default"] = {
-    "ENGINE": "django.db.backends.postgresql",
-    "NAME": env("POSTGRES_USER", default="django_user"),
-    "USER": env("POSTGRES_USER", default="django_user"),
-    "PASSWORD": env("POSTGRES_PASSWORD", default="django_user"),
-    "HOST": env("POSTGRES_HOST", default="localhost"),
-    "PORT": env("POSTGRES_PORT", default="5432"),
-}
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
-
 # CACHING
 # ------------------------------------------------------------------------------
 

@@ -59,6 +59,19 @@ LOCAL_APPS = [
     "comics.apps.ComicsConfig",
 ]
 
+# DATABASE CONFIGURATION
+# ------------------------------------------------------------------------------
+DATABASES = {}
+DATABASES["default"] = {
+    "ENGINE": "django.db.backends.postgresql",
+    "NAME": env("POSTGRES_USER", default="django_user"),
+    "USER": env("POSTGRES_USER", default="django_user"),
+    "PASSWORD": env("POSTGRES_PASSWORD", default="django_user"),
+    "HOST": env("POSTGRES_HOST", default="localhost"),
+    "PORT": env("POSTGRES_PORT", default="5432"),
+}
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
