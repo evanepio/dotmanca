@@ -35,6 +35,6 @@ FROM base as final
 
 RUN apt-get update && apt-get install -y libpq-dev
 COPY --from=builder /venv /venv
-COPY docker-entrypoint.sh config/wsgi.py ./
+COPY docker-entrypoint.sh ./
 RUN chmod u+x docker-entrypoint.sh
 CMD ["./docker-entrypoint.sh"]
