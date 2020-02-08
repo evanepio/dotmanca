@@ -24,6 +24,7 @@ sftp-config.json
 __pycache__
 dotmanca.egg-info/
 dist/
+.python-version
 
 # Logs
 logs
