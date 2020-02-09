@@ -35,6 +35,6 @@ FROM base as final
 
 RUN apt-get update && apt-get install -y libpq-dev
 COPY --from=builder /venv /venv
-COPY docker-entrypoint.sh ./
+COPY docker-entrypoint.sh manage.py ./
 RUN chmod u+x docker-entrypoint.sh
 CMD ["./docker-entrypoint.sh"]
