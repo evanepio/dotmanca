@@ -10,14 +10,6 @@ services:
       context: .
     ports:
       - "8000:5000"
-    command:
-      [
-        "/venv/bin/gunicorn",
-        "--bind",
-        "0.0.0.0:5000",
-        "--forwarded-allow-ips='*'",
-        "config.wsgi:application",
-      ]
     env_file: docker.env
   postgres:
     image: postgres:9.6
