@@ -44,13 +44,14 @@ Create an `.env` file in the root of the project folder. It should contain the f
 DJANGO_READ_DOT_ENV_FILE=True
 POSTGRES_PASSWORD=django_pass
 POSTGRES_USER=django_user
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
 DJANGO_ADMIN_URL=
 DJANGO_SETTINGS_MODULE=config.settings.local
 DJANGO_SECRET_KEY=UseAGeneratedValueOrDontAsItsLocal
 DJANGO_ALLOWED_HOSTS=.dotman.ca
 DJANGO_SECURE_SSL_REDIRECT=False
 DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
-DATABASE_URL="postgres://django_user:django_pass@localhost:5432/django_user"
 ```
 
 You can review those settings, or accept as-is since this is for local. Do not use the above for production or UA environments. The `DATA_BASE_URL` must contain `POSTGRES_PASSWORD` and `POSTGRES_USER`.
