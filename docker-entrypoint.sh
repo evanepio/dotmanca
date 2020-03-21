@@ -29,6 +29,5 @@ until postgres_ready; do
 done
 >&2 echo 'PostgreSQL is available'
 
-/venv/bin/python manage.py collectstatic
 /venv/bin/python manage.py migrate
 /venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 --forwarded-allow-ips='*' config.wsgi:application
