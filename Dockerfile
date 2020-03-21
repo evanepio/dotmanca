@@ -14,7 +14,6 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
     POETRY_VERSION=1.0.1
 
 RUN apt-get update && apt-get install -y libpq-dev
-# RUN apk add --no-cache gcc libffi-dev musl-dev postgresql-dev
 RUN pip install "poetry==$POETRY_VERSION"
 RUN python -m venv /venv
 
