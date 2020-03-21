@@ -8,8 +8,6 @@ services:
   webapp:
     build:
       context: .
-    ports:
-      - "8000:5000"
     env_file: docker.env
   postgres:
     image: postgres:9.6
@@ -24,4 +22,4 @@ services:
       context: .
       target: static-assests
     ports:
-      - "8080:80"
+      - "8000:80"
