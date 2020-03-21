@@ -5,8 +5,7 @@ FROM python:3.8.1-slim as base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
-    PYTHONUNBUFFERED=1 \
-    DJANGO_DEBUG=False
+    PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
@@ -18,7 +17,8 @@ FROM base as builder
 ENV PIP_DEFAULT_TIMEOUT=100 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.0.1
+    POETRY_VERSION=1.0.1 \
+    DJANGO_DEBUG=False
 
 RUN apt-get update && apt-get install -y libpq-dev
 RUN pip install "poetry==$POETRY_VERSION"
