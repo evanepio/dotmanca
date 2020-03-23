@@ -59,3 +59,5 @@ TEMPLATES[0]["OPTIONS"]["loaders"] = [
     ]
 ]
 TEMPLATES[0]["OPTIONS"]["debug"] = True
+
+DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": "testdb"}}

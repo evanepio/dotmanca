@@ -121,6 +121,9 @@ server {
     location /static/ {
         alias /path/of/files/readable/by/www-data/staticfiles/;
     }
+    location /media/ {
+        alias /path/of/files/readable/by/www-data/mediafiles/;
+    }
 
     location / {
         include proxy_params;

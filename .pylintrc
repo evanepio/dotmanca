@@ -1,5 +1,6 @@
 [MASTER]
 load-plugins=pylint_common, pylint_django
+ignore=config.settings
 
 [FORMAT]
 max-line-length=120
