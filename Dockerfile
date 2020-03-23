@@ -1,3 +1,6 @@
+###############################################################################
+# STAGE 1 - Build a common base to use for the remaining stages
+###############################################################################
 FROM python:3.8.1-slim as base
 
 ENV PYTHONFAULTHANDLER=1 \
@@ -6,15 +9,18 @@ ENV PYTHONFAULTHANDLER=1 \
 
 WORKDIR /app
 
+###############################################################################
+# STAGE 2 - Build the Virtual Enviuronemtn with everything installed in it.
+###############################################################################
 FROM base as builder
 
 ENV PIP_DEFAULT_TIMEOUT=100 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.0.1
+    POETRY_VERSION=1.0.1 \
+    DJANGO_DEBUG=False
 
 RUN apt-get update && apt-get install -y libpq-dev
-# RUN apk add --no-cache gcc libffi-dev musl-dev postgresql-dev
 RUN pip install "poetry==$POETRY_VERSION"
 RUN python -m venv /venv
 
@@ -30,7 +36,19 @@ RUN mv characters /venv/lib/python3.8/site-packages/
 RUN mv places /venv/lib/python3.8/site-packages/
 RUN mv news /venv/lib/python3.8/site-packages/
 RUN mv main /venv/lib/python3.8/site-packages/
+RUN /venv/bin/python manage.py collectstatic --clear --no-input
 
+###############################################################################
+# STAGE 3 - Copy final virtual environment to build a static assest image
+###############################################################################
+FROM nginx:alpine as static-assests
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /venv/lib/python3.8/site-packages/staticfiles /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+###############################################################################
+# STAGE 4 - Copy the virtual env from a previous stage to get final image
+###############################################################################
 FROM base as final
 
 RUN apt-get update && apt-get install -y libpq-dev
