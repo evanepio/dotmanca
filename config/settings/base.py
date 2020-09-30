@@ -172,13 +172,31 @@ TEMPLATES = [
     }
 ]
 
-# STATIC FILE CONFIGURATION
+# STATIC FILE and MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(ROOT_DIR("staticfiles"))
-
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
-STATIC_URL = "/static/"
+
+USE_S3 = env.bool("USE_S3", default=False)
+
+if USE_S3:
+    # aws settings
+    AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
+    AWS_DEFAULT_ACL = "public-read"
+    AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME")
+    DOTMAN_BUCKET_DOMAIN_SUFFIX = env("DOTMAN_BUCKET_DOMAIN_SUFFIX")
+    AWS_S3_ENDPOINT_URL = f"https://{AWS_S3_REGION_NAME}.{DOTMAN_BUCKET_DOMAIN_SUFFIX}"
+    AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN")
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+    # s3 static settings
+    AWS_LOCATION = env("AWS_LOCATION")
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+else:
+    STATIC_ROOT = str(ROOT_DIR("staticfiles"))
+    STATIC_URL = "/static/"
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
