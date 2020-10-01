@@ -181,6 +181,9 @@ TEMPLATES = [
 
 USE_S3 = env.bool("USE_S3", default=False)
 
+STATIC_LOCATION = ""
+PUBLIC_MEDIA_LOCATION = ""
+
 if USE_S3:
     # aws settings
     AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
