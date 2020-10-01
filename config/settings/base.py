@@ -176,6 +176,8 @@ TEMPLATES = [
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 
 USE_S3 = env.bool("USE_S3", default=False)
 
@@ -191,12 +193,18 @@ if USE_S3:
     AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN")
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
     # s3 static settings
-    AWS_LOCATION = env("AWS_LOCATION")
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
-    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    STATIC_LOCATION = env("STATIC_LOCATION")
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/"
+    STATICFILES_STORAGE = "dotmanca.storage.StaticStorage"
+    # s3 public media settings
+    PUBLIC_MEDIA_LOCATION = env("PUBLIC_MEDIA_LOCATION")
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
+    DEFAULT_FILE_STORAGE = "dotmanca.storage.PublicMediaStorage"
 else:
     STATIC_ROOT = str(ROOT_DIR("staticfiles"))
     STATIC_URL = "/static/"
+    MEDIA_ROOT = str(APPS_DIR("media"))
+    MEDIA_URL = "/media/"
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
@@ -206,14 +214,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-
-# MEDIA CONFIGURATION
-# ------------------------------------------------------------------------------
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR("media"))
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
-MEDIA_URL = "/media/"
 
 # URL Configuration
 # ------------------------------------------------------------------------------
