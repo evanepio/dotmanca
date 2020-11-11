@@ -20,8 +20,74 @@ class StaticStorage(S3Boto3Storage):
     location = settings.STATIC_LOCATION
     default_acl = "public-read"
 
+    def size(self, name):
+        """
+        Return the total size, in bytes, of the file specified by name.
+        """
+        raise NotImplementedError("subclasses of Storage must provide a size() method")
+
+    def get_accessed_time(self, name):
+        """
+        Return the last accessed time (as a datetime) of the file specified by
+        name. The datetime will be timezone-aware if USE_TZ=True.
+        """
+        raise NotImplementedError(
+            "subclasses of Storage must provide a get_accessed_time() method"
+        )
+
+    def get_created_time(self, name):
+        """
+        Return the creation time (as a datetime) of the file specified by name.
+        The datetime will be timezone-aware if USE_TZ=True.
+        """
+        raise NotImplementedError(
+            "subclasses of Storage must provide a get_created_time() method"
+        )
+
+    def get_modified_time(self, name):
+        """
+        Return the last modified time (as a datetime) of the file specified by
+        name. The datetime will be timezone-aware if USE_TZ=True.
+        """
+        raise NotImplementedError(
+            "subclasses of Storage must provide a get_modified_time() method"
+        )
+
 
 class PublicMediaStorage(S3Boto3Storage):
     location = settings.PUBLIC_MEDIA_LOCATION
     default_acl = "public-read"
     file_overwrite = True
+
+    def size(self, name):
+        """
+        Return the total size, in bytes, of the file specified by name.
+        """
+        raise NotImplementedError("subclasses of Storage must provide a size() method")
+
+    def get_accessed_time(self, name):
+        """
+        Return the last accessed time (as a datetime) of the file specified by
+        name. The datetime will be timezone-aware if USE_TZ=True.
+        """
+        raise NotImplementedError(
+            "subclasses of Storage must provide a get_accessed_time() method"
+        )
+
+    def get_created_time(self, name):
+        """
+        Return the creation time (as a datetime) of the file specified by name.
+        The datetime will be timezone-aware if USE_TZ=True.
+        """
+        raise NotImplementedError(
+            "subclasses of Storage must provide a get_created_time() method"
+        )
+
+    def get_modified_time(self, name):
+        """
+        Return the last modified time (as a datetime) of the file specified by
+        name. The datetime will be timezone-aware if USE_TZ=True.
+        """
+        raise NotImplementedError(
+            "subclasses of Storage must provide a get_modified_time() method"
+        )
