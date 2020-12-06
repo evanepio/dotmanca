@@ -80,3 +80,4 @@ staticfiles/
 
 .cache/
 
+.vscode/settings.json

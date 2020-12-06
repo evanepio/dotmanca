@@ -98,3 +98,32 @@ open htmlcov/index.html
     $ pytest
 
 > Note: you need `DJANGO_READ_DOT_ENV_FILE` set to `True` and `DJANGO_SETTINGS_MODULE` set to `config.settings.test` for it to work.
+
+## Using VS Code Dev Container
+
+1. Install Remote Containers Extension
+2. Open the `dotmanca` project
+3. Since I've committed `.devcontainer` directory, it should start the container immediately. If it says Docker is not installed and you know it is, click "Retry" and it should be good to go.
+4. Open a terminal and enter `poetry install`, and everything should install properly.
+5. Then run `poetry run which python` and set the python interpretter of VS Code to that value (this creates a `.vscode/settings.json` file in the project)
+
+Your `.env` files should look like:
+
+```
+DJANGO_READ_DOT_ENV_FILE=True
+
+POSTGRES_PASSWORD=postgres
+POSTGRES_USER=postgres
+POSTGRES_DB=postgres
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
+
+DJANGO_ADMIN_URL=
+DJANGO_SETTINGS_MODULE=config.settings.local
+DJANGO_SECRET_KEY=fantastic
+DJANGO_ALLOWED_HOSTS=.dotman.ca
+DJANGO_SECURE_SSL_REDIRECT=False
+DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+
+USE_S3=False
+```
