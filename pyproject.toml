@@ -2,7 +2,7 @@
 name = "dotmanca"
 version = "3.0.0"
 description = "The Official Dotman Website"
-authors = ["Evan Porter <evan.porter@dotman.ca>"]
+authors = ["Evan Porter"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
