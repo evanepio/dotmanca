@@ -2,7 +2,7 @@
 name = "dotmanca"
 version = "3.0.0"
 description = "The Official Dotman Website"
-authors = ["Evan Porter <evan.porter@dotman.ca>"]
+authors = ["Evan Porter"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -11,11 +11,11 @@ pillow = ">=6.2.2"
 django-environ = "^0.4.5"
 markdown = "^3.1"
 django-markup = "^1.4"
-psycopg2-binary = "^2.7"
 gunicorn = "^19.9"
 argon2-cffi = "^19.1"
 bleach-whitelist = "^0.0.9"
 bleach = "^3.1"
+psycopg2-binary = "^2.8.6"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=5.3"
