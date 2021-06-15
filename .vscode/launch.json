@@ -36,6 +36,17 @@
             ],
             "django": true,
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Python: Django Create Superuser",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "createsuperuser"
+            ],
+            "django": true,
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
