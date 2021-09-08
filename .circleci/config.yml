@@ -52,7 +52,7 @@ jobs:
       - run:
           name: deploy over ssh
           command: |
-            ssh $SSH_USER@$SSH_HOST "export DJANGO_READ_DOT_ENV_FILE=True && cd $DOTMAN_DIR && git pull && ~/.poetry/bin/poetry install --no-dev && ~/.poetry/bin/poetry run python manage.py migrate && ~/.poetry/bin/poetry run python manage.py collectstatic --no-input && sudo /bin/systemctl restart gunicorn"
+            ssh $SSH_USER@$SSH_HOST "export DJANGO_READ_DOT_ENV_FILE=True && cd $DOTMAN_DIR && git checkout main && git pull && ~/.poetry/bin/poetry install --no-dev && ~/.poetry/bin/poetry run python manage.py migrate && ~/.poetry/bin/poetry run python manage.py collectstatic --no-input && sudo /bin/systemctl restart gunicorn"
 
 workflows:
   version: 2
