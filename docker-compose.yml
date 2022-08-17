@@ -5,21 +5,11 @@ volumes:
   postgres_backup: {}
 
 services:
-  webapp:
-    build:
-      context: .
-    env_file: docker.env
   postgres:
-    image: postgres:9.6
+    image: postgres:11
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backups
     env_file: docker.env
     ports:
       - "5432:5432"
-  static:
-    build:
-      context: .
-      target: static-assests
-    ports:
-      - "8000:80"
