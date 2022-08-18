@@ -13,9 +13,9 @@ markdown = "^3.4"
 django-markup = "^1.6"
 gunicorn = "^19.9"
 argon2-cffi = "^19.1"
-bleach-whitelist = "^0.0.9"
-bleach = "^3.1"
 psycopg2-binary = "2.9.3"
+bleach = "^5.0.1"
+bleach-allowlist = "^1.0.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1"
