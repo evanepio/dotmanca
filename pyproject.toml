@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dotmanca"
-version = "3.0.0"
+version = "4.0.0"
 description = "The Official Dotman Website"
 authors = ["Evan Porter"]
 
