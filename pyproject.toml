@@ -6,7 +6,7 @@ authors = ["Evan Porter"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-django = ">=3.2"
+django = "^4.1"
 pillow = ">=8.2"
 django-environ = "^0.4.5"
 markdown = "^3.1"
