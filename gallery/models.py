@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-from dotmanca.storage import OverwriteStorage
-
 
 class Gallery(models.Model):
     name = models.CharField(max_length=50)
@@ -39,7 +37,6 @@ class GalleryImage(models.Model):
         null=False,
         blank=False,
         upload_to=gallery_image_upload_to,
-        storage=OverwriteStorage(),
     )
     added_timestamp = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)

@@ -44,7 +44,7 @@ DJANGO_APPS = [
     # Admin
     "django.contrib.admin",
 ]
-THIRD_PARTY_APPS = ["django_markup"]  # formatter
+THIRD_PARTY_APPS = ["django_markup", "storages"]  # formatter
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
@@ -172,13 +172,47 @@ TEMPLATES = [
     }
 ]
 
-# STATIC FILE CONFIGURATION
+# STATIC FILE AND MEDIA CONFIGURATION CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(ROOT_DIR("staticfiles"))
-
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
-STATIC_URL = "/static/"
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
+
+USE_S3 = env.bool("USE_S3", default=False)
+
+if USE_S3:
+    # aws settings
+    AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
+    AWS_DEFAULT_ACL = "public-read"
+    AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME")
+
+    # Without AWS_S3_CUSTOM_DOMAIN, this controls where browser retrieves files from
+    AWS_S3_ENDPOINT_URL = env("AWS_S3_ENDPOINT_URL")
+    # AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN")
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+
+    DOTMAN_STATIC_AND_MEDIA_BASE_URL = env("DOTMAN_STATIC_AND_MEDIA_BASE_URL")
+
+    # s3 static settings
+    STATIC_LOCATION = env("STATIC_LOCATION")
+    STATIC_URL = f"{DOTMAN_STATIC_AND_MEDIA_BASE_URL}/{STATIC_LOCATION}/"
+    STATICFILES_STORAGE = "dotmanca.storage.StaticStorage"
+    # s3 public media settings
+    PUBLIC_MEDIA_LOCATION = env("PUBLIC_MEDIA_LOCATION")
+    MEDIA_URL = f"{DOTMAN_STATIC_AND_MEDIA_BASE_URL}/{AWS_STORAGE_BUCKET_NAME}/{PUBLIC_MEDIA_LOCATION}/"
+    DEFAULT_FILE_STORAGE = "dotmanca.storage.PublicMediaStorage"
+else:
+    # Need to be empty for S3 storage classes, even if not using S3
+    STATIC_LOCATION = ""
+    PUBLIC_MEDIA_LOCATION = ""
+
+    STATIC_ROOT = str(ROOT_DIR("staticfiles"))
+    STATIC_URL = "/static/"
+    MEDIA_ROOT = str(APPS_DIR("media"))
+    MEDIA_URL = "/media/"
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
@@ -188,14 +222,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-
-# MEDIA CONFIGURATION
-# ------------------------------------------------------------------------------
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR("media"))
-
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
-MEDIA_URL = "/media/"
 
 # URL Configuration
 # ------------------------------------------------------------------------------

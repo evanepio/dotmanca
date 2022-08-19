@@ -3,6 +3,7 @@ version: "3.7"
 volumes:
   postgres_data: {}
   postgres_backup: {}
+  s3_data: {}
 
 services:
 
@@ -27,3 +28,15 @@ services:
       target: static-assests
     ports:
       - "8000:80"
+
+  s3:
+    image: quay.io/minio/minio
+    volumes:
+      - s3_data:/data
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"

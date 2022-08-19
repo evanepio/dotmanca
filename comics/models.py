@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-from dotmanca.storage import OverwriteStorage
-
 
 def arc_image_upload_to(instance, file_name):
     file_extension = file_name.split(".")[-1]
@@ -18,7 +16,6 @@ class Arc(models.Model):
         null=False,
         blank=False,
         upload_to=arc_image_upload_to,
-        storage=OverwriteStorage(),
     )
 
     def __str__(self):
@@ -43,7 +40,6 @@ class Issue(models.Model):
         null=False,
         blank=False,
         upload_to=arc_image_upload_to,
-        storage=OverwriteStorage(),
     )
 
     gallery = models.OneToOneField(
