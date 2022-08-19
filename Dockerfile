@@ -1,7 +1,7 @@
 ###############################################################################
 # STAGE 1 - Build a common base to use for the remaining stages
 ###############################################################################
-FROM python:3.8.1-slim as base
+FROM python:3.10-slim as base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
@@ -17,7 +17,7 @@ FROM base as builder
 ENV PIP_DEFAULT_TIMEOUT=100 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.0.1 \
+    POETRY_VERSION=1.1 \
     DJANGO_DEBUG=False
 
 RUN apt-get update && apt-get install -y libpq-dev
@@ -29,13 +29,13 @@ RUN poetry export -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
 COPY . .
 RUN poetry build && /venv/bin/pip install dist/*.whl
-RUN mv config /venv/lib/python3.8/site-packages/
-RUN mv comics /venv/lib/python3.8/site-packages/
-RUN mv gallery /venv/lib/python3.8/site-packages/
-RUN mv characters /venv/lib/python3.8/site-packages/
-RUN mv places /venv/lib/python3.8/site-packages/
-RUN mv news /venv/lib/python3.8/site-packages/
-RUN mv main /venv/lib/python3.8/site-packages/
+RUN mv config /venv/lib/python3.10/site-packages/
+RUN mv comics /venv/lib/python3.10/site-packages/
+RUN mv gallery /venv/lib/python3.10/site-packages/
+RUN mv characters /venv/lib/python3.10/site-packages/
+RUN mv places /venv/lib/python3.10/site-packages/
+RUN mv news /venv/lib/python3.10/site-packages/
+RUN mv main /venv/lib/python3.10/site-packages/
 RUN /venv/bin/python manage.py collectstatic --clear --no-input
 
 ###############################################################################
@@ -43,7 +43,7 @@ RUN /venv/bin/python manage.py collectstatic --clear --no-input
 ###############################################################################
 FROM nginx:alpine as static-assests
 RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /venv/lib/python3.8/site-packages/staticfiles /usr/share/nginx/html
+COPY --from=builder /venv/lib/python3.10/site-packages/staticfiles /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 ###############################################################################
