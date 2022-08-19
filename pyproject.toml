@@ -5,7 +5,7 @@ description = "The Official Dotman Website"
 authors = ["Evan Porter"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 Django = "^4.1"
 pillow = "^9.2"
 django-environ = "^0.4.5"
