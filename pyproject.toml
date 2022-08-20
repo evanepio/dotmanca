@@ -29,6 +29,11 @@ freezegun = "^0.3.11"
 rope = "^0.14.0"
 black = "19.3b0"
 
+[tool.coverage.run]
+include = ["dotmanca/*", "characters/*", "gallery/*", "main/*", "news/*", "places/*"]
+omit = ["*migrations*", "*tests*"]
+plugins = ["django_coverage_plugin"]
+
 [build-system]
 requires = ["poetry>=1.1"]
 build-backend = "poetry.masonry.api"
