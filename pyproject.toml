@@ -3,6 +3,8 @@ name = "dotmanca"
 version = "4.0.0"
 description = "The Official Dotman Website"
 authors = ["Evan Porter"]
+license = "MIT"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
