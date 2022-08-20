@@ -31,6 +31,10 @@ freezegun = "^0.3.11"
 rope = "^0.14.0"
 black = "19.3b0"
 
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+
 [tool.coverage.run]
 include = ["dotmanca/*", "characters/*", "gallery/*", "main/*", "news/*", "places/*"]
 omit = ["*migrations*", "*tests*"]
