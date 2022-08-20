@@ -30,10 +30,12 @@ pytest-django = "^4.5"
 freezegun = "^0.3.11"
 rope = "^0.14.0"
 black = "19.3b0"
+pytest-env = "^0.6.2"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings.test"
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
+env = ["DJANGO_READ_DOT_ENV_FILE=True", "DJANGO_SETTINGS_MODULE=config.settings.test"]
 
 [tool.coverage.run]
 include = ["dotmanca/*", "characters/*", "gallery/*", "main/*", "news/*", "places/*"]
