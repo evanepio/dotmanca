@@ -1,0 +1,13 @@
+.coverage
+htmlcov
+.vscode
+.github
+.pytest_cache
+staticfiles
+.env
+.gitignore
+docs
+**/__pycache__
+**/.DS_Store
+.git
+.devcontainer
