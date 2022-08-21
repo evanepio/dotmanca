@@ -174,5 +174,10 @@ nav[aria-label="Secondary"] {
 }
 
 figure {
+  max-width: 100%;
   text-align: center;
+}
+
+figure > img {
+  max-width: 100%;
 }
