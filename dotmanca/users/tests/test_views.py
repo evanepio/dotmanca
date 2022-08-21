@@ -1,13 +1,7 @@
-from django.test import RequestFactory
-
-from django.test import TestCase
-
-from ..views import (
-    UserRedirectView,
-    UserUpdateView
-)
+from django.test import RequestFactory, TestCase
 
 from ..models import User
+from ..views import UserRedirectView, UserUpdateView
 
 
 class BaseUserTestCase(TestCase):

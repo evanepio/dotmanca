@@ -1,7 +1,6 @@
 from django.test import TestCase
 
-
-from .models import Issue, Arc
+from .models import Arc, Issue
 
 
 class IssueGetAbsoluteUrl(TestCase):

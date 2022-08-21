@@ -1,7 +1,7 @@
 from django.views import generic
 
-from .models import Gallery, GalleryImage
 from . import queries
+from .models import Gallery, GalleryImage
 
 
 class IndexView(generic.ListView):

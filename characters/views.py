@@ -1,6 +1,6 @@
 from django.views import generic
 
-from .models import Team, Character
+from .models import Character, Team
 
 
 class IndexView(generic.ListView):
