@@ -43,6 +43,7 @@ omit = ["*migrations*", "*tests*"]
 plugins = ["django_coverage_plugin"]
 
 [tool.black]
+target-version = ['py310']
 exclude = '''
 /(
     \.git
