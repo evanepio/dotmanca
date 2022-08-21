@@ -29,7 +29,7 @@ django-coverage-plugin = "^2.0"
 pytest-django = "^4.5"
 freezegun = "^0.3.11"
 rope = "^0.14.0"
-black = "19.3b0"
+black = "^22.6"
 pytest-env = "^0.6.2"
 
 [tool.pytest.ini_options]
@@ -41,6 +41,17 @@ env = ["DJANGO_READ_DOT_ENV_FILE=True", "DJANGO_SETTINGS_MODULE=config.settings.
 include = ["dotmanca/*", "characters/*", "gallery/*", "main/*", "news/*", "places/*"]
 omit = ["*migrations*", "*tests*"]
 plugins = ["django_coverage_plugin"]
+
+[tool.black]
+exclude = '''
+/(
+    \.git
+  | docs
+  | migrations
+  | htmlcov
+  | \.pytest_cache
+)/
+'''
 
 [build-system]
 requires = ["poetry>=1.1"]
