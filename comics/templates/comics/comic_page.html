@@ -21,7 +21,7 @@
     &vzigzag; <a href="{{ next_issue.get_absolute_url }}">{{next_issue.name}} &raquo;</a>
     {% endif %}
 </nav>
-<figure><img src="{{ MEDIA_URL }}{{ galleryimage.the_image }}" /></figure>
+<figure><img src="{{ galleryimage.the_image.url }}" /></figure>
 <section>{{ galleryimage.description|apply_markup:"markdown" }}</section>
 
 {% endblock content %}

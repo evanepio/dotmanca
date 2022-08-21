@@ -3,23 +3,40 @@ version: "3.7"
 volumes:
   postgres_data: {}
   postgres_backup: {}
+  s3_data: {}
 
 services:
+
   webapp:
     build:
       context: .
     env_file: docker.env
+
   postgres:
-    image: postgres:9.6
+    image: postgres:11
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backups
     env_file: docker.env
     ports:
       - "5432:5432"
+
+  # More that static assests, also proxy to webapp via nginx.conf
   static:
     build:
       context: .
       target: static-assests
     ports:
       - "8000:80"
+
+  s3:
+    image: quay.io/minio/minio
+    volumes:
+      - s3_data:/data
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"

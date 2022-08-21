@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-from dotmanca.storage import OverwriteStorage
-
 
 def place_image_upload_to(instance, file_name):
     file_extension = file_name.split(".")[-1]
@@ -18,7 +16,6 @@ class Place(models.Model):
         blank=True,
         null=True,
         upload_to=place_image_upload_to,
-        storage=OverwriteStorage(),
     )
 
     def get_absolute_url(self):

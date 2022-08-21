@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-from dotmanca.storage import OverwriteStorage
 from gallery.models import GalleryImage
 
 
@@ -35,7 +34,6 @@ class Character(models.Model):
         blank=True,
         null=True,
         upload_to=character_image_upload_to,
-        storage=OverwriteStorage(),
     )
     vital_stats = models.TextField(blank=True)
     backstory = models.TextField(blank=True)

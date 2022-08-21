@@ -7,7 +7,7 @@
     <h1>{{ place }}</h1>
     <nav aria-label="Secondary"><a href="{% url 'places:index' %}">Back to Places</a></nav>
     {% if place.the_image %}
-    <figure><img src="{{ MEDIA_URL }}{{ place.the_image }}" /></figure>
+    <figure><img src="{{ place.the_image.url }}" /></figure>
     {% endif %}
     <article>{{ place.description|apply_markup:"markdown" }}</article>
 

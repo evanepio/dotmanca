@@ -58,7 +58,7 @@ You can review those settings, or accept as-is since this is for local. Do not u
 
 Next, we can bring up the junk database to use:
 
-    $ docker-compose up -d
+    $ docker compose up -d
 
 This only brings up a database. In the future, I'd probably want to bring up the `python managa.py runserver` with it as well.
 

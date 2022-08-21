@@ -8,7 +8,7 @@
     <nav aria-label="Secondary"><a href="{% url 'characters:index' %}">Back to Characters</a></nav>
     <section>{{ character.vital_stats|apply_markup:"markdown" }}</section>
     {% if character.the_image %}
-    <figure><img src="{{ MEDIA_URL }}{{ character.the_image }}" /></figure>
+    <figure><img src="{{ character.the_image.url }}" /></figure>
     {% endif %}
     <section>{{ character.backstory|apply_markup:"markdown" }}</section>
 
