@@ -30,6 +30,7 @@ pytest-django = "^4.5"
 freezegun = "^0.3.11"
 black = "^22.6"
 pytest-env = "^0.6.2"
+isort = "^5.10.1"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings.test"
@@ -51,6 +52,10 @@ exclude = '''
   | \.pytest_cache
 )/
 '''
+
+[tool.isort]
+profile = "black"
+skip_glob = ["docs/*", "*/migrations/*"]
 
 [build-system]
 requires = ["poetry>=1.1"]
