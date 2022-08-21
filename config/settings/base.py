@@ -270,7 +270,7 @@ LOGIN_URL = "account_login"
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r"^admin/"
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
