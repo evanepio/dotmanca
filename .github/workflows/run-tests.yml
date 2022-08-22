@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
 jobs:
   test:
 
@@ -17,16 +20,20 @@ jobs:
         poetry-version: ["1.1"]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Harden Runner
+      uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+    - uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28 # v3
     - name: Install poetry
       run: pipx install poetry
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@98f2ad02fd48d057ee3b4d4f66525b231c3e52b6 # v3
       with:
         python-version: ${{ matrix.python-version }}
         cache: 'poetry'
     - name: Set up Poetry ${{ matrix.poetry-version }}
-      uses: abatilo/actions-poetry@v2.0.0
+      uses: abatilo/actions-poetry@1f9adef0261964471fcf93ba269e1762a33a8a26 # v2.0.0
       with:
         poetry-version: ${{ matrix.poetry-version }}
     - name: Install Dependencies
