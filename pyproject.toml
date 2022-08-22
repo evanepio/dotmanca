@@ -31,6 +31,7 @@ freezegun = "^0.3.11"
 black = "^22.6"
 pytest-env = "^0.6.2"
 isort = "^5.10.1"
+flake8 = "^5.0.4"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings.test"
