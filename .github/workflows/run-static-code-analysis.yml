@@ -38,3 +38,6 @@ jobs:
     - name: Run black
       run: |
         poetry run black . --check --diff
+    - name: Run flake8
+      run: |
+        poetry run flake8

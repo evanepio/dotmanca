@@ -6,4 +6,4 @@ class GalleryConfig(AppConfig):
 
     def ready(self):
         # Only need to import them because the decorators will register on load
-        from .signals import handlers
+        from .signals import handlers  # noqa
