@@ -67,7 +67,7 @@ jobs:
       run: |
         poetry run flake8
 
-  test:
+  pytest:
     runs-on: ubuntu-latest
     needs: build
     - name: Run Tests
