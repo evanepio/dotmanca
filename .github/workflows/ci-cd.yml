@@ -1,4 +1,4 @@
-name: Run Static Code Analysis
+name: Continuous Integration and Deployment
 
 on:
   push:
@@ -10,20 +10,23 @@ permissions:
   contents: read
 
 jobs:
-  analyze-code:
-
+  harden-runner:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: ["3.10"]
-        poetry-version: ["1.1"]
-
     steps:
     - name: Harden Runner
       uses: step-security/harden-runner@dd2c410b088af7c0dc8046f3ac9a8f4148492a95
       with:
         egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
+  build:
+    runs-on: ubuntu-latest
+    needs: harden-runner
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: ["3.10"]
+        poetry-version: ["1.1"]
+    steps:
     - uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28 # v3
     - name: Install poetry
       run: pipx install poetry
@@ -39,12 +42,46 @@ jobs:
     - name: Install Dependencies
       run: |
         poetry install
+
+  isort-import-sorting:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Run isort
       run: |
         poetry run isort . --check-only
+
+  black-code-formatting:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Run black
       run: |
         poetry run black . --check --diff
+
+  flake8-linting:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Run flake8
       run: |
         poetry run flake8
+
+  run-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    - name: Run Tests
+      run: |
+        poetry run pytest
+  
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: 
+  #   - isort-import-sorting
+  #   - black-code-formatting
+  #   - flake8-linting
+  #   - run-tests
+  #   steps:
+  #   - name: Deploy... eventually...
+  #     run: |
+  #       some awesome command
