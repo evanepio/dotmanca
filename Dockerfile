@@ -17,37 +17,28 @@ FROM base as builder
 ENV PIP_DEFAULT_TIMEOUT=100 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.1 \
+    POETRY_VERSION=1.1.15 \
     DJANGO_DEBUG=False
 
-RUN apt-get update && apt-get install -y libpq-dev
-RUN pip install "poetry==$POETRY_VERSION"
-RUN python -m venv /venv
+RUN apt-get update && apt-get install -y libpq-dev &&\
+    pip install "poetry==$POETRY_VERSION" &&\
+    python -m venv /venv
 
 COPY pyproject.toml poetry.lock ./
 RUN poetry export -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
 COPY . .
-RUN poetry build && /venv/bin/pip install dist/*.whl
-RUN mv config /venv/lib/python3.10/site-packages/
-RUN mv comics /venv/lib/python3.10/site-packages/
-RUN mv gallery /venv/lib/python3.10/site-packages/
-RUN mv characters /venv/lib/python3.10/site-packages/
-RUN mv places /venv/lib/python3.10/site-packages/
-RUN mv news /venv/lib/python3.10/site-packages/
-RUN mv main /venv/lib/python3.10/site-packages/
-RUN /venv/bin/python manage.py collectstatic --clear --no-input
+RUN poetry build && /venv/bin/pip install dist/*.whl &&\
+    mv config /venv/lib/python3.10/site-packages/ &&\
+    mv comics /venv/lib/python3.10/site-packages/ &&\
+    mv gallery /venv/lib/python3.10/site-packages/ &&\
+    mv characters /venv/lib/python3.10/site-packages/ &&\
+    mv places /venv/lib/python3.10/site-packages/ &&\
+    mv news /venv/lib/python3.10/site-packages/ &&\
+    mv main /venv/lib/python3.10/site-packages/ 
 
 ###############################################################################
-# STAGE 3 - Copy final virtual environment to build a static assest image
-###############################################################################
-FROM nginx:alpine as static-assests
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /venv/lib/python3.10/site-packages/staticfiles /usr/share/nginx/html
-COPY ./nginx.conf /etc/nginx/nginx.conf
-
-###############################################################################
-# STAGE 4 - Copy the virtual env from a previous stage to get final image
+# STAGE 3 - Copy the virtual env from a previous stage to get final image
 ###############################################################################
 FROM base as final
 

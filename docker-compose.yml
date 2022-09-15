@@ -10,24 +10,43 @@ services:
   webapp:
     build:
       context: .
-    env_file: docker.env
+    environment:
+      - POSTGRES_PASSWORD=django_pass
+      - POSTGRES_USER=django_user
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=django_user
+      - DJANGO_ADMIN_URL=^admin/
+      - DJANGO_SETTINGS_MODULE=config.settings.production
+      - DJANGO_SECRET_KEY=fantastic # Don't use in prod
+      - DJANGO_ALLOWED_HOSTS=.dotman.ca,localhost,webapp
+      - DJANGO_SECURE_SSL_REDIRECT=False
+      - DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+      - USE_S3=True
+      - AWS_S3_ENDPOINT_URL=http://host.docker.internal:9000
+      - AWS_ACCESS_KEY_ID=minioadmin
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - AWS_STORAGE_BUCKET_NAME=dotmanca
+      - AWS_S3_REGION_NAME=
+      - DOTMAN_STATIC_AND_MEDIA_BASE_URL=http://localhost:9000
+      - STATIC_LOCATION=static
+      - PUBLIC_MEDIA_LOCATION=media
+    ports:
+      - "5000:5000"
 
   postgres:
     image: postgres:11
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backups
-    env_file: docker.env
+    environment:
+      - POSTGRES_PASSWORD=django_pass
+      - POSTGRES_USER=django_user
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=django_user
     ports:
       - "5432:5432"
-
-  # More that static assests, also proxy to webapp via nginx.conf
-  static:
-    build:
-      context: .
-      target: static-assests
-    ports:
-      - "8000:80"
 
   s3:
     image: quay.io/minio/minio
@@ -40,3 +59,16 @@ services:
     ports:
       - "9000:9000"
       - "9001:9001"
+
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - s3
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc config host add dotmans3 http://s3:9000 minioadmin minioadmin
+      /usr/bin/mc rm -r --force dotmans3/dotmanca;
+      /usr/bin/mc mb dotmans3/dotmanca;
+      /usr/bin/mc policy download dotmans3/dotmanca;
+      exit 0;
+      "
