@@ -5,32 +5,34 @@ volumes:
   postgres_backup: {}
   s3_data: {}
 
+x-env: &env_list
+  - POSTGRES_PASSWORD=django_pass
+  - POSTGRES_USER=django_user
+  - POSTGRES_HOST=postgres
+  - POSTGRES_PORT=5432
+  - POSTGRES_DB=django_user
+  - DJANGO_ADMIN_URL=^admin/
+  - DJANGO_SETTINGS_MODULE=config.settings.production
+  - DJANGO_SECRET_KEY=fantastic # Don't use in prod
+  - DJANGO_ALLOWED_HOSTS=.dotman.ca,localhost,webapp
+  - DJANGO_SECURE_SSL_REDIRECT=False
+  - DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+  - USE_S3=True
+  - AWS_S3_ENDPOINT_URL=http://host.docker.internal:9000
+  - AWS_ACCESS_KEY_ID=minioadmin
+  - AWS_SECRET_ACCESS_KEY=minioadmin
+  - AWS_STORAGE_BUCKET_NAME=dotmanca
+  - AWS_S3_REGION_NAME=
+  - DOTMAN_STATIC_AND_MEDIA_BASE_URL=http://localhost:9000
+  - STATIC_LOCATION=static
+  - PUBLIC_MEDIA_LOCATION=media
+
 services:
 
   webapp:
     build:
       context: .
-    environment:
-      - POSTGRES_PASSWORD=django_pass
-      - POSTGRES_USER=django_user
-      - POSTGRES_HOST=postgres
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=django_user
-      - DJANGO_ADMIN_URL=^admin/
-      - DJANGO_SETTINGS_MODULE=config.settings.production
-      - DJANGO_SECRET_KEY=fantastic # Don't use in prod
-      - DJANGO_ALLOWED_HOSTS=.dotman.ca,localhost,webapp
-      - DJANGO_SECURE_SSL_REDIRECT=False
-      - DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
-      - USE_S3=True
-      - AWS_S3_ENDPOINT_URL=http://host.docker.internal:9000
-      - AWS_ACCESS_KEY_ID=minioadmin
-      - AWS_SECRET_ACCESS_KEY=minioadmin
-      - AWS_STORAGE_BUCKET_NAME=dotmanca
-      - AWS_S3_REGION_NAME=
-      - DOTMAN_STATIC_AND_MEDIA_BASE_URL=http://localhost:9000
-      - STATIC_LOCATION=static
-      - PUBLIC_MEDIA_LOCATION=media
+    environment: *env_list
     ports:
       - "5000:5000"
 
@@ -39,12 +41,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backups
-    environment:
-      - POSTGRES_PASSWORD=django_pass
-      - POSTGRES_USER=django_user
-      - POSTGRES_HOST=postgres
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=django_user
+    environment: *env_list
     ports:
       - "5432:5432"
 
