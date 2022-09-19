@@ -101,14 +101,14 @@ python-versions = "*"
 
 [[package]]
 name = "boto3"
-version = "1.24.71"
+version = "1.24.75"
 description = "The AWS SDK for Python"
 category = "main"
 optional = false
 python-versions = ">= 3.7"
 
 [package.dependencies]
-botocore = ">=1.27.71,<1.28.0"
+botocore = ">=1.27.75,<1.28.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.6.0,<0.7.0"
 
@@ -117,7 +117,7 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.27.71"
+version = "1.27.75"
 description = "Low-level, data-driven core of boto 3."
 category = "main"
 optional = false
@@ -603,7 +603,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "65d2c6cb12a3d9a70f543016ab2bcb803ad0bb04aaf8a3a015746cd5b1f62faa"
+content-hash = "54f08ded4ee6cdfe89c8ebee758e12b8fa0a3eb4e482910cc68b7b8a6af32396"
 
 [metadata.files]
 argon2-cffi = [
@@ -675,12 +675,12 @@ bleach-allowlist = [
     {file = "bleach_allowlist-1.0.3-py2.py3-none-any.whl", hash = "sha256:6427a3ac0baddf549703f1003ea53f411f3d7888524c94c00eb6ef1deb378899"},
 ]
 boto3 = [
-    {file = "boto3-1.24.71-py3-none-any.whl", hash = "sha256:c82d7ab1cdcf4701a424b1820d9646d2c0869c129266917cad35aae9e9419c1c"},
-    {file = "boto3-1.24.71.tar.gz", hash = "sha256:0ee555dc0f362d2761d86e0264ee79985b09de4289334fbec7de384b39ccce72"},
+    {file = "boto3-1.24.75-py3-none-any.whl", hash = "sha256:e0757717091f7014683e69a31d88d41f960f24eddaf338c1949e63fd67ee2b5c"},
+    {file = "boto3-1.24.75.tar.gz", hash = "sha256:7bfa2242df9b1fa73e17f4d7f79f6b22560f55d5da2e27e578e585ef6e4b14a7"},
 ]
 botocore = [
-    {file = "botocore-1.27.71-py3-none-any.whl", hash = "sha256:6b86c6277e5eb4f9d87de824d53f0b6789b618184ccda555be24741034de107a"},
-    {file = "botocore-1.27.71.tar.gz", hash = "sha256:91dc4e8ae768db3a5c26ef8acd6425bbbec4b17636350d526c226a5879d3c613"},
+    {file = "botocore-1.27.75-py3-none-any.whl", hash = "sha256:a6229f9b31f7fe372475c0ee60483b3ec827e4b76275d5239fbfd590cd0b217f"},
+    {file = "botocore-1.27.75.tar.gz", hash = "sha256:f8b1da2b41e88c58db51db0c6eff6ca564258948ce4a5ac7e96ac35a469b0d4f"},
 ]
 cffi = [
     {file = "cffi-1.15.1-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:a66d3508133af6e8548451b25058d5812812ec3798c886bf38ed24a98216fab2"},
