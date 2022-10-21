@@ -173,8 +173,8 @@ python-versions = ">=3.7"
 toml = ["tomli"]
 
 [[package]]
-name = "Django"
-version = "4.1.1"
+name = "django"
+version = "4.1.2"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -808,9 +808,9 @@ coverage = [
     {file = "coverage-6.4.4-pp36.pp37.pp38-none-any.whl", hash = "sha256:f67cf9f406cf0d2f08a3515ce2db5b82625a7257f88aad87904674def6ddaec1"},
     {file = "coverage-6.4.4.tar.gz", hash = "sha256:e16c45b726acb780e1e6f88b286d3c10b3914ab03438f32117c4aa52d7f30d58"},
 ]
-Django = [
-    {file = "Django-4.1.1-py3-none-any.whl", hash = "sha256:acb21fac9275f9972d81c7caf5761a89ec3ea25fe74545dd26b8a48cb3a0203e"},
-    {file = "Django-4.1.1.tar.gz", hash = "sha256:a153ffd5143bf26a877bfae2f4ec736ebd8924a46600ca089ad96b54a1d4e28e"},
+django = [
+    {file = "Django-4.1.2-py3-none-any.whl", hash = "sha256:26dc24f99c8956374a054bcbf58aab8dc0cad2e6ac82b0fe036b752c00eee793"},
+    {file = "Django-4.1.2.tar.gz", hash = "sha256:b8d843714810ab88d59344507d4447be8b2cf12a49031363b6eed9f1b9b2280f"},
 ]
 django-coverage-plugin = [
     {file = "django_coverage_plugin-2.0.3-py3-none-any.whl", hash = "sha256:fd888f2ff41e3410a004d799b198cf8b19694d692a2d2264e8c944b9321bedc3"},
