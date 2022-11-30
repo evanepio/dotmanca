@@ -1,7 +1,7 @@
 ###############################################################################
 # STAGE 1 - Build a common base to use for the remaining stages
 ###############################################################################
-FROM python:3.10-slim as base
+FROM python:3.11-slim as base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
@@ -29,13 +29,13 @@ RUN poetry export -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
 COPY . .
 RUN poetry build && /venv/bin/pip install dist/*.whl &&\
-    mv config /venv/lib/python3.10/site-packages/ &&\
-    mv comics /venv/lib/python3.10/site-packages/ &&\
-    mv gallery /venv/lib/python3.10/site-packages/ &&\
-    mv characters /venv/lib/python3.10/site-packages/ &&\
-    mv places /venv/lib/python3.10/site-packages/ &&\
-    mv news /venv/lib/python3.10/site-packages/ &&\
-    mv main /venv/lib/python3.10/site-packages/ 
+    mv config /venv/lib/python3.11/site-packages/ &&\
+    mv comics /venv/lib/python3.11/site-packages/ &&\
+    mv gallery /venv/lib/python3.11/site-packages/ &&\
+    mv characters /venv/lib/python3.11/site-packages/ &&\
+    mv places /venv/lib/python3.11/site-packages/ &&\
+    mv news /venv/lib/python3.11/site-packages/ &&\
+    mv main /venv/lib/python3.11/site-packages/ 
 
 ###############################################################################
 # STAGE 3 - Copy the virtual env from a previous stage to get final image
