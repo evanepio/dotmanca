@@ -100,14 +100,14 @@ python-versions = "*"
 
 [[package]]
 name = "boto3"
-version = "1.26.19"
+version = "1.26.22"
 description = "The AWS SDK for Python"
 category = "main"
 optional = false
 python-versions = ">= 3.7"
 
 [package.dependencies]
-botocore = ">=1.29.19,<1.30.0"
+botocore = ">=1.29.22,<1.30.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.6.0,<0.7.0"
 
@@ -116,7 +116,7 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.29.19"
+version = "1.29.22"
 description = "Low-level, data-driven core of boto 3."
 category = "main"
 optional = false
@@ -586,8 +586,8 @@ python-versions = "*"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "~3.11"
-content-hash = "72a6dd4702378af4318686171460e6b9dba3abd56f95c1313292c8f264b4a827"
+python-versions = "^3.11"
+content-hash = "707c1fea5fa3cb9f1a1e47e4607770fdbc26e9ec84793842ca41130e01c511bc"
 
 [metadata.files]
 argon2-cffi = [
@@ -657,12 +657,12 @@ bleach-allowlist = [
     {file = "bleach_allowlist-1.0.3-py2.py3-none-any.whl", hash = "sha256:6427a3ac0baddf549703f1003ea53f411f3d7888524c94c00eb6ef1deb378899"},
 ]
 boto3 = [
-    {file = "boto3-1.26.19-py3-none-any.whl", hash = "sha256:4b4edf893b01c651007d61534c1d248cd2350d311a4e295039bd23fd60bf899a"},
-    {file = "boto3-1.26.19.tar.gz", hash = "sha256:59aa6c7810a815fb52671f834d10ac4cd80b9c7c01a3cbde670cb41330059464"},
+    {file = "boto3-1.26.22-py3-none-any.whl", hash = "sha256:a4cf7fe649b0202f2f2307eb982ca215edcf9c87b6e65f5b3405f66c289603f2"},
+    {file = "boto3-1.26.22.tar.gz", hash = "sha256:f16c3aef1432c5083a9e1c36ac08b70b9072e87205e970f8d7520b10b964858f"},
 ]
 botocore = [
-    {file = "botocore-1.29.19-py3-none-any.whl", hash = "sha256:917807ee4ccca34a2f2848eb4fcf878d9e97a44a911a6965ff556d0830c471fd"},
-    {file = "botocore-1.29.19.tar.gz", hash = "sha256:a54561e591f5d8e653657ce04dcad09c10ebca9dbefba73471976e522abf038a"},
+    {file = "botocore-1.29.22-py3-none-any.whl", hash = "sha256:d3029e81f0112a74e5c83c6eebcdcf8d221e996f062d5e2b715963976ae4895f"},
+    {file = "botocore-1.29.22.tar.gz", hash = "sha256:ce637e3537388200775d80c5a3170df4810ddf7afbd7883db5673279b2584f68"},
 ]
 cffi = [
     {file = "cffi-1.15.1-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:a66d3508133af6e8548451b25058d5812812ec3798c886bf38ed24a98216fab2"},
