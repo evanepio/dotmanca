@@ -23,12 +23,12 @@ This gives you a way to manage multiple python versions at the same time.
 
 Next, we need to install the correct Python version, and then switch to it.
 
-    $ pyenv install 3.10
-    $ pyenv global 3.10
+    $ pyenv install 3.11
+    $ pyenv global 3.11
 
 If you just want the python version local to a particular directory, you can instead run the following inside the directory you want to run a specific version for:
 
-    $ pyenv local 3.10
+    $ pyenv local 3.11
 
 Next, we want to install Poetry. We can follow [these instructions](https://poetry.eustace.io/docs/).
 
