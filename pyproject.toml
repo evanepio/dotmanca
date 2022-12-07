@@ -25,9 +25,7 @@ django-storages = "^1.13.1"
 django-debug-toolbar = ">=2.1"
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "config.settings.test"
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
-env = ["DJANGO_READ_DOT_ENV_FILE=True", "DJANGO_SETTINGS_MODULE=config.settings.test"]
 
 [tool.coverage.run]
 include = ["dotmanca/*", "characters/*", "gallery/*", "main/*", "news/*", "places/*"]
@@ -70,7 +68,6 @@ deps =
     pytest
     pytest-django
     pytest-env
-    django-debug-toolbar
     coverage
     django-coverage-plugin
 commands:
