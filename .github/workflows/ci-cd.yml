@@ -15,24 +15,13 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Run image
-        uses: abatilo/actions-poetry@v2
-        with:
-          poetry-version: ${{ matrix.poetry-version }}
-      - name: View poetry --help
-        run: poetry --help
-      - name: Install Dependencies
-        run: |
-          poetry install
-      - name: Run isort
-        run: |
-          poetry run isort . --check-only
-      - name: Run black
-        run: |
-          poetry run black . --check --diff
-      - name: Run flake8
-        run: |
-          poetry run flake8
-      - name: Run Tests
-        run: |
-          poetry run pytest
+      - name: Install tox
+        run: python -m pip install --upgrade tox==3.27.1 virtualenv setuptools pip poetry
+      - name: Run tests
+        run: tox -e test
+      - name: Check format
+        run: tox -e check-format
+      - name: Check import sort order
+        run: tox -e check-imports
+      - name: Run lint
+        run: tox -e lint
