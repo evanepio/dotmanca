@@ -65,15 +65,21 @@ skipsdist = True
 
 [testenv]
 usedevelop = True
+
+[testenv:{test,coverage}]
+envdir = {toxworkdir}/.test_and_coverage_env
 deps = 
     pytest
     pytest-django
     pytest-env
     django-debug-toolbar
+    coverage
+    django-coverage-plugin
 setenv = file|.env
-commands = 
-    python -V
-    pytest
+commands:
+    test: pytest
+    coverage: coverage run -m pytest
+              coverage html
 
 [testenv:{check-format,check-imports,lint,black,isort}]
 envdir = {toxworkdir}/.checker_env
