@@ -60,7 +60,7 @@ skipsdist = True
 usedevelop = True
 setenv = file|.env
 
-[testenv:{test,coverage}]
+[testenv:{test,coverage,coverage-html}]
 envdir = {toxworkdir}/.test_and_coverage_env
 setenv = 
     DJANGO_SETTINGS_MODULE=config.settings.test
@@ -73,7 +73,7 @@ deps =
 commands:
     test: pytest
     coverage: coverage run -m pytest
-              coverage html
+    coverage-html: coverage html
 
 [testenv:{check-format,check-imports,lint,black,isort}]
 envdir = {toxworkdir}/.checker_env

@@ -108,6 +108,7 @@ coverage report:
 
 ```
 tox -e coverage
+tox -e coverage-html
 open htmlcov/index.html
 ```
 
