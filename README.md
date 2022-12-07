@@ -104,7 +104,7 @@ coverage report:
 
 ```
 poetry shell
-coverage run manage.py test
+coverage run -m pytest
 coverage html
 open htmlcov/index.html
 ```
