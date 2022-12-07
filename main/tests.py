@@ -1,76 +1,90 @@
-from django.test import TestCase
-from freezegun import freeze_time
+import datetime as dt
+from contextlib import contextmanager
+from unittest.mock import patch
 
 from .views import AboutChasView, AboutEvanView, HomePageView
 
 
-class TestAboutChasViewGetContextData(TestCase):
-    def test_context_contains_age(self):
-        view = AboutChasView()
+@contextmanager
+def mocked_now(now):
+    class MockedDatetime(dt.datetime):
+        @classmethod
+        def now(cls):
+            return now
 
+    with patch("datetime.datetime", MockedDatetime):
+        yield
+
+
+def test_about_chas_view_age_in_context_of_about():
+    view = AboutChasView()
+
+    context = view.get_context_data()
+
+    "age" in context.keys()
+
+
+def test_about_chas_view_age_ten_years_after_birthday_is_ten():
+    view = AboutChasView()
+
+    with mocked_now(dt.datetime(1990, 4, 21)):
         context = view.get_context_data()
 
-        self.assertTrue("age" in context.keys())
-
-    def test_age_ten_years_after_birthday_is_ten(self):
-        view = AboutChasView()
-
-        with freeze_time("1990-04-21"):
-            context = view.get_context_data()
-
-            self.assertEqual(10, context["age"])
-
-    def test_age_ten_years_minus_one_day_after_birthday_is_nine(self):
-        view = AboutChasView()
-
-        with freeze_time("1990-04-20"):
-            context = view.get_context_data()
-
-            self.assertEqual(9, context["age"])
+        10 == context["age"]
 
 
-class TestAboutEvanViewGetContextData(TestCase):
-    def test_context_contains_age(self):
-        view = AboutEvanView()
+def test_about_chas_view_age_ten_years_minus_one_day_after_birthday_is_nine_about():
+    view = AboutChasView()
 
+    with mocked_now(dt.datetime(1990, 4, 20)):
         context = view.get_context_data()
 
-        self.assertTrue("age" in context.keys())
-
-    def test_age_ten_years_after_birthday_is_ten(self):
-        view = AboutEvanView()
-
-        with freeze_time("1990-12-06"):
-            context = view.get_context_data()
-
-            self.assertEqual(10, context["age"])
-
-    def test_age_ten_years_minus_one_day_after_birthday_is_nine(self):
-        view = AboutEvanView()
-
-        with freeze_time("1990-12-05"):
-            context = view.get_context_data()
-
-            self.assertEqual(9, context["age"])
+        9 == context["age"]
 
 
-class TestHomePageViewGetContextData(TestCase):
-    def test_context_contains_news_articles(self):
-        view = HomePageView()
+def test_about_evan_view_context_contains_age():
+    view = AboutEvanView()
 
-        # Inject so we don't try to hit database
-        view.get_published_news_articles = lambda: []
+    context = view.get_context_data()
 
+    "age" in context.keys()
+
+
+def test_about_evan_view_age_ten_years_after_birthday_is_ten():
+    view = AboutEvanView()
+
+    with mocked_now(dt.datetime(1990, 12, 6)):
         context = view.get_context_data()
 
-        self.assertTrue("news_articles" in context.keys())
+        10 == context["age"]
 
-    def test_context_contains_only_three_news_articles_when_4_come_back(self):
-        view = HomePageView()
 
-        # Inject so we return 4 test double news articles
-        view.get_published_news_articles = lambda: [{}, {}, {}, {}]
+def test_about_evan_view_age_ten_years_minus_one_day_after_birthday_is_nine():
+    view = AboutEvanView()
 
+    with mocked_now(dt.datetime(1990, 12, 5)):
         context = view.get_context_data()
 
-        self.assertTrue("news_articles" in context.keys())
+        9 == context["age"]
+
+
+def test_context_contains_news_articles():
+    view = HomePageView()
+
+    # Inject so we don't try to hit database
+    view.get_published_news_articles = lambda: []
+
+    context = view.get_context_data()
+
+    "news_articles" in context.keys()
+
+
+def test_context_contains_only_three_news_articles_when_4_come_back():
+    view = HomePageView()
+
+    # Inject so we return 4 test double news articles
+    view.get_published_news_articles = lambda: [{}, {}, {}, {}]
+
+    context = view.get_context_data()
+
+    "news_articles" in context.keys()
