@@ -43,7 +43,7 @@ omit = ["*migrations*", "*tests*"]
 plugins = ["django_coverage_plugin"]
 
 [tool.black]
-target-version = ['py310']
+target-version = ['py311']
 exclude = '''
 /(
     \.git
@@ -51,12 +51,48 @@ exclude = '''
   | migrations
   | htmlcov
   | \.pytest_cache
+  | \.tox
 )/
 '''
 
 [tool.isort]
 profile = "black"
 skip_glob = ["docs/*", "*/migrations/*"]
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py311
+isolated_build = True
+skipsdist = True
+
+[testenv]
+usedevelop = True
+deps = 
+    pytest
+    pytest-django
+    pytest-env
+    django-debug-toolbar
+setenv = file|.env
+commands = 
+    python -V
+    pytest
+
+[testenv:black]
+description = runs black on the current code and reports issues
+deps = black
+commands = black . --check --diff
+
+[testenv:isort]
+description = runs isort on the current code and reports issues
+deps = isort
+commands = isort . --check-only
+
+[testenv:flake8]
+description = runs isort on the current code and reports issues
+deps = flake8
+commands = flake8
+"""
 
 [build-system]
 requires = ["poetry>=1.1"]
