@@ -78,20 +78,18 @@ commands =
     python -V
     pytest
 
-[testenv:black]
-description = runs black on the current code and reports issues
-deps = black
-commands = black . --check --diff
-
-[testenv:isort]
-description = runs isort on the current code and reports issues
-deps = isort
-commands = isort . --check-only
-
-[testenv:flake8]
-description = runs isort on the current code and reports issues
-deps = flake8
-commands = flake8
+[testenv:{check-format,check-imports,lint,black,isort}]
+envdir = {toxworkdir}/.checker_env
+deps =
+    black
+    isort
+    flake8
+commands =
+    check-format: black . --check --diff
+    check-imports: isort . --check-only
+    lint: flake8
+    black: black .
+    isort: isort .
 """
 
 [build-system]
