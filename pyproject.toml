@@ -60,9 +60,12 @@ skipsdist = True
 
 [testenv]
 usedevelop = True
+setenv = file|.env
 
 [testenv:{test,coverage}]
 envdir = {toxworkdir}/.test_and_coverage_env
+setenv = 
+    DJANGO_SETTINGS_MODULE=config.settings.test
 deps = 
     pytest
     pytest-django
@@ -70,7 +73,6 @@ deps =
     django-debug-toolbar
     coverage
     django-coverage-plugin
-setenv = file|.env
 commands:
     test: pytest
     coverage: coverage run -m pytest
