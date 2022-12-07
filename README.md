@@ -36,6 +36,10 @@ Once Poetry is installed, we can run the following in the root of this project:
 
     $ poetry install
 
+We'll also need `tox`:
+
+    $ brew install tox
+
 Create an `.env` file in the root of the project folder. It should contain the following items:
 
 ```
@@ -103,14 +107,12 @@ To run the tests, check your test coverage, and generate an HTML
 coverage report:
 
 ```
-poetry shell
-coverage run -m pytest
-coverage html
+tox -e coverage
 open htmlcov/index.html
 ```
 
 #### Running tests with `pytest`
 
-    $ pytest
+    $ tox -e test
 
 > Note: `pyproject.toml` has configurations for `pytest` to work.
