@@ -1,7 +1,6 @@
 import uuid
 
 import pytest
-
 from django.test import RequestFactory
 
 from ..models import User
