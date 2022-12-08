@@ -1,35 +1,33 @@
-from django.test import TestCase
-
 from .models import Character, Team
 
 
-class CharacterGetAbsoluteUrl(TestCase):
-    def test_slug_appears_in_url(self):
-        slug_value = "slug-value"
+def test_character_slug_appears_in_url():
+    slug_value = "slug-value"
 
-        team = Team()
-        team.slug = "dont-care"
+    team = Team()
+    team.slug = "dont-care"
 
-        sut = Character()
+    sut = Character()
 
-        sut.slug = slug_value
-        sut.team = team
+    sut.slug = slug_value
+    sut.team = team
 
-        result = sut.get_absolute_url()
+    result = sut.get_absolute_url()
 
-        self.assertTrue(slug_value in result)
+    slug_value in result
 
-    def test_team_slug_appears_in_url(self):
-        team_slug = "team-slug"
 
-        team = Team()
-        team.slug = team_slug
+def test_character_team_slug_appears_in_url():
+    team_slug = "team-slug"
 
-        sut = Character()
+    team = Team()
+    team.slug = team_slug
 
-        sut.slug = "dont-care"
-        sut.team = team
+    sut = Character()
 
-        result = sut.get_absolute_url()
+    sut.slug = "dont-care"
+    sut.team = team
 
-        self.assertTrue(team_slug in result)
+    result = sut.get_absolute_url()
+
+    team_slug in result

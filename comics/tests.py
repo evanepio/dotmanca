@@ -1,34 +1,32 @@
-from django.test import TestCase
-
 from .models import Arc, Issue
 
 
-class IssueGetAbsoluteUrl(TestCase):
-    def test_slug_appears_in_url(self):
-        slug_value = "slug_value"
+def test_issue_slug_appears_in_url():
+    slug_value = "slug_value"
 
-        arc = Arc()
-        arc.slug = "dont-care"
+    arc = Arc()
+    arc.slug = "dont-care"
 
-        sut = Issue()
-        sut.slug = slug_value
-        sut.arc = arc
+    sut = Issue()
+    sut.slug = slug_value
+    sut.arc = arc
 
-        result = sut.get_absolute_url()
+    result = sut.get_absolute_url()
 
-        self.assertTrue(slug_value in result)
+    slug_value in result
 
-    def test_arc_slug_appears_in_url(self):
-        arc_slug = "arc-slug"
 
-        arc = Arc()
-        arc.slug = arc_slug
+def test_issue_arc_slug_appears_in_url():
+    arc_slug = "arc-slug"
 
-        sut = Issue()
+    arc = Arc()
+    arc.slug = arc_slug
 
-        sut.slug = "dont-care"
-        sut.arc = arc
+    sut = Issue()
 
-        result = sut.get_absolute_url()
+    sut.slug = "dont-care"
+    sut.arc = arc
 
-        self.assertTrue(arc_slug in result)
+    result = sut.get_absolute_url()
+
+    arc_slug in result
