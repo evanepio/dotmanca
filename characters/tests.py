@@ -14,7 +14,7 @@ def test_character_slug_appears_in_url():
 
     result = sut.get_absolute_url()
 
-    slug_value in result
+    assert slug_value in result
 
 
 def test_character_team_slug_appears_in_url():
@@ -30,4 +30,4 @@ def test_character_team_slug_appears_in_url():
 
     result = sut.get_absolute_url()
 
-    team_slug in result
+    assert team_slug in result

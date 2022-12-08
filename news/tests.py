@@ -10,7 +10,7 @@ def test_news_article_date_appears_in_url():
 
     result = sut.get_absolute_url()
 
-    "2018/01/06" in result
+    assert "2018/01/06" in result
 
 
 def test_news_article_slug_appears_in_url():
@@ -21,4 +21,4 @@ def test_news_article_slug_appears_in_url():
 
     result = sut.get_absolute_url()
 
-    slug_value in result
+    assert slug_value in result

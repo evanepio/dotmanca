@@ -13,7 +13,7 @@ def test_issue_slug_appears_in_url():
 
     result = sut.get_absolute_url()
 
-    slug_value in result
+    assert slug_value in result
 
 
 def test_issue_arc_slug_appears_in_url():
@@ -29,4 +29,4 @@ def test_issue_arc_slug_appears_in_url():
 
     result = sut.get_absolute_url()
 
-    arc_slug in result
+    assert arc_slug in result

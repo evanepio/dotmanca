@@ -8,4 +8,4 @@ def test_place_slug_appears_in_url():
 
     result = sut.get_absolute_url()
 
-    slug_value in result
+    assert slug_value in result
