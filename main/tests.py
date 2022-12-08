@@ -1,5 +1,4 @@
 import datetime as dt
-from unittest.mock import patch
 
 from .views import AboutChasView, AboutEvanView, HomePageView
 
