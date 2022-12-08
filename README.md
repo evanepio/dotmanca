@@ -30,7 +30,7 @@ If you just want the python version local to a particular directory, you can ins
 
     $ pyenv local 3.11
 
-Next, we want to install Poetry. We can follow [these instructions](https://poetry.eustace.io/docs/).
+Next, we want to install Poetry. We can follow [these instructions](https://python-poetry.org/docs/).
 
 Once Poetry is installed, we can run the following in the root of this project:
 
