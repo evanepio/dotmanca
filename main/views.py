@@ -5,8 +5,12 @@ from django.views import generic
 from news.models import NewsArticle
 
 
+def get_today():
+    return datetime.date.today()
+
+
 def get_age(date_of_birth):
-    today = datetime.date.today()
+    today = get_today()
     return (
         today.year
         - date_of_birth.year

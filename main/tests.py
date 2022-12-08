@@ -1,19 +1,6 @@
 import datetime as dt
-from contextlib import contextmanager
-from unittest.mock import patch
 
 from .views import AboutChasView, AboutEvanView, HomePageView
-
-
-@contextmanager
-def mocked_now(now):
-    class MockedDatetime(dt.datetime):
-        @classmethod
-        def now(cls):
-            return now
-
-    with patch("datetime.datetime", MockedDatetime):
-        yield
 
 
 def test_about_chas_view_age_in_context_of_about():
@@ -21,25 +8,25 @@ def test_about_chas_view_age_in_context_of_about():
 
     context = view.get_context_data()
 
-    "age" in context.keys()
+    assert "age" in context.keys()
 
 
-def test_about_chas_view_age_ten_years_after_birthday_is_ten():
+def test_about_chas_view_age_ten_years_after_birthday_is_ten(monkeypatch):
+    monkeypatch.setattr("main.views.get_today", lambda: dt.datetime(1990, 4, 21))
     view = AboutChasView()
+    context = view.get_context_data()
 
-    with mocked_now(dt.datetime(1990, 4, 21)):
-        context = view.get_context_data()
-
-        10 == context["age"]
+    assert 10 == context["age"]
 
 
-def test_about_chas_view_age_ten_years_minus_one_day_after_birthday_is_nine_about():
+def test_about_chas_view_age_ten_years_minus_one_day_after_birthday_is_nine_about(
+    monkeypatch,
+):
+    monkeypatch.setattr("main.views.get_today", lambda: dt.datetime(1990, 4, 20))
     view = AboutChasView()
+    context = view.get_context_data()
 
-    with mocked_now(dt.datetime(1990, 4, 20)):
-        context = view.get_context_data()
-
-        9 == context["age"]
+    assert 9 == context["age"]
 
 
 def test_about_evan_view_context_contains_age():
@@ -47,25 +34,25 @@ def test_about_evan_view_context_contains_age():
 
     context = view.get_context_data()
 
-    "age" in context.keys()
+    assert "age" in context.keys()
 
 
-def test_about_evan_view_age_ten_years_after_birthday_is_ten():
+def test_about_evan_view_age_ten_years_after_birthday_is_ten(monkeypatch):
+    monkeypatch.setattr("main.views.get_today", lambda: dt.datetime(1990, 12, 6))
     view = AboutEvanView()
+    context = view.get_context_data()
 
-    with mocked_now(dt.datetime(1990, 12, 6)):
-        context = view.get_context_data()
-
-        10 == context["age"]
+    assert 10 == context["age"]
 
 
-def test_about_evan_view_age_ten_years_minus_one_day_after_birthday_is_nine():
+def test_about_evan_view_age_ten_years_minus_one_day_after_birthday_is_nine(
+    monkeypatch,
+):
+    monkeypatch.setattr("main.views.get_today", lambda: dt.datetime(1990, 12, 5))
     view = AboutEvanView()
+    context = view.get_context_data()
 
-    with mocked_now(dt.datetime(1990, 12, 5)):
-        context = view.get_context_data()
-
-        9 == context["age"]
+    assert 9 == context["age"]
 
 
 def test_context_contains_news_articles():
@@ -76,7 +63,7 @@ def test_context_contains_news_articles():
 
     context = view.get_context_data()
 
-    "news_articles" in context.keys()
+    assert "news_articles" in context.keys()
 
 
 def test_context_contains_only_three_news_articles_when_4_come_back():
@@ -87,4 +74,4 @@ def test_context_contains_only_three_news_articles_when_4_come_back():
 
     context = view.get_context_data()
 
-    "news_articles" in context.keys()
+    assert "news_articles" in context.keys()
