@@ -28,14 +28,7 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry export -f requirements.txt | /venv/bin/pip install -r /dev/stdin
 
 COPY . .
-RUN poetry build && /venv/bin/pip install dist/*.whl &&\
-    mv config /venv/lib/python3.11/site-packages/ &&\
-    mv comics /venv/lib/python3.11/site-packages/ &&\
-    mv gallery /venv/lib/python3.11/site-packages/ &&\
-    mv characters /venv/lib/python3.11/site-packages/ &&\
-    mv places /venv/lib/python3.11/site-packages/ &&\
-    mv news /venv/lib/python3.11/site-packages/ &&\
-    mv main /venv/lib/python3.11/site-packages/ 
+RUN poetry build && /venv/bin/pip install dist/*.whl
 
 ###############################################################################
 # STAGE 3 - Copy the virtual env from a previous stage to get final image

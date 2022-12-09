@@ -5,6 +5,16 @@ description = "The Official Dotman Website"
 authors = ["Evan Porter"]
 license = "MIT"
 readme = "README.md"
+packages = [
+    {include = "dotmanca", from = "src"},
+    {include = "characters", from = "src"},
+    {include = "comics", from = "src"},
+    {include = "config", from = "src"},
+    {include = "gallery", from = "src"},
+    {include = "main", from = "src"},
+    {include = "news", from = "src"},
+    {include = "places", from = "src"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -90,5 +100,5 @@ commands =
 """
 
 [build-system]
-requires = ["poetry>=1.1"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
