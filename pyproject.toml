@@ -67,7 +67,6 @@ isolated_build = True
 
 [testenv]
 usedevelop = True
-setenv = file|.env
 
 [testenv:{test,coverage,coverage-html}]
 env_dir = {work_dir}/.test_and_coverage_env
