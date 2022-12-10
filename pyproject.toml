@@ -64,14 +64,12 @@ legacy_tox_ini = """
 [tox]
 envlist = py311
 isolated_build = True
-skipsdist = True
 
 [testenv]
 usedevelop = True
-setenv = file|.env
 
 [testenv:{test,coverage,coverage-html}]
-envdir = {toxworkdir}/.test_and_coverage_env
+env_dir = {work_dir}/.test_and_coverage_env
 setenv = 
     DJANGO_SETTINGS_MODULE=config.settings.test
 deps = 
@@ -86,7 +84,7 @@ commands:
     coverage-html: coverage html
 
 [testenv:{check-format,check-imports,lint,black,isort}]
-envdir = {toxworkdir}/.checker_env
+env_dir = {work_dir}/.checker_env
 deps =
     black
     isort
