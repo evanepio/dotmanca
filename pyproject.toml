@@ -33,6 +33,11 @@ django-storages = "^1.13.1"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = "^3.8.1"
+pytest = "^7.2.0"
+pytest-django = "^4.5.2"
+pytest-env = "^0.8.1"
+coverage = "^6.5.0"
+django-coverage-plugin = "^3.0.0"
 
 [tool.pytest.ini_options]
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
@@ -69,31 +74,38 @@ isolated_build = True
 usedevelop = True
 
 [testenv:{test,coverage,coverage-html}]
-env_dir = {work_dir}/.test_and_coverage_env
 setenv = 
     DJANGO_SETTINGS_MODULE=config.settings.test
-deps = 
-    pytest
-    pytest-django
-    pytest-env
-    coverage
-    django-coverage-plugin
+skip_install = true
+allowlist_externals = poetry
+commands_pre = 
+    poetry install
 commands:
-    test: pytest
-    coverage: coverage run -m pytest
-    coverage-html: coverage html
+    test: poetry run pytest
+    coverage: poetry run coverage run -m pytest
+    coverage-html: poetry run coverage html
 
-[testenv:{check-format,check-imports,lint,black,isort}]
-env_dir = {work_dir}/.checker_env
+[testenv:lint]
+skip_install = true
 deps =
-    black
-    isort
     flake8
 commands =
+    flake8
+
+[testenv:{check-format,black}]
+skip_install = true
+deps =
+    black
+commands =
     check-format: black . --check --diff
-    check-imports: isort . --check-only
-    lint: flake8
     black: black .
+
+[testenv:{check-imports,isort}]
+skip_install = true
+deps =
+    isort
+commands =
+    check-imports: isort . --check-only
     isort: isort .
 """
 
