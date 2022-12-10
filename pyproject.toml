@@ -38,7 +38,7 @@ django-debug-toolbar = "^3.8.1"
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
 
 [tool.coverage.run]
-include = ["dotmanca/*", "characters/*", "gallery/*", "main/*", "news/*", "places/*"]
+include = ["src/*"]
 omit = ["*migrations*", "*tests*"]
 plugins = ["django_coverage_plugin"]
 
