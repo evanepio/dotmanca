@@ -107,13 +107,12 @@ To run the tests, check your test coverage, and generate an HTML
 coverage report:
 
 ```
-tox -e coverage
-tox -e coverage-html
+tox run -e coverage
 open htmlcov/index.html
 ```
 
 #### Running tests with `pytest`
 
-    $ tox -e test
+    $ tox run -e test
 
 > Note: `pyproject.toml` has configurations for `pytest` to work.
