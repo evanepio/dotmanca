@@ -561,7 +561,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.11"
-content-hash = "fe9b185a448bfc79550c268c9083c7f22786f4809a0035e168cd77126c006070"
+content-hash = "2bee5d9af48289b60ac48eb57b2602d1f7071466bbb00e2ce7258a837a2feb2e"
 
 [metadata.files]
 argon2-cffi = [
