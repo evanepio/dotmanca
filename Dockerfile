@@ -17,7 +17,7 @@ FROM base as builder
 ENV PIP_DEFAULT_TIMEOUT=100 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.1.15 \
+    POETRY_VERSION=1.2.2 \
     DJANGO_DEBUG=False
 
 RUN apt-get update && apt-get install -y libpq-dev &&\
