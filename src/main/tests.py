@@ -66,7 +66,7 @@ def test_context_contains_news_articles():
     assert "news_articles" in context.keys()
 
 
-def test_context_contains_only_three_news_articles_when_4_come_back():
+def test_context_contains_max_three_news_articles_when_4_come_back():
     view = HomePageView()
 
     # Inject so we return 4 test double news articles
@@ -75,3 +75,4 @@ def test_context_contains_only_three_news_articles_when_4_come_back():
     context = view.get_context_data()
 
     assert "news_articles" in context.keys()
+    assert len(context["news_articles"]) == 3
