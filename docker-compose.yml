@@ -23,6 +23,8 @@ x-env: &env_list
   - AWS_SECRET_ACCESS_KEY=minioadmin
   - AWS_STORAGE_BUCKET_NAME=dotmanca
   - AWS_S3_REGION_NAME=
+  - "AWS_S3_URL_PROTOCOL=http:"
+  - AWS_S3_CUSTOM_DOMAIN=localhost:9000/dotmanca
   - DOTMAN_STATIC_AND_MEDIA_BASE_URL=http://localhost:9000
   - STATIC_LOCATION=static
   - PUBLIC_MEDIA_LOCATION=media
