@@ -57,13 +57,13 @@ services:
       - "9000:9000"
       - "9001:9001"
 
-  createbuckets:
+  createbucket:
     image: minio/mc
     depends_on:
       - s3
     entrypoint: >
       /bin/sh -c "
-      /usr/bin/mc config host add dotmans3 http://s3:9000 minioadmin minioadmin
+      /usr/bin/mc config host add dotmans3 http://s3:9000 minioadmin minioadmin;
       /usr/bin/mc rm -r --force dotmans3/dotmanca;
       /usr/bin/mc mb dotmans3/dotmanca;
       /usr/bin/mc policy download dotmans3/dotmanca;
