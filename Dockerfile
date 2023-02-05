@@ -24,17 +24,18 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
 
 COPY . .
 
-RUN pip install "poetry==$POETRY_VERSION" &&\
-    python -m venv /venv &&\
-    poetry export -f requirements.txt | /venv/bin/pip install -r /dev/stdin &&\
-    poetry build && /venv/bin/pip install dist/*.whl
+RUN pip install "poetry==$POETRY_VERSION" && \
+    poetry config virtualenvs.in-project true && \
+    poetry install --only=main --no-root && \
+    poetry build && \
+    ./.venv/bin/pip install dist/*.whl
 
 ###############################################################################
 # STAGE 3 - Copy the virtual env from a previous stage to get final image
 ###############################################################################
 FROM base as final
 
-COPY --from=builder /venv /venv
+COPY --from=builder /app/.venv ./.venv
 COPY docker-entrypoint.sh manage.py ./
 RUN chmod u+x docker-entrypoint.sh
 CMD ["./docker-entrypoint.sh"]
