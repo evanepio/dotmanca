@@ -179,6 +179,7 @@ TEMPLATES = [
 USE_S3 = env.bool("USE_S3", default=False)
 
 if USE_S3:
+    print("****************** USE S3 ******************")
     # aws settings
     AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
@@ -202,9 +203,10 @@ else:
     PUBLIC_MEDIA_LOCATION = ""
 
     STATIC_ROOT = str(ROOT_DIR("staticfiles"))
-    STATIC_URL = "/static/"
     MEDIA_ROOT = str(APPS_DIR("media"))
-    MEDIA_URL = "/media/"
+
+STATIC_URL = "/static/"
+MEDIA_URL = "/media/"
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
