@@ -18,9 +18,9 @@ jobs:
         run: python -m pip install --upgrade tox virtualenv setuptools pip poetry
       - name: Run tests
         run: tox -e test
-      - name: Check format
-        run: tox -e check-format
-      - name: Check import sort order
-        run: tox -e check-imports
+      - name: Check format with black
+        run: tox run -e black -- . --check --diff
+      - name: Check import sort order with isort
+        run: tox run -e isort -- --check --diff .
       - name: Run lint
         run: tox -e lint
