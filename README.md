@@ -117,6 +117,16 @@ open htmlcov/index.html
 
 > Note: `pyproject.toml` has configurations for `pytest` to work.
 
+### Lint code
+
+This project uses `flake8` to lint code. We can run it through `tox`:
+
+```
+tox run -e lint
+```
+
+Some `flake8` configs are in the `tox.ini` file under the `flake8` heading and the `pycodestyle` heading.
+
 ### Run `black`
 
 To run black and reformat all files:
