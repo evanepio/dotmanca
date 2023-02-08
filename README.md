@@ -130,3 +130,17 @@ To check if the files pass `black`'s formatting (use in CI pipeline):
 ```
 tox run -e black -- --check --diff
 ```
+
+### Run `isort`
+
+To run `isort` to sort all imports in python files:
+
+```
+tox run -e isort
+```
+
+To just check that the imports are all sorted (use in a CI pipeline)
+
+```
+tox run -e isort -- --check-only
+```
