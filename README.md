@@ -116,3 +116,17 @@ open htmlcov/index.html
     $ tox run -e test
 
 > Note: `pyproject.toml` has configurations for `pytest` to work.
+
+### Run `black`
+
+To run black and reformat all files:
+
+```
+tox run -e black
+```
+
+To check if the files pass `black`'s formatting (use in CI pipeline):
+
+```
+tox run -e black -- --check --diff
+```
