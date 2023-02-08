@@ -116,3 +116,41 @@ open htmlcov/index.html
     $ tox run -e test
 
 > Note: `pyproject.toml` has configurations for `pytest` to work.
+
+### Lint code
+
+This project uses `flake8` to lint code. We can run it through `tox`:
+
+```
+tox run -e lint
+```
+
+Some `flake8` configs are in the `tox.ini` file under the `flake8` heading and the `pycodestyle` heading.
+
+### Run `black`
+
+To run black and reformat all files:
+
+```
+tox run -e black -- .
+```
+
+To check if the files pass `black`'s formatting (use in CI pipeline):
+
+```
+tox run -e black -- . --check --diff
+```
+
+### Run `isort`
+
+To run `isort` to sort all imports in python files:
+
+```
+tox run -e isort -- .
+```
+
+To just check that the imports are all sorted (use in a CI pipeline)
+
+```
+tox run -e isort -- --check --diff .
+```
