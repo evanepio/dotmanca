@@ -132,13 +132,13 @@ Some `flake8` configs are in the `tox.ini` file under the `flake8` heading and t
 To run black and reformat all files:
 
 ```
-tox run -e black
+tox run -e black -- .
 ```
 
 To check if the files pass `black`'s formatting (use in CI pipeline):
 
 ```
-tox run -e black -- --check --diff
+tox run -e black -- . --check --diff
 ```
 
 ### Run `isort`
@@ -146,7 +146,7 @@ tox run -e black -- --check --diff
 To run `isort` to sort all imports in python files:
 
 ```
-tox run -e isort .
+tox run -e isort -- .
 ```
 
 To just check that the imports are all sorted (use in a CI pipeline)
