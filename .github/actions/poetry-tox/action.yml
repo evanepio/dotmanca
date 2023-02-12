@@ -16,5 +16,7 @@ runs:
         cache: 'poetry'
     - name: Install tox and poetry
       run: python -m pip install --upgrade tox virtualenv setuptools pip poetry
+      shell: bash
     - name: Run tox task
       run: tox run -e ${{ inputs.tox-env-plus-args }}
+      shell: bash
