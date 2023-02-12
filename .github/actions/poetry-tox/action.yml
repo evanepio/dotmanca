@@ -10,15 +10,11 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install poetry
-      run: pipx install poetry==1.1.15
-      shell: bash
     - uses: actions/setup-python@v4
       with:
         python-version: ${{ inputs.python-version }}
-        cache: 'poetry'
-    - name: Install tox 
-      run: pipx install tox
+    - name: Install poetry and tox 
+      run: pip install poetry tox
       shell: bash
     - name: Run tox task
       run: tox run -e ${{ inputs.tox-env-plus-args }}
