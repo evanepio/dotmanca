@@ -10,7 +10,7 @@ jobs:
         os: [ubuntu-18.04]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: ./actions/poetry-tox
+      - uses: ../actions/poetry-tox
         with:
           python-version: ${{ matrix.python-version }}
           tox-env-plus-args: "lint"
