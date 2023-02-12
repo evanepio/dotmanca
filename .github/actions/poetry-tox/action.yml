@@ -14,11 +14,11 @@ runs:
       with:
         python-version: ${{ inputs.python-version }}
         cache: 'poetry'
-    - name: Install tox 
-      run: pipx install tox
-      shell: bash
     - name: Install poetry
       run: pipx install poetry
+      shell: bash
+    - name: Install tox 
+      run: pipx install tox
       shell: bash
     - name: Run tox task
       run: tox run -e ${{ inputs.tox-env-plus-args }}
