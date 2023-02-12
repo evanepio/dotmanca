@@ -2,6 +2,19 @@ name: CI CD
 on: pull_request
 
 jobs:
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+        os: [ubuntu-18.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./.github/actions/poetry-tox
+        with:
+          python-version: ${{ matrix.python-version }}
+          tox-env-plus-args: "test"
   lint:
     strategy:
       fail-fast: false
@@ -15,6 +28,32 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           tox-env-plus-args: "lint"
+  code-format:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+        os: [ubuntu-18.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./.github/actions/poetry-tox
+        with:
+          python-version: ${{ matrix.python-version }}
+          tox-env-plus-args: "black -- . --check --diff"
+  import-sorting:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+        os: [ubuntu-18.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./.github/actions/poetry-tox
+        with:
+          python-version: ${{ matrix.python-version }}
+          tox-env-plus-args: "isort -- --check --diff ."
   ci:
     strategy:
       fail-fast: false
