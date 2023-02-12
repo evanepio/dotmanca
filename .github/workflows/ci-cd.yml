@@ -40,7 +40,7 @@ jobs:
       - uses: ./.github/actions/poetry-tox
         with:
           python-version: ${{ matrix.python-version }}
-          tox-env-plus-args: "black -- . --check --diff"
+          tox-env-plus-args: "black -- --check --diff ."
   import-sorting:
     strategy:
       fail-fast: false

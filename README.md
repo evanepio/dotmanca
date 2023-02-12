@@ -138,7 +138,7 @@ tox run -e black -- .
 To check if the files pass `black`'s formatting (use in CI pipeline):
 
 ```
-tox run -e black -- . --check --diff
+tox run -e black -- --check --diff .
 ```
 
 ### Run `isort`
