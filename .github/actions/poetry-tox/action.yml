@@ -1,0 +1,21 @@
+name: "Run a poetry/tox environment"
+description: "Builds and runs a poetry/tox environment"
+inputs:
+   python-version:
+     required: true
+     description: "The Python version to use"
+   tox-env-plus-args:
+     required: true
+     description: "The tox environment to run, with args"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ inputs.python-version }}
+    - name: Install poetry and tox 
+      run: pip install poetry tox
+      shell: bash
+    - name: Run tox task
+      run: tox run -e ${{ inputs.tox-env-plus-args }}
+      shell: bash
