@@ -28,7 +28,7 @@ argon2-cffi = "^21.3"
 psycopg2-binary = "2.9.5"
 bleach = "^6.0.0"
 bleach-allowlist = "^1.0.3"
-boto3 = "^1.26.84"
+boto3 = "^1.26.87"
 django-storages = "^1.13.2"
 
 [tool.poetry.group.dev.dependencies]
