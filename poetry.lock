@@ -431,21 +431,21 @@ testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
 
 [[package]]
 name = "django-markup"
-version = "1.6"
+version = "1.7.2"
 description = "A generic Django application to convert text with specific markup to html."
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 files = [
-    {file = "django-markup-1.6.tar.gz", hash = "sha256:757eae4841cf63ea390b265fca4acff14d54cd2e293784fa10c0a907e970d22e"},
-    {file = "django_markup-1.6-py2.py3-none-any.whl", hash = "sha256:ab668fd3cc8f49024b9bc2bdc4a1ce9107c516f86ef0858708b2be86a58bb7e2"},
+    {file = "django-markup-1.7.2.tar.gz", hash = "sha256:6cd09ecc701cd80d658a8eeeb0668b0450176bc0962f8c01dd26d64cbeacc945"},
+    {file = "django_markup-1.7.2-py2.py3-none-any.whl", hash = "sha256:c6473fa6c8047abcb94e12201a289c2bb06c340c61526d60eef5de53e26750bf"},
 ]
 
 [package.dependencies]
 django = ">=3.2"
 
 [package.extras]
-all-filter-dependencies = ["bleach (>=3.0)", "docutils (>=0.14)", "markdown (>=2.6.9)", "pygments (>=2.2.0)", "python-creole (>=1.3.1)", "smartypants (>=2.0.0)", "textile (>=2.3.16)"]
+all-filter-dependencies = ["bleach (>=3.0)", "docutils (>=0.14)", "markdown (>=2.6.9)", "pygments (>=2.10.0)", "pygments (>=2.2.0)", "python-creole (>=1.3.1)", "smartypants (>=2.0.0)", "textile (>=2.3.16)"]
 
 [[package]]
 name = "django-storages"
@@ -1014,4 +1014,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "616c52546e50476f26e72893961f0868f455691a0e0ae277b2821627a5eeaf6d"
+content-hash = "aebb60ead82d8984700bc335a92dda3e986cc4a9f74ce82f36f9547e2e027fab"
