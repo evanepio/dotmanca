@@ -28,7 +28,7 @@ argon2-cffi = "^21.3"
 psycopg2-binary = "2.9.6"
 bleach = "^6.0.0"
 bleach-allowlist = "^1.0.3"
-boto3 = "^1.26.137"
+boto3 = "^1.26.142"
 django-storages = "^1.13.2"
 
 [tool.poetry.group.dev.dependencies]
@@ -47,7 +47,7 @@ flake8 = "^6.0.0"
 pytest = "^7.3.1"
 pytest-django = "^4.5.2"
 pytest-env = "^0.8.1"
-coverage = "^7.2.5"
+coverage = "^7.2.7"
 django-coverage-plugin = "^3.0.0"
 
 [tool.pytest.ini_options]
