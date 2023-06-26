@@ -46,7 +46,7 @@ flake8 = "^6.0.0"
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.2"
 pytest-django = "^4.5.2"
-pytest-env = "^0.8.1"
+pytest-env = "^0.8.2"
 coverage = "^7.2.7"
 django-coverage-plugin = "^3.0.0"
 
