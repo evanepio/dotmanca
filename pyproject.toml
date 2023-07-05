@@ -19,7 +19,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.11"
 Django = "^4.2"
-pillow = "^9.5"
+pillow = "^10.0"
 django-environ = "^0.10.0"
 markdown = "^3.4"
 django-markup = "^1.7"
