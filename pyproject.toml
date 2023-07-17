@@ -35,7 +35,7 @@ django-storages = "^1.13.2"
 django-debug-toolbar = "^4.1.0"
 
 [tool.poetry.group.format.dependencies]
-black = "^23.3.0"
+black = "^23.7.0"
 
 [tool.poetry.group.import-sort.dependencies]
 isort = "^5.12.0"
