@@ -376,13 +376,13 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-coverage-plugin"
-version = "3.0.0"
+version = "3.1.0"
 description = "Django template coverage.py plugin"
 optional = false
 python-versions = "*"
 files = [
-    {file = "django_coverage_plugin-3.0.0-py3-none-any.whl", hash = "sha256:245ecd6e91e5be7a66e0f811fd57091c46b55c0eb85c7fe1a1e4aebca9842a5f"},
-    {file = "django_coverage_plugin-3.0.0.tar.gz", hash = "sha256:c063d8d49ba2da30fe95d91cf3f0f9f659b55c3f80d4a029d619b2b3144b1206"},
+    {file = "django_coverage_plugin-3.1.0-py3-none-any.whl", hash = "sha256:eb0ea8ffdb0db11a02994fc99be6500550efb496c350d709f418ff3d8e553a67"},
+    {file = "django_coverage_plugin-3.1.0.tar.gz", hash = "sha256:223d34bf92bebadcb8b7b89932480e41c7bd98b44a8156934488fbe7f4a71f99"},
 ]
 
 [package.dependencies]
@@ -964,4 +964,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "97f8e462a248f08d8653422063a5162affbb936951c7c8e1ed426fd6277112a1"
+content-hash = "5d98df10b001882779674a2ba2137f8e0748a1c35bf8c5b8b443828f8c22aaa1"
