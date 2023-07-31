@@ -41,7 +41,7 @@ black = "^23.7.0"
 isort = "^5.12.0"
 
 [tool.poetry.group.lint.dependencies]
-flake8 = "^6.0.0"
+flake8 = "^6.1.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.0"
