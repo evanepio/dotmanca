@@ -32,7 +32,7 @@ boto3 = "^1.28.25"
 django-storages = "^1.13.2"
 
 [tool.poetry.group.dev.dependencies]
-django-debug-toolbar = "^4.1.0"
+django-debug-toolbar = "^4.2.0"
 
 [tool.poetry.group.format.dependencies]
 black = "^23.7.0"
