@@ -29,7 +29,7 @@ psycopg2-binary = "2.9.7"
 bleach = "^6.0.0"
 bleach-allowlist = "^1.0.3"
 boto3 = "^1.28.40"
-django-storages = "^1.13.2"
+django-storages = "^1.14"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = "^4.2.0"
