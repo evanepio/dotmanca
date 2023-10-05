@@ -1,7 +1,7 @@
 ###############################################################################
 # STAGE 1 - Build a common base to use for the remaining stages
 ###############################################################################
-FROM python:3.12-slim@sha256:246ab600024ec91bf5413b9d18efa5bcb30b2a8869d91bb8f60c2d6bf393d815 as base
+FROM python:3.12-slim@sha256:43a49c9cc2e614468e3d1a903aabe17a97a4c788c76cf5337b5cdc3535b07d4f as base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
