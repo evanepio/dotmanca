@@ -35,6 +35,8 @@ RUN pip install "poetry==$POETRY_VERSION" && \
 ###############################################################################
 FROM base as final
 
+EXPOSE 5000
+
 COPY --from=builder /app/.venv ./.venv
 COPY docker-entrypoint.sh manage.py ./
 RUN chmod u+x docker-entrypoint.sh
