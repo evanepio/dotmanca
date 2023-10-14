@@ -19,6 +19,7 @@ try:
         port="${POSTGRES_PORT}",
     )
 except psycopg2.OperationalError:
+    print("Can not connect to database ${POSTGRES_DB} on ${POSTGRES_HOST} yet")
     sys.exit(-1)
 sys.exit(0)
 END
@@ -31,4 +32,4 @@ done
 
 /app/.venv/bin/python manage.py migrate --no-input
 /app/.venv/bin/python manage.py collectstatic --no-input
-/app/.venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 --forwarded-allow-ips='*' config.wsgi:application
+/app/.venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8080 --forwarded-allow-ips='*' config.wsgi:application
