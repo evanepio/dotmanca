@@ -265,7 +265,7 @@ LOGIN_URL = "account_login"
 
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
-ADMIN_URL = env.str('DJANGO_ADMIN_URL', '^admin/')
+ADMIN_URL = env.str("DJANGO_ADMIN_URL", "^admin/")
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
