@@ -70,6 +70,17 @@ DATABASES["default"] = {
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
+# STORAGES
+# ------------------------------------------------------------------------------
+STORAGES = {
+    "default": {
+        "BACKEND": "dotmanca.storage.PublicMediaStorage"
+    },
+    "staticfiles": {
+        "BACKEND": "dotmanca.storage.StaticStorage"
+    }
+}
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -190,10 +201,8 @@ if USE_S3:
 
     # s3 static settings
     STATIC_LOCATION = env("STATIC_LOCATION")
-    STATICFILES_STORAGE = "dotmanca.storage.StaticStorage"
     # s3 public media settings
     PUBLIC_MEDIA_LOCATION = env("PUBLIC_MEDIA_LOCATION")
-    DEFAULT_FILE_STORAGE = "dotmanca.storage.PublicMediaStorage"
 else:
     # Need to be empty for S3 storage classes, even if not using S3
     STATIC_LOCATION = ""
