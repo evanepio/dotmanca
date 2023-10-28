@@ -87,19 +87,16 @@ These commands only bring up a database and and S3 compatible server.
 ### Running locally
 
 ```
-poetry shell
-export DJANGO_READ_DOT_ENV_FILE=True
-export DJANGO_SETTINGS_MODULE=config.settings.local
-python manage.py migrate
-python manage.py runserver
+poetry run manage migrate
+poetry run server
 ```
-> Note: you only need to run the `python manage.py migrate` once, but it never hurts to run again (it'll detect no new migrations, and do nothing).
+> Note: you only need to run the `poetry run manage migrate` once, but it never hurts to run again (it'll detect no new migrations, and do nothing).
 
 ### Setting Up Your Users
 
 - To create an **superuser account**, use this command:
 
-      $ python manage.py createsuperuser
+      $ poetry run manage createsuperuser
 
 ### Test coverage
 
@@ -107,13 +104,13 @@ To run the tests, check your test coverage, and generate an HTML
 coverage report:
 
 ```
-tox run -e coverage
+poetry run coverage
 open htmlcov/index.html
 ```
 
 #### Running tests with `pytest`
 
-    $ tox run -e test
+    $ poetry run test
 
 > Note: `pyproject.toml` has configurations for `pytest` to work.
 
@@ -122,7 +119,7 @@ open htmlcov/index.html
 This project uses `flake8` to lint code. We can run it through `tox`:
 
 ```
-tox run -e lint
+poetry run lint
 ```
 
 Some `flake8` configs are in the `tox.ini` file under the `flake8` heading and the `pycodestyle` heading.
@@ -132,13 +129,13 @@ Some `flake8` configs are in the `tox.ini` file under the `flake8` heading and t
 To run black and reformat all files:
 
 ```
-tox run -e black -- .
+poetry run format
 ```
 
 To check if the files pass `black`'s formatting (use in CI pipeline):
 
 ```
-tox run -e black -- --check --diff .
+poetry run check-format
 ```
 
 ### Run `isort`
@@ -146,11 +143,5 @@ tox run -e black -- --check --diff .
 To run `isort` to sort all imports in python files:
 
 ```
-tox run -e isort -- .
-```
-
-To just check that the imports are all sorted (use in a CI pipeline)
-
-```
-tox run -e isort -- --check --diff .
+poetry run sort-imports
 ```

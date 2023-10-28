@@ -24,9 +24,7 @@ if READ_DOT_ENV_FILE:
     # Operating System Environment variables have precedence over variables defined in the .env file,
     # that is to say variables from the .env files will only be used if not defined
     # as environment variables.
-    env_file = str(ROOT_DIR.path(".env"))
-    print("Loading : {}".format(env_file))
-    env.read_env(env_file)
+    environ.Env().read_env(".env")
     print("The .env file has been loaded. See base.py for more information")
 
 # APP CONFIGURATION
@@ -71,6 +69,13 @@ DATABASES["default"] = {
     "PORT": env("POSTGRES_PORT", default="5432"),
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
+
+# STORAGES
+# ------------------------------------------------------------------------------
+STORAGES = {
+    "default": {"BACKEND": "dotmanca.storage.PublicMediaStorage"},
+    "staticfiles": {"BACKEND": "dotmanca.storage.StaticStorage"},
+}
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -192,10 +197,8 @@ if USE_S3:
 
     # s3 static settings
     STATIC_LOCATION = env("STATIC_LOCATION")
-    STATICFILES_STORAGE = "dotmanca.storage.StaticStorage"
     # s3 public media settings
     PUBLIC_MEDIA_LOCATION = env("PUBLIC_MEDIA_LOCATION")
-    DEFAULT_FILE_STORAGE = "dotmanca.storage.PublicMediaStorage"
 else:
     # Need to be empty for S3 storage classes, even if not using S3
     STATIC_LOCATION = ""
