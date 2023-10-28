@@ -17,6 +17,12 @@ def run_server():
     _execute("manage.py", "runserver", "8080")
 
 
+def run_tests():
+    """Run `pytest` to make sure some of the code runs"""
+    result = subprocess.run(["pytest"])
+    exit(result.returncode)
+
+
 def run_lint():
     """Run `flake8` for linting"""
     result = subprocess.run("flake8")

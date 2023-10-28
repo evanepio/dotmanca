@@ -57,9 +57,11 @@ lint = "poetry_scripts:run_lint"
 check-format = "poetry_scripts:run_check_format"
 format = "poetry_scripts:run_auto_format"
 sort-imports = "poetry_scripts:run_sort_imports"
+test = "poetry_scripts:run_tests"
 
 [tool.pytest.ini_options]
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
 
 [tool.coverage.run]
 include = ["src/*"]
