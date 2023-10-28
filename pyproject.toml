@@ -53,6 +53,7 @@ django-coverage-plugin = "^3.1.0"
 
 [tool.poetry.scripts]
 server = "poetry_scripts:run_server"
+manage = "poetry_scripts:manage"
 lint = "poetry_scripts:run_lint"
 check-format = "poetry_scripts:run_check_format"
 format = "poetry_scripts:run_auto_format"
