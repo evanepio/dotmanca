@@ -8,7 +8,6 @@ from main.views import HomePageView
 
 urlpatterns = [
     re_path(r"^$", HomePageView.as_view(), name="home"),
-    # url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
     # Django Admin, use {% url 'admin:index' %}
     re_path(settings.ADMIN_URL, admin.site.urls),
     # User management
