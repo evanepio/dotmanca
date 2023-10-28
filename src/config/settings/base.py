@@ -73,12 +73,8 @@ DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # STORAGES
 # ------------------------------------------------------------------------------
 STORAGES = {
-    "default": {
-        "BACKEND": "dotmanca.storage.PublicMediaStorage"
-    },
-    "staticfiles": {
-        "BACKEND": "dotmanca.storage.StaticStorage"
-    }
+    "default": {"BACKEND": "dotmanca.storage.PublicMediaStorage"},
+    "staticfiles": {"BACKEND": "dotmanca.storage.StaticStorage"},
 }
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
