@@ -13,7 +13,8 @@ packages = [
     {include = "gallery", from = "src"},
     {include = "main", from = "src"},
     {include = "news", from = "src"},
-    {include = "places", from = "src"}
+    {include = "places", from = "src"},
+    {include = "poetry_scripts.py", from = "./"}
 ]
 
 [tool.poetry.dependencies]
@@ -49,6 +50,12 @@ pytest-django = "^4.5.2"
 pytest-env = "^1.0.1"
 coverage = "^7.3.1"
 django-coverage-plugin = "^3.1.0"
+
+[tool.poetry.scripts]
+server = "poetry_scripts:run_server"
+lint = "poetry_scripts:run_lint"
+check-format = "poetry_scripts:run_check_format"
+format = "poetry_scripts:run_auto_format"
 
 [tool.pytest.ini_options]
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
