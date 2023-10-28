@@ -23,6 +23,13 @@ def run_tests():
     exit(result.returncode)
 
 
+def run_coverage():
+    """Run `pytest` to make sure some of the code runs"""
+    subprocess.run(["coverage", "run", "-m", "pytest"])
+    result = subprocess.run(["coverage", "html"])
+    exit(result.returncode)
+
+
 def run_lint():
     """Run `flake8` for linting"""
     result = subprocess.run("flake8")
