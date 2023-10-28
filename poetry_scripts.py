@@ -35,5 +35,11 @@ def run_auto_format():
     exit(result.returncode)
 
 
+def run_sort_imports():
+    """Run `isort` to sort imports"""
+    result = subprocess.run(["isort", "--check", "--diff", "."])
+    exit(result.returncode)
+
+
 def manage():
     _execute("manage.py", *sys.argv[1:])

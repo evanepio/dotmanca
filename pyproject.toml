@@ -56,6 +56,7 @@ server = "poetry_scripts:run_server"
 lint = "poetry_scripts:run_lint"
 check-format = "poetry_scripts:run_check_format"
 format = "poetry_scripts:run_auto_format"
+sort-imports = "poetry_scripts:run_sort_imports"
 
 [tool.pytest.ini_options]
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
