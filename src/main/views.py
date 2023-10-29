@@ -1,7 +1,6 @@
 import datetime
 
 from django.views import generic
-
 from news.models import NewsArticle
 
 

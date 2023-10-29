@@ -36,10 +36,6 @@ Once Poetry is installed, we can run the following in the root of this project:
 
     $ poetry install
 
-We'll also need `tox`:
-
-    $ brew install tox
-
 Create an `.env` file in the root of the project folder. It should contain the following items:
 
 ```
@@ -116,13 +112,11 @@ open htmlcov/index.html
 
 ### Lint code
 
-This project uses `flake8` to lint code. We can run it through `tox`:
+This project uses `ruff` to lint code. We can run it with the following:
 
 ```
 poetry run lint
 ```
-
-Some `flake8` configs are in the `tox.ini` file under the `flake8` heading and the `pycodestyle` heading.
 
 ### Run `black`
 
@@ -136,12 +130,4 @@ To check if the files pass `black`'s formatting (use in CI pipeline):
 
 ```
 poetry run check-format
-```
-
-### Run `isort`
-
-To run `isort` to sort all imports in python files:
-
-```
-poetry run sort-imports
 ```
