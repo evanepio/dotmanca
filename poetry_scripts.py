@@ -5,7 +5,7 @@ import sys
 from django.core.management import execute_from_command_line
 
 
-def _execute(*sys_args):
+def _django_execute(*sys_args):
     os.environ.setdefault("DJANGO_READ_DOT_ENV_FILE", "True")
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
     sys.argv = sys_args
@@ -14,7 +14,12 @@ def _execute(*sys_args):
 
 def run_server():
     """Run django build in server for local development"""
-    _execute("manage.py", "runserver", "8080")
+    _django_execute("manage.py", "runserver", "8080")
+
+
+def manage():
+    """Run Django Manage commands from `poetry run`"""
+    _django_execute("manage.py", *sys.argv[1:])
 
 
 def run_tests():
@@ -52,7 +57,3 @@ def run_sort_imports():
     """Run `isort` to sort imports"""
     result = subprocess.run(["isort", "--check", "--diff", "."])
     exit(result.returncode)
-
-
-def manage():
-    _execute("manage.py", *sys.argv[1:])
