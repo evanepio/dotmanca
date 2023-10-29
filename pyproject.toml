@@ -38,11 +38,8 @@ django-debug-toolbar = "^4.2.0"
 [tool.poetry.group.format.dependencies]
 black = "^23.9.1"
 
-[tool.poetry.group.import-sort.dependencies]
-isort = "^5.12.0"
-
 [tool.poetry.group.lint.dependencies]
-flake8 = "^6.1.0"
+ruff = "^0.1.3"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.2"
@@ -57,7 +54,6 @@ manage = "poetry_scripts:manage"
 lint = "poetry_scripts:run_lint"
 check-format = "poetry_scripts:run_check_format"
 format = "poetry_scripts:run_auto_format"
-sort-imports = "poetry_scripts:run_sort_imports"
 test = "poetry_scripts:run_tests"
 coverage = "poetry_scripts:run_coverage"
 
@@ -86,6 +82,26 @@ exclude = """
 [tool.isort]
 profile = "black"
 skip_glob = ["docs/*", "*/migrations/*"]
+
+[tool.ruff]
+exclude = [
+    ".tox",
+    ".git",
+    "*/migrations/*",
+    "*/settings/*",
+    "*/static/CACHE/*",
+    "docs",
+    "node_modules",
+]
+ignore = []
+line-length = 120
+select = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "N",
+]
 
 [build-system]
 requires = ["poetry-core"]

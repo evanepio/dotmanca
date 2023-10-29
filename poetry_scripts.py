@@ -36,8 +36,8 @@ def run_coverage():
 
 
 def run_lint():
-    """Run `flake8` for linting"""
-    result = subprocess.run("flake8")
+    """Run `ruff` for linting"""
+    result = subprocess.run(["ruff", "check", "."])
     exit(result.returncode)
 
 
