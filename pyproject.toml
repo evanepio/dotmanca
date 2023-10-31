@@ -14,7 +14,7 @@ packages = [
     {include = "main", from = "src"},
     {include = "news", from = "src"},
     {include = "places", from = "src"},
-    {include = "poetry_scripts.py", from = "./"}
+    {include = "poetry_scripts.py", from = "src"}
 ]
 
 [tool.poetry.dependencies]
