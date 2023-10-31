@@ -7,11 +7,7 @@ from django.urls import reverse
 class PublishedArticlesManager(models.Manager):
     def get_queryset(self):
         today = date.today()
-        return (
-            super(PublishedArticlesManager, self)
-            .get_queryset()
-            .filter(published_date__lte=today)
-        )
+        return super(PublishedArticlesManager, self).get_queryset().filter(published_date__lte=today)
 
 
 class NewsArticle(models.Model):

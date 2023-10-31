@@ -10,11 +10,7 @@ def get_today():
 
 def get_age(date_of_birth):
     today = get_today()
-    return (
-        today.year
-        - date_of_birth.year
-        - ((today.month, today.day) < (date_of_birth.month, date_of_birth.day))
-    )
+    return today.year - date_of_birth.year - ((today.month, today.day) < (date_of_birth.month, date_of_birth.day))
 
 
 class HomePageView(generic.TemplateView):

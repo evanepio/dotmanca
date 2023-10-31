@@ -17,9 +17,5 @@ class CharacterView(generic.DetailView):
         # Because team_slug and character slug are unique together, we'll need
         # to filter by team_slug provided by the URL, then the view can perform
         # its regular, configured logic inherited from generic.DetailView
-        query_set = (
-            super(CharacterView, self)
-            .get_queryset()
-            .filter(team__slug=self.kwargs.get("team_slug"))
-        )
+        query_set = super(CharacterView, self).get_queryset().filter(team__slug=self.kwargs.get("team_slug"))
         return query_set

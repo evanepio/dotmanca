@@ -7,9 +7,7 @@ class Team(models.Model):
     name = models.CharField(max_length=50)
     sort_order = models.IntegerField()
     slug = models.SlugField(unique=True)
-    the_image = models.ForeignKey(
-        GalleryImage, on_delete=models.CASCADE, blank=True, null=True
-    )
+    the_image = models.ForeignKey(GalleryImage, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(blank=True)
 
     def __str__(self):

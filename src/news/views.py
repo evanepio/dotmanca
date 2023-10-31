@@ -18,15 +18,10 @@ class ArticleView(generic.DetailView):
     template_name = "news/article.html"
 
     def get_queryset(self):
-        pub_date = date(
-            self.kwargs.get("year"), self.kwargs.get("month"), self.kwargs.get("day")
-        )
+        pub_date = date(self.kwargs.get("year"), self.kwargs.get("month"), self.kwargs.get("day"))
 
         query_set = (
-            super(ArticleView, self)
-            .get_queryset()
-            .filter(slug=self.kwargs.get("slug"))
-            .filter(published_date=pub_date)
+            super(ArticleView, self).get_queryset().filter(slug=self.kwargs.get("slug")).filter(published_date=pub_date)
         )
 
         return query_set
