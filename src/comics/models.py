@@ -42,9 +42,7 @@ class Issue(models.Model):
         upload_to=arc_image_upload_to,
     )
 
-    gallery = models.OneToOneField(
-        "gallery.Gallery", on_delete=models.CASCADE, null=True, blank=True
-    )
+    gallery = models.OneToOneField("gallery.Gallery", on_delete=models.CASCADE, null=True, blank=True)
 
     def get_absolute_url(self):
         kwargs = {"slug": self.slug, "arc_slug": self.arc.slug}

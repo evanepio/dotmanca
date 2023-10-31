@@ -43,13 +43,13 @@ def run_lint():
 
 def run_check_format():
     """Run `black` to check if the code is pretty"""
-    result = subprocess.run(["black", "--check", "--diff", "."])
+    result = subprocess.run(["ruff", "format", "--diff", "."])
     exit(result.returncode)
 
 
 def run_auto_format():
     """Run `black` to make the code pretty"""
-    result = subprocess.run(["black", "."])
+    result = subprocess.run(["ruff", "format", "."])
     exit(result.returncode)
 
 
