@@ -72,7 +72,6 @@ exclude = """
   | migrations
   | htmlcov
   | .pytest_cache
-  | .tox
 )/
 """
 
@@ -82,7 +81,6 @@ skip_glob = ["docs/*", "*/migrations/*"]
 
 [tool.ruff]
 exclude = [
-    ".tox",
     ".git",
     "*/migrations/*",
     "*/settings/*",
