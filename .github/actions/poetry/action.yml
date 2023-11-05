@@ -23,9 +23,9 @@ runs:
       shell: bash
     - name: Prepare environment
       run: |
-        poetry config virtualenvs.create true --local
-        poetry config virtualenvs.in-project true --local
-        poetry install
+          poetry config virtualenvs.create true --local
+          poetry config virtualenvs.in-project true --local
+          poetry install
       shell: bash
     - name: Run command
       run: ${{ inputs.command }}
