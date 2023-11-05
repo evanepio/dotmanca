@@ -13,8 +13,19 @@ runs:
     - uses: actions/setup-python@v4
       with:
         python-version: ${{ inputs.python-version }}
+      - uses: actions/cache@v3
+        name: Define a cache for the virtual environment based on the dependencies lock file
+        with:
+          path: ./.venv
+          key: venv-${{ hashFiles('poetry.lock') }}
     - name: Install poetry
       run: pip install poetry
+      shell: bash
+    - name: Prepare environment
+      run: |
+        poetry config virtualenvs.create true --local
+        poetry config virtualenvs.in-project true --local
+        poetry install
       shell: bash
     - name: Run command
       run: ${{ inputs.command }}
