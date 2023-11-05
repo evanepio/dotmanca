@@ -11,4 +11,3 @@ docs
 **/.DS_Store
 .git
 .devcontainer
-.tox
