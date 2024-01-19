@@ -19,6 +19,7 @@ jobs:
             files.pythonhosted.org:443
             github.com:443
             pypi.org:443
+            api.github.com:443
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - uses: ./.github/actions/poetry
         with:
@@ -41,6 +42,7 @@ jobs:
             files.pythonhosted.org:443
             github.com:443
             pypi.org:443
+            api.github.com:443
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - uses: ./.github/actions/poetry
         with:
@@ -63,6 +65,7 @@ jobs:
             files.pythonhosted.org:443
             github.com:443
             pypi.org:443
+            api.github.com:443
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - uses: ./.github/actions/poetry
         with:
