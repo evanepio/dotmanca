@@ -344,13 +344,14 @@ testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
 
 [[package]]
 name = "django-markup"
-version = "1.7.2"
+version = "1.8.1"
 description = "A generic Django application to convert text with specific markup to html."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "django-markup-1.7.2.tar.gz", hash = "sha256:6cd09ecc701cd80d658a8eeeb0668b0450176bc0962f8c01dd26d64cbeacc945"},
-    {file = "django_markup-1.7.2-py2.py3-none-any.whl", hash = "sha256:c6473fa6c8047abcb94e12201a289c2bb06c340c61526d60eef5de53e26750bf"},
+    {file = "django-markup-1.8.1.tar.gz", hash = "sha256:04824880a7afbd19e7b3cdaf0005e759f818b2cc4e3b4f1dd97182b7038a72c9"},
+    {file = "django_markup-1.8.1-py2.py3-none-any.whl", hash = "sha256:bf0dabcfc288eac76b6e501357b02383ff7012b48e4005cab58e3c68b5474e07"},
+    {file = "django_markup-1.8.1-py3-none-any.whl", hash = "sha256:ab0bbdcb721ec92a2848dd93f47e4a0d01760677ca78789230432298cf82a7c8"},
 ]
 
 [package.dependencies]
@@ -823,4 +824,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "94b301b1855d0e17ba2fbac0efb0655058a66f1a904ab5e455ad6bbcb94c4805"
+content-hash = "6ecfc335c886a63de8c3dc912695a2b7088b9e98ed23b905b442b326a64244ed"
