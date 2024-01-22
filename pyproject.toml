@@ -39,7 +39,7 @@ django-debug-toolbar = "^4.2.0"
 ruff = "^0.1.14"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.4.2"
+pytest = "^7.4.4"
 pytest-django = "^4.5.2"
 pytest-env = "^1.0.1"
 coverage = "^7.3.1"
