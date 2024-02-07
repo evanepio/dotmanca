@@ -683,20 +683,20 @@ testing = ["Django", "django-configurations (>=2.0)"]
 
 [[package]]
 name = "pytest-env"
-version = "1.0.1"
-description = "py.test plugin that allows you to add environment variables."
+version = "1.1.3"
+description = "pytest plugin that allows you to add environment variables."
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "pytest_env-1.0.1-py3-none-any.whl", hash = "sha256:e8faf927c6fcdbbc8fe3317506acc116713c9708d01652a0fd945f9ae27b71aa"},
-    {file = "pytest_env-1.0.1.tar.gz", hash = "sha256:603fe216e8e03a5d134989cb41317c59aabef013d2250c71b864ab0798fbe6f6"},
+    {file = "pytest_env-1.1.3-py3-none-any.whl", hash = "sha256:aada77e6d09fcfb04540a6e462c58533c37df35fa853da78707b17ec04d17dfc"},
+    {file = "pytest_env-1.1.3.tar.gz", hash = "sha256:fcd7dc23bb71efd3d35632bde1bbe5ee8c8dc4489d6617fb010674880d96216b"},
 ]
 
 [package.dependencies]
-pytest = ">=7.3.1"
+pytest = ">=7.4.3"
 
 [package.extras]
-test = ["coverage (>=7.2.7)", "pytest-mock (>=3.10)"]
+test = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "pytest-mock (>=3.12)"]
 
 [[package]]
 name = "python-dateutil"
@@ -824,4 +824,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "07121c71a261a12a0c5b64385bc83e67e831556a7072f53105542bdd43052379"
+content-hash = "ee891b1a8c953cf6e134dfc1731e171814de306769ecdb577b24300ff72e3f79"
