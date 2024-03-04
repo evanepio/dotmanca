@@ -36,7 +36,7 @@ django-storages = "^1.14"
 django-debug-toolbar = "^4.3.0"
 
 [tool.poetry.group.lint.dependencies]
-ruff = "^0.2.2"
+ruff = "^0.3.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.1.0"
@@ -86,10 +86,11 @@ exclude = [
     "*/settings/*",
     "*/static/CACHE/*",
     "docs",
-    "node_modules",
 ]
-ignore = []
 line-length = 120
+
+[tool.ruff.lint]
+ignore = []
 select = [
     "E",
     "F",
