@@ -24,13 +24,17 @@ def manage():
 
 def run_tests():
     """Run `pytest` to make sure some of the code runs"""
-    result = subprocess.run(["pytest"])
+    new_env = os.environ.copy()
+    new_env["DJANGO_SETTINGS_MODULE"] = "config.settings.test"
+    result = subprocess.run(["pytest"], env=new_env)
     exit(result.returncode)
 
 
 def run_coverage():
     """Run `pytest` to make sure some of the code runs"""
-    subprocess.run(["coverage", "run", "-m", "pytest"])
+    new_env = os.environ.copy()
+    new_env["DJANGO_SETTINGS_MODULE"] = "config.settings.test"
+    subprocess.run(["coverage", "run", "-m", "pytest"], env=new_env)
     result = subprocess.run(["coverage", "html"])
     exit(result.returncode)
 
