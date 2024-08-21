@@ -55,9 +55,3 @@ def run_auto_format():
     """Run `black` to make the code pretty"""
     result = subprocess.run(["ruff", "format", "."])
     exit(result.returncode)
-
-
-def run_sort_imports():
-    """Run `isort` to sort imports"""
-    result = subprocess.run(["isort", "--check", "--diff", "."])
-    exit(result.returncode)
