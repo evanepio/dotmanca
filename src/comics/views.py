@@ -1,4 +1,5 @@
 from django.views import generic
+
 from gallery import queries as image_queries
 from gallery.models import GalleryImage
 
