@@ -368,13 +368,13 @@ testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
 
 [[package]]
 name = "django-markup"
-version = "1.9"
+version = "1.9.1"
 description = "A generic Django application to convert text with specific markup to html."
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "django_markup-1.9-py3-none-any.whl", hash = "sha256:7cb8e6a759b7690f61a6762408e0448c94449efc01bf2586c5b422360ca969b0"},
-    {file = "django_markup-1.9.tar.gz", hash = "sha256:821e19b9dd42560035c5d5e42095681ea3210211f306cec5f40ee391a0f53ddd"},
+    {file = "django_markup-1.9.1-py3-none-any.whl", hash = "sha256:8311138cbf9bfe75560736d0b9424c4ab2a84b944222d095b7080ee1d7c8287a"},
+    {file = "django_markup-1.9.1.tar.gz", hash = "sha256:8262ce3a9ed909d58321d24aef1291586fb09a046fc4b3389e2be4305ecda909"},
 ]
 
 [package.dependencies]
