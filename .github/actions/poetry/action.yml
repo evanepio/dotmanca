@@ -19,7 +19,7 @@ runs:
         path: ./.venv
         key: venv-${{ hashFiles('poetry.lock') }}
     - name: Install poetry
-      run: pip install poetry
+      run: pip install poetry==1.8.5
       shell: bash
     - name: Prepare environment
       run: |
