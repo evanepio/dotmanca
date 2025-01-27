@@ -33,7 +33,7 @@ boto3 = "^1.36.6"
 django-storages = "^1.14"
 
 [tool.poetry.group.dev.dependencies]
-django-debug-toolbar = "^4.4.6"
+django-debug-toolbar = "^5.0.1"
 
 [tool.poetry.group.lint.dependencies]
 ruff = "^0.9.3"
