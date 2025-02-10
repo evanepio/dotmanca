@@ -36,7 +36,7 @@ django-storages = "^1.14"
 django-debug-toolbar = "^5.0.1"
 
 [tool.poetry.group.lint.dependencies]
-ruff = "^0.9.4"
+ruff = "^0.9.5"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.4"
