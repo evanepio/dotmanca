@@ -29,20 +29,20 @@ argon2-cffi = "^25.1"
 psycopg2-binary = "2.9.10"
 bleach = "^6.2.0"
 bleach-allowlist = "^1.0.3"
-boto3 = "^1.40.16"
+boto3 = "^1.40.21"
 django-storages = "^1.14"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = "^6.0.0"
 
 [tool.poetry.group.lint.dependencies]
-ruff = "^0.12.10"
+ruff = "^0.12.11"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.4.1"
 pytest-django = "^4.11.1"
 pytest-env = "^1.1.5"
-coverage = "^7.10.5"
+coverage = "^7.10.6"
 django-coverage-plugin = "^3.1.1"
 
 [tool.poetry.scripts]
