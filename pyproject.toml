@@ -43,7 +43,7 @@ pytest = "^8.4.2"
 pytest-django = "^4.11.1"
 pytest-env = "^1.1.5"
 coverage = "^7.10.7"
-django-coverage-plugin = "^3.1.1"
+django-coverage-plugin = "^3.2.0"
 
 [tool.poetry.scripts]
 server = "poetry_scripts:run_server"
