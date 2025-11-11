@@ -1,58 +1,81 @@
-[tool.poetry]
+[project]
 name = "dotmanca"
 version = "4.0.0"
 description = "The Official Dotman Website"
-authors = ["Evan Porter"]
-license = "MIT"
+authors = [{ name = "Evan Porter" }]
+requires-python = ">=3.12,<3.13"
 readme = "README.md"
-packages = [
-    {include = "dotmanca", from = "src"},
-    {include = "characters", from = "src"},
-    {include = "comics", from = "src"},
-    {include = "config", from = "src"},
-    {include = "gallery", from = "src"},
-    {include = "main", from = "src"},
-    {include = "news", from = "src"},
-    {include = "places", from = "src"},
-    {include = "poetry_scripts.py", from = "src"}
+license = "MIT"
+dependencies = [
+    "Django~=5.2",
+    "pillow~=12.0",
+    "django-environ>=0.12.0,<0.13",
+    "markdown~=3.9",
+    "django-markup~=1.10",
+    "gunicorn~=23.0",
+    "argon2-cffi~=25.1",
+    "psycopg2-binary==2.9.11",
+    "bleach>=6.2.0,<7",
+    "bleach-allowlist>=1.0.3,<2",
+    "boto3>=1.40.59,<2",
+    "django-storages~=1.14",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-Django = "^5.2"
-pillow = "^12.0"
-django-environ = "^0.12.0"
-markdown = "^3.9"
-django-markup = "^1.10"
-gunicorn = "^23.0"
-argon2-cffi = "^25.1"
-psycopg2-binary = "2.9.11"
-bleach = "^6.2.0"
-bleach-allowlist = "^1.0.3"
-boto3 = "^1.40.59"
-django-storages = "^1.14"
+[dependency-groups]
+dev = ["django-debug-toolbar>=6.0.0,<7"]
+lint = ["ruff>=0.14.2,<0.15"]
+test = [
+    "pytest>=8.4.2,<9",
+    "pytest-django>=4.11.1,<5",
+    "pytest-env>=1.2.0,<2",
+    "coverage>=7.11.0,<8",
+    "django-coverage-plugin>=3.2.0,<4",
+]
 
-[tool.poetry.group.dev.dependencies]
-django-debug-toolbar = "^6.0.0"
+[tool.uv]
+default-groups = [
+    "dev",
+    "lint",
+    "test",
+]
 
-[tool.poetry.group.lint.dependencies]
-ruff = "^0.14.2"
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/dotmanca",
+    "src/characters",
+    "src/comics",
+    "src/config",
+    "src/gallery",
+    "src/main",
+    "src/news",
+    "src/places",
+]
 
-[tool.poetry.group.test.dependencies]
-pytest = "^8.4.2"
-pytest-django = "^4.11.1"
-pytest-env = "^1.2.0"
-coverage = "^7.11.0"
-django-coverage-plugin = "^3.2.0"
+[tool.hatch.build.targets.wheel]
+include = [
+    "src/dotmanca",
+    "src/characters",
+    "src/comics",
+    "src/config",
+    "src/gallery",
+    "src/main",
+    "src/news",
+    "src/places",
+]
 
-[tool.poetry.scripts]
-server = "poetry_scripts:run_server"
-manage = "poetry_scripts:manage"
-lint = "poetry_scripts:run_lint"
-check-format = "poetry_scripts:run_check_format"
-format = "poetry_scripts:run_auto_format"
-test = "poetry_scripts:run_tests"
-coverage = "poetry_scripts:run_coverage"
+[tool.hatch.build.targets.wheel.sources]
+"src/dotmanca" = "dotmanca"
+"src/characters" = "characters"
+"src/comics" = "comics"
+"src/config" = "config"
+"src/gallery" = "gallery"
+"src/main" = "main"
+"src/news" = "news"
+"src/places" = "places"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
@@ -72,6 +95,7 @@ exclude = """
   | migrations
   | htmlcov
   | .pytest_cache
+  | .venv
 )/
 """
 
@@ -98,7 +122,3 @@ select = [
     "I",
     "N",
 ]
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

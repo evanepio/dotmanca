@@ -1,43 +1,50 @@
-###############################################################################
-# STAGE 1 - Build a common base to use for the remaining stages
-###############################################################################
-FROM python:3.12-slim as base
+# Lifted from https://github.com/astral-sh/uv-docker-example/blob/main/multistage.Dockerfile
 
-ENV PYTHONFAULTHANDLER=1 \
-    PYTHONHASHSEED=random \
-    PYTHONUNBUFFERED=1
+# First, build the application in the `/app` directory.
+# See `Dockerfile` for details.
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 
-RUN apt-get update && apt-get install -y libpq-dev
+# Disable Python downloads, because we want to use the system interpreter
+# across both images. If using a managed Python version, it needs to be
+# copied from the build image into the final image; see `standalone.Dockerfile`
+# for an example.
+ENV UV_PYTHON_DOWNLOADS=0
 
 WORKDIR /app
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --locked --no-install-project --no-dev
+COPY . /app
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --locked --no-dev
 
-###############################################################################
-# STAGE 2 - Build the Virtual Environment with everything installed in it.
-###############################################################################
-FROM base as builder
 
-ENV PIP_DEFAULT_TIMEOUT=100 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.4.0 \
-    DJANGO_DEBUG=False
+# Then, use a final image without uv
+FROM python:3.12-slim-bookworm
+# It is important to use the image that matches the builder, as the path to the
+# Python executable must be the same, e.g., using `python:3.11-slim-bookworm`
+# will fail.
 
-COPY . .
+# Setup a non-root user
+RUN groupadd --system --gid 999 nonroot \
+ && useradd --system --gid 999 --uid 999 --create-home nonroot
 
-RUN pip install "poetry==$POETRY_VERSION" && \
-    poetry config virtualenvs.in-project true && \
-    poetry install --only=main --no-root && \
-    poetry build && \
-    ./.venv/bin/pip install dist/*.whl
+# Copy the application from the builder
+COPY --from=builder --chown=nonroot:nonroot /app /app
 
-###############################################################################
-# STAGE 3 - Copy the virtual env from a previous stage to get final image
-###############################################################################
-FROM base as final
+# Place executables in the environment at the front of the path
+ENV PATH="/app/.venv/bin:$PATH"
 
-EXPOSE 8080
+# Use `/app` as the working directory
+WORKDIR /app
 
-COPY --from=builder /app/.venv ./.venv
+# Run the FastAPI application by default
 COPY docker-entrypoint.sh manage.py ./
 RUN chmod u+x docker-entrypoint.sh
+
+# Use the non-root user to run our application - after chmod
+USER nonroot
+
 CMD ["./docker-entrypoint.sh"]

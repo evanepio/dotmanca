@@ -11,30 +11,13 @@ This describes how I'll need to set up my dev environment in a mac (what I curre
 You'll need the following:
 
 - [Homebrew](https://brew.sh/)
-- [Docker](https://www.docker.com/get-docker)
+- [Docker](https://www.docker.com/get-docker) or [OrbStack](https://orbstack.dev)
 
 Next run the following:
 
-    $ brew install pyenv
+    $ brew install uv
 
-This gives you a way to manage multiple python versions at the same time.
-
-> Note: `pyenv` is not the same as `virtualenv` or `venv`. Yay, naming!
-
-Next, we need to install the correct Python version, and then switch to it.
-
-    $ pyenv install 3.11
-    $ pyenv global 3.11
-
-If you just want the python version local to a particular directory, you can instead run the following inside the directory you want to run a specific version for:
-
-    $ pyenv local 3.11
-
-Next, we want to install Poetry. We can follow [these instructions](https://python-poetry.org/docs/).
-
-Once Poetry is installed, we can run the following in the root of this project:
-
-    $ poetry install
+[Astral's](https://astral.sh) `uv` manages Python projects, dependencies and virtual environments.
 
 Create an `.env` file in the root of the project folder. It should contain the following items:
 
@@ -45,7 +28,7 @@ POSTGRES_USER=django_user
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 
-DJANGO_ADMIN_URL=
+DJANGO_ADMIN_URL=admin
 DJANGO_SETTINGS_MODULE=config.settings.local
 DJANGO_SECRET_KEY=UseAGeneratedValueOrDontAsItsLocal
 DJANGO_ALLOWED_HOSTS=.dotman.ca
@@ -64,7 +47,7 @@ STATIC_LOCATION=static
 PUBLIC_MEDIA_LOCATION=media
 ```
 
-You can review those settings, or accept as-is since this is for local. Do not use the above for production or UA environments. The `DATA_BASE_URL` must contain `POSTGRES_PASSWORD` and `POSTGRES_USER`.
+You can review those settings, or accept as-is since this is for local. Do not use the above for production or UA environments.
 
 Next, we can bring up the junk database to use:
 
@@ -83,30 +66,20 @@ These commands only bring up a database and and S3 compatible server.
 ### Running locally
 
 ```
-poetry run manage migrate
-poetry run server
+uv run --env-file .env manage.py migrate
+uv run --env-file .env manage.py runserver
 ```
-> Note: you only need to run the `poetry run manage migrate` once, but it never hurts to run again (it'll detect no new migrations, and do nothing).
+> Note: you only need to run the `migrate` once, but it never hurts to run again (it'll detect no new migrations, and do nothing).
 
 ### Setting Up Your Users
 
 - To create an **superuser account**, use this command:
 
-      $ poetry run manage createsuperuser
-
-### Test coverage
-
-To run the tests, check your test coverage, and generate an HTML
-coverage report:
-
-```
-poetry run coverage
-open htmlcov/index.html
-```
+      $ uv run --env-file .env manage.py createsuperuser
 
 #### Running tests with `pytest`
 
-    $ poetry run test
+    $ uv run pytest
 
 > Note: `pyproject.toml` has configurations for `pytest` to work.
 
@@ -115,19 +88,5 @@ open htmlcov/index.html
 This project uses `ruff` to lint code. We can run it with the following:
 
 ```
-poetry run lint
-```
-
-### Run `black`
-
-To run black and reformat all files:
-
-```
-poetry run format
-```
-
-To check if the files pass `black`'s formatting (use in CI pipeline):
-
-```
-poetry run check-format
+uv run ruff check --diff .
 ```
