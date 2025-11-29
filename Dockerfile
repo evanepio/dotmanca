@@ -1,7 +1,8 @@
 # Lifted from https://github.com/astral-sh/uv-docker-example/blob/main/multistage.Dockerfile
 
-# First, build the application in the `/app` directory.
-# See `Dockerfile` for details.
+#####################################
+# Stage 1 - Build Virtual Environment
+#####################################
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 
@@ -12,20 +13,23 @@ ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 ENV UV_PYTHON_DOWNLOADS=0
 
 WORKDIR /app
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project --no-dev
+
+COPY uv.lock /app/uv.lock
+COPY pyproject.toml /app/pyproject.toml
+RUN uv sync --locked --no-install-project --no-dev
+
 COPY . /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-dev
 
-
-# Then, use a final image without uv
+############################################################
+# Stage 2 - Copy Virtual Environment to a clean Python image
+############################################################
 FROM python:3.12-slim-bookworm
 # It is important to use the image that matches the builder, as the path to the
 # Python executable must be the same, e.g., using `python:3.11-slim-bookworm`
-# will fail.
+
+EXPOSE 8080/tcp
 
 # Setup a non-root user
 RUN groupadd --system --gid 999 nonroot \
@@ -40,7 +44,6 @@ ENV PATH="/app/.venv/bin:$PATH"
 # Use `/app` as the working directory
 WORKDIR /app
 
-# Run the FastAPI application by default
 COPY docker-entrypoint.sh manage.py ./
 RUN chmod u+x docker-entrypoint.sh
 
