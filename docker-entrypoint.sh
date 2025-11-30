@@ -9,16 +9,16 @@ export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES
 postgres_ready() {
 /app/.venv/bin/python << END
 import sys
-import psycopg2
+import psycopg
 try:
-    psycopg2.connect(
+    psycopg.connect(
         dbname="${POSTGRES_DB}",
         user="${POSTGRES_USER}",
         password="${POSTGRES_PASSWORD}",
         host="${POSTGRES_HOST}",
         port="${POSTGRES_PORT}",
     )
-except psycopg2.OperationalError:
+except psycopg.OperationalError:
     print("Can not connect to database ${POSTGRES_DB} on ${POSTGRES_HOST} yet")
     sys.exit(-1)
 sys.exit(0)
