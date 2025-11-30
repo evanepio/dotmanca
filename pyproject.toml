@@ -3,7 +3,7 @@ name = "dotmanca"
 version = "4.0.0"
 description = "The Official Dotman Website"
 authors = [{ name = "Evan Porter" }]
-requires-python = ">=3.12,<3.13"
+requires-python = ">=3.14,<3.15"
 readme = "README.md"
 license = "MIT"
 dependencies = [
