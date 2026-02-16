@@ -6,6 +6,50 @@ The Official Website for Dotman Comics
 
 ## Getting Ready
 
+I'm using Dev Containers so that everything starts up nice and proper. Just need VS Code and the Dev Containers extension.
+
+Right now we need to do a few manual steps.
+
+```sh
+uv run manage.py migrate
+uv run manage.py collectstatic
+```
+
+These commands will prepare the database and publish the static assets in the RustFS container.
+## Basic Commands
+
+### Running locally in the Dev Container
+
+```
+uv run manage.py migrate
+uv run manage.py runserver
+```
+> Note: you only need to run the `migrate` once, but it never hurts to run again (it'll detect no new migrations, and do nothing).
+
+### Setting Up Your Users
+
+- To create an **superuser account**, use this command:
+
+      $ uv run manage.py createsuperuser
+
+#### Running tests with `pytest`
+
+    $ uv run pytest
+
+> Note: `pyproject.toml` has configurations for `pytest` to work.
+
+### Lint code
+
+This project uses `ruff` to lint code. We can run it with the following:
+
+```
+uv run ruff check --diff .
+```
+
+## Getting Ready (the old and busted way)
+
+> I'm keeping this section in case of Dev Container catastrophy
+
 This describes how I'll need to set up my dev environment in a mac (what I currently use ).
 
 You'll need the following:
@@ -60,33 +104,3 @@ And we'll also want a junk S3 server to use:
 These commands only bring up a database and and S3 compatible server.
 
 > Note: you will need to create the busket in Minio (the S3 compatible server) manually.
-
-## Basic Commands
-
-### Running locally
-
-```
-uv run --env-file .env manage.py migrate
-uv run --env-file .env manage.py runserver
-```
-> Note: you only need to run the `migrate` once, but it never hurts to run again (it'll detect no new migrations, and do nothing).
-
-### Setting Up Your Users
-
-- To create an **superuser account**, use this command:
-
-      $ uv run --env-file .env manage.py createsuperuser
-
-#### Running tests with `pytest`
-
-    $ uv run pytest
-
-> Note: `pyproject.toml` has configurations for `pytest` to work.
-
-### Lint code
-
-This project uses `ruff` to lint code. We can run it with the following:
-
-```
-uv run ruff check --diff .
-```
