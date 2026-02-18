@@ -3,7 +3,7 @@
   "dockerComposeFile": "compose.yml",
   "service": "devcontainer",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "forwardPorts": [8000, 9001, 9000, 5432],
+  "forwardPorts": [8000, 9001, 9000, 5432, 41627],
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "22"
@@ -22,6 +22,7 @@
   },
   "remoteUser": "vscode",
   "mounts": [
-    "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached"
+    "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.claude.json,target=/home/vscode/.claude.json,type=bind,consistency=cached"
   ]
 }
