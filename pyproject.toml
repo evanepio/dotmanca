@@ -86,23 +86,6 @@ include = ["src/*"]
 omit = ["*migrations*", "*tests*"]
 plugins = ["django_coverage_plugin"]
 
-[tool.black]
-target-version = ["py311"]
-exclude = """
-/(
-    .git
-  | docs
-  | migrations
-  | htmlcov
-  | .pytest_cache
-  | .venv
-)/
-"""
-
-[tool.isort]
-profile = "black"
-skip_glob = ["docs/*", "*/migrations/*"]
-
 [tool.ruff]
 exclude = [
     ".git",
