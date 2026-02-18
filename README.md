@@ -16,6 +16,9 @@ uv run manage.py collectstatic
 ```
 
 These commands will prepare the database and publish the static assets in the RustFS container.
+
+You'll need to auhorize `claude` from outside the devcontainer, as it can't authorize from inside the container reliably. Make sure both the `~/.claude` and `~/.claude.json` files are mounted to the home directory of the main devcontainer's user. In this case, that user is `vscode`.
+
 ## Basic Commands
 
 ### Running locally in the Dev Container
