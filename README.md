@@ -2,108 +2,95 @@
 
 The Official Website for Dotman Comics
 
+[![CI CD](https://github.com/evanepio/dotmanca/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/evanepio/dotmanca/actions/workflows/ci-cd.yml)
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg)](https://github.com/pydanny/cookiecutter-django/)
 
-## Getting Ready
+## Tech Stack
+
+- **Python 3.14** / **Django 5.2**
+- **PostgreSQL** — primary database
+- **S3-compatible storage** (RustFS / MinIO) — static and media files
+- **`uv`** — dependency and virtual environment management
+- **`ruff`** — linting
+
+## Quick Start (Dev Container)
 
 I'm using Dev Containers so that everything starts up nice and proper. Just need VS Code and the Dev Containers extension.
 
-Right now we need to do a few manual steps.
+After the container starts, run the following once to prepare the database and publish static assets:
 
 ```sh
 uv run manage.py migrate
 uv run manage.py collectstatic
 ```
 
-These commands will prepare the database and publish the static assets in the RustFS container.
-
-You'll need to auhorize `claude` from outside the devcontainer, as it can't authorize from inside the container reliably. Make sure both the `~/.claude` and `~/.claude.json` files are mounted to the home directory of the main devcontainer's user. In this case, that user is `vscode`.
+> **Note:** Authorize `claude` from outside the Dev Container before starting, as it can't authorize reliably from inside. Make sure both `~/.claude` and `~/.claude.json` are mounted to the `vscode` user's home directory in the Dev Container.
 
 ## Basic Commands
 
-### Running locally in the Dev Container
+### Running the dev server
 
-```
+```sh
 uv run manage.py migrate
 uv run manage.py runserver
 ```
-> Note: you only need to run the `migrate` once, but it never hurts to run again (it'll detect no new migrations, and do nothing).
 
-### Setting Up Your Users
+> Note: `migrate` only needs to run once, but it's safe to run again — it detects no new migrations and does nothing.
 
-- To create an **superuser account**, use this command:
+### Creating a superuser
 
-      $ uv run manage.py createsuperuser
+```sh
+uv run manage.py createsuperuser
+```
 
-#### Running tests with `pytest`
+### Running tests
 
-    $ uv run pytest
+```sh
+uv run pytest
+```
 
 > Note: `pyproject.toml` has configurations for `pytest` to work.
 
-### Lint code
+### Linting
 
-This project uses `ruff` to lint code. We can run it with the following:
-
-```
+```sh
 uv run ruff check --diff .
 ```
 
-## Getting Ready (the old and busted way)
+## Manual Setup (without Dev Containers)
 
-> I'm keeping this section in case of Dev Container catastrophy
+> Keeping this section as a fallback in case of Dev Container issues.
 
-This describes how I'll need to set up my dev environment in a mac (what I currently use ).
-
-You'll need the following:
+You'll need:
 
 - [Homebrew](https://brew.sh/)
 - [Docker](https://www.docker.com/get-docker) or [OrbStack](https://orbstack.dev)
 
-Next run the following:
+Install `uv`:
 
-    $ brew install uv
-
-[Astral's](https://astral.sh) `uv` manages Python projects, dependencies and virtual environments.
-
-Create an `.env` file in the root of the project folder. It should contain the following items:
-
-```
-DJANGO_READ_DOT_ENV_FILE=True
-POSTGRES_PASSWORD=django_pass
-POSTGRES_USER=django_user
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-
-DJANGO_ADMIN_URL=admin
-DJANGO_SETTINGS_MODULE=config.settings.local
-DJANGO_SECRET_KEY=UseAGeneratedValueOrDontAsItsLocal
-DJANGO_ALLOWED_HOSTS=.dotman.ca
-DJANGO_SECURE_SSL_REDIRECT=False
-DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
-
-USE_S3=True
-AWS_S3_ENDPOINT_URL=http://localhost:9000
-AWS_ACCESS_KEY_ID=minioadmin
-AWS_SECRET_ACCESS_KEY=minioadmin
-AWS_STORAGE_BUCKET_NAME=dotmanca
-AWS_S3_REGION_NAME=
-DOTMAN_STATIC_AND_MEDIA_BASE_URL=http://localhost:9000
-
-STATIC_LOCATION=static
-PUBLIC_MEDIA_LOCATION=media
+```sh
+brew install uv
 ```
 
-You can review those settings, or accept as-is since this is for local. Do not use the above for production or UA environments.
+[Astral's](https://astral.sh) `uv` manages Python projects, dependencies, and virtual environments.
 
-Next, we can bring up the junk database to use:
+### Environment configuration
 
-    $ docker compose up postgres -d
+Copy `env.example` to `.env` and review the values:
 
-And we'll also want a junk S3 server to use:
+```sh
+cp env.example .env
+```
 
-    $ docker compose up s3 -d
+> Do not use the example values for production or UA environments.
 
-These commands only bring up a database and and S3 compatible server.
+### Starting the backing services
 
-> Note: you will need to create the busket in Minio (the S3 compatible server) manually.
+Bring up the database and S3-compatible storage server:
+
+```sh
+docker compose up postgres -d
+docker compose up s3 -d
+```
+
+> **Note:** You will need to manually create the bucket in MinIO (the S3-compatible server) after it starts.
