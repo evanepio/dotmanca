@@ -57,6 +57,20 @@ uv run pytest
 uv run ruff check --diff .
 ```
 
+### Formatting
+
+This will check the formatting and report any errors:
+
+```sh
+uv run ruff format --check .
+```
+
+This will automatically format the code:
+
+```sh
+uv run ruff format
+```
+
 ## Manual Setup (without Dev Containers)
 
 > Keeping this section as a fallback in case of Dev Container issues.
