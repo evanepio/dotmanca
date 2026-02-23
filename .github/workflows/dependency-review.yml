@@ -20,7 +20,8 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
-            54.185.253.63:443
+            api.github.com:443
+            api.deps.dev:443
 
       - name: 'Checkout Repository'
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
