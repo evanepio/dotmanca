@@ -59,5 +59,7 @@ jobs:
           enable-cache: true
       - name: Install the project
         run: uv sync --locked --all-extras --dev
-      - name: Run ruff
+      - name: Run ruff check
         run: uv run ruff check --diff .
+      - name: Run ruff format
+        run: uv run ruff format --check .
