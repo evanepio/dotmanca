@@ -23,7 +23,6 @@ dependencies = [
 
 [dependency-groups]
 dev = ["django-debug-toolbar>=6.0.0,<7"]
-lint = ["ruff>=0.14.2,<0.16"]
 test = [
     "pytest>=8.4.2,<10",
     "pytest-django>=4.11.1,<5",
@@ -35,7 +34,6 @@ test = [
 [tool.uv]
 default-groups = [
     "dev",
-    "lint",
     "test",
 ]
 
