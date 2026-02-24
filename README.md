@@ -54,7 +54,7 @@ uv run pytest
 ### Linting
 
 ```sh
-uv run ruff check --diff .
+uvx ruff check --diff .
 ```
 
 ### Formatting
@@ -62,13 +62,13 @@ uv run ruff check --diff .
 This will check the formatting and report any errors:
 
 ```sh
-uv run ruff format --check .
+uvx ruff format --check .
 ```
 
 This will automatically format the code:
 
 ```sh
-uv run ruff format
+uvx ruff format
 ```
 
 ## Manual Setup (without Dev Containers)
