@@ -39,7 +39,7 @@ jobs:
       - name: Run pytest
         run: uv run pytest --cov --cov-report=xml:coverage.xml --cov-report=html:coverage-html --cov-fail-under=80
       - name: Upload coverage reports
-        uses: actions/upload-artifact@v4  # pin to a specific SHA for security
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
           name: coverage-reports
