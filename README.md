@@ -7,7 +7,7 @@ The Official Website for Dotman Comics
 
 ## Tech Stack
 
-- **Python 3.14** / **Django 5.2**
+- **Python 3.14** / **Django**
 - **PostgreSQL** — primary database
 - **S3-compatible storage** (RustFS / MinIO) — static and media files
 - **`uv`** — dependency and virtual environment management
