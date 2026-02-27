@@ -77,7 +77,7 @@ jobs:
       - name: Run ruff format
         run: uvx ruff format --check .
   check-migrations:
-    name: migrations
+    name: check-migrations
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
