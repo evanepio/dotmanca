@@ -1,4 +1,4 @@
-name: CI CD
+name: Continuous Integration
 on: pull_request
 
 concurrency:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   tests:
-    name: pytest
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
@@ -46,8 +46,9 @@ jobs:
           path: |
             coverage.xml
             htmlcov/
+
   check-code:
-    name: ruff
+    name: Check Code
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
@@ -74,10 +75,38 @@ jobs:
         run: uv sync --locked --all-extras --dev
       - name: Run ruff check
         run: uvx ruff check --diff .
+
+  check-format:
+    name: Check Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@58077d3c7e43986b6b15fba718e8ea69e387dfcc # v2.15.1
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            files.pythonhosted.org:443
+            github.com:443
+            pypi.org:443
+            objects.githubusercontent.com:443
+            release-assets.githubusercontent.com:443
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      - name: "Set up Python"
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version-file: "pyproject.toml"
+      - name: Install uv
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7
+        with:
+          enable-cache: true
+      - name: Install the project
+        run: uv sync --locked --all-extras --dev
       - name: Run ruff format
         run: uvx ruff format --check .
+
   check-migrations:
-    name: check-migrations
+    name: Check Database Migrations
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner
