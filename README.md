@@ -2,7 +2,8 @@
 
 The Official Website for Dotman Comics
 
-[![CI CD](https://github.com/evanepio/dotmanca/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/evanepio/dotmanca/actions/workflows/ci-cd.yml)
+[![Continuous Integration](https://github.com/evanepio/dotmanca/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/evanepio/dotmanca/actions/workflows/continuous-integration.yml)
+[![Continuous Deploy](https://github.com/evanepio/dotmanca/actions/workflows/continuous-deploy.yml/badge.svg)](https://github.com/evanepio/dotmanca/actions/workflows/continuous-deploy.yml)
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg)](https://github.com/pydanny/cookiecutter-django/)
 
 ## Tech Stack
