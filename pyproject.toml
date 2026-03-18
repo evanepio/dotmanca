@@ -32,6 +32,7 @@ test = [
 ]
 
 [tool.uv]
+version = "0.10.11"
 default-groups = [
     "dev",
     "test",
