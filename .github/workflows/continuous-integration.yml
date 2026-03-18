@@ -25,6 +25,7 @@ jobs:
             objects.githubusercontent.com:443
             release-assets.githubusercontent.com:443
             uploads.github.com:443
+            raw.githubusercontent.com:443 
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: "Set up Python"
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
@@ -62,6 +63,7 @@ jobs:
             pypi.org:443
             objects.githubusercontent.com:443
             release-assets.githubusercontent.com:443
+            raw.githubusercontent.com:443 
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: "Set up Python"
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
@@ -91,6 +93,7 @@ jobs:
             pypi.org:443
             objects.githubusercontent.com:443
             release-assets.githubusercontent.com:443
+            raw.githubusercontent.com:443 
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: "Set up Python"
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
@@ -120,6 +123,7 @@ jobs:
             pypi.org:443
             objects.githubusercontent.com:443
             release-assets.githubusercontent.com:443
+            raw.githubusercontent.com:443 
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: "Set up Python"
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
