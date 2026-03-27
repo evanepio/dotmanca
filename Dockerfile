@@ -3,7 +3,7 @@
 #####################################
 # Stage 1 - Build Virtual Environment
 #####################################
-FROM astral/uv:0.10.12-python3.14-trixie AS builder
+FROM astral/uv:0.11.2-python3.14-trixie AS builder
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 
 # Disable Python downloads, because we want to use the system interpreter
