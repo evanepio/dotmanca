@@ -273,3 +273,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+
+# django-markup settings
+# safe_mode is disabled because bleach (which implements it) is deprecated.
+# Content is admin-entered only, so HTML sanitization is not required.
+MARKUP_SETTINGS = {
+    "markdown": {
+        "safe_mode": False,
+    }
+}
