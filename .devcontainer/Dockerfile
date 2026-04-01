@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/python:3.14
 
 # Install Astral uv binaries from an already built image
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY --from=astral/uv:0.11.2-python3.14-trixie /usr/local/bin/uv /usr/local/bin/uvx /bin/
 
 USER vscode
