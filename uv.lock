@@ -238,7 +238,7 @@ wheels = [
 
 [[package]]
 name = "dotmanca"
-version = "4.26.3"
+version = "4.26.4"
 source = { editable = "." }
 dependencies = [
     { name = "argon2-cffi" },
