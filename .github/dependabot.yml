@@ -5,12 +5,16 @@ updates:
     schedule:
       interval: "weekly"
 
-  - package-ecosystem: github-actions
-    directory: /
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: daily
+      interval: "weekly"
+    groups:
+      codeql-actions:
+        patterns:
+          - "github/codeql-action/*"
 
   - package-ecosystem: docker
-    directory: /
+    directory: "/"
     schedule:
-      interval: daily
+      interval: "weekly"
