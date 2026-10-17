@@ -33,7 +33,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ############################################################
 # Stage 2 - Copy Virtual Environment to a clean Python image
 ############################################################
-FROM python:3.14-slim-bookworm
+FROM python:3.15-slim-bookworm
 # It is important to use the image that matches the builder, as the path to the
 # Python executable must be the same, e.g., using `python:3.11-slim-bookworm`
 
