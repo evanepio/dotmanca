@@ -108,9 +108,17 @@ FIXTURE_DIRS = (str(APPS_DIR.path("fixtures")),)
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
-EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.smtp.EmailBackend"
-)
+MAILERS = {
+    "default": {
+        "BACKEND": env(
+            "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.smtp.EmailBackend"
+            ),
+        "OPTIONS": {
+            "host": "localhost",
+            "port": 1025,
+        },
+    },
+}
 
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------
