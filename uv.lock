@@ -245,7 +245,7 @@ wheels = [
 
 [[package]]
 name = "dotmanca"
-version = "4.43.2"
+version = "4.43.3"
 source = { editable = "." }
 default-groups = ["dev", "test"]
 dependencies = [
